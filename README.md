@@ -1,7 +1,6 @@
 # MoleditPy GAMESS Result Analyzer Plugin
 
 [![Tests](https://github.com/HiroYokoyama/moleditpy_gamess_result_analyzer/actions/workflows/tests.yml/badge.svg)](https://github.com/HiroYokoyama/moleditpy_gamess_result_analyzer/actions/workflows/tests.yml)
-[![codecov](https://codecov.io/gh/HiroYokoyama/moleditpy_gamess_result_analyzer/graph/badge.svg)](https://codecov.io/gh/HiroYokoyama/moleditpy_gamess_result_analyzer)
 [![MoleditPy](https://img.shields.io/badge/MoleditPy->=5.0.0-3577F7)](https://github.com/HiroYokoyama/python_molecular_editor)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/HiroYokoyama)
 [![GitHub tag](https://img.shields.io/github/v/tag/HiroYokoyama/moleditpy_gamess_result_analyzer?label=version)](https://github.com/HiroYokoyama/moleditpy_gamess_result_analyzer/tags)
