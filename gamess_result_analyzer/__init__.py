@@ -3,7 +3,7 @@
 PLUGIN_NAME = "GAMESS Result Analyzer"
 PLUGIN_VERSION = "0.1.0"
 PLUGIN_AUTHOR = "HiroYokoyama"
-PLUGIN_DESCRIPTION = "Comprehensive analyzer for GAMESS output files (.log, .out). Includes Vibrational, MO, TDDFT, and NMR analysis."
+PLUGIN_DESCRIPTION = "UNDER DEVELOPMENT: Comprehensive analyzer for GAMESS output files (.log, .out). Includes Vibrational, MO, TDDFT, and NMR analysis."
 PLUGIN_TAGS = ["Analysis", "DFT", "File"]
 PLUGIN_SUPPORTED_MOLEDITPY_VERSION = ">=5.0.0, <6.0.0"
 PLUGIN_SUPPORTED_PYTHON_VERSION = ">=3.9, <3.15"
