@@ -1,0 +1,231 @@
+          *******************************************************
+          *                                                     *
+          *      GAMESS VERSION = 15 JUL 2024 (R2 Patch 1)          *
+          *                                                     *
+          *              doi.org/10.1063/5.0005188              *
+          *                                                     *
+          **************** 64 BIT LINUX VERSION *****************
+
+
+            ECHO OF THE FIRST FEW INPUT CARDS -
+ INPUT CARD> $CONTRL SCFTYP=RHF RUNTYP=NMR $END
+ INPUT CARD> $SYSTEM MWORDS=100 $END
+ INPUT CARD> $BASIS GBASIS=N31 NGAUSS=6 NDFUNC=1 $END
+ INPUT CARD> $DATA
+ INPUT CARD>methanol nmr sample
+ INPUT CARD>C1
+ INPUT CARD>C   6.0    -0.050300     0.668500     0.000000
+ INPUT CARD>O   8.0    -0.050300    -0.758500     0.000000
+ INPUT CARD>H   1.0    -1.080700     1.025000     0.000000
+ INPUT CARD>H   1.0     0.465000     1.067600     0.890000
+ INPUT CARD>H   1.0     0.465000     1.067600    -0.890000
+ INPUT CARD>H   1.0     0.865000    -1.035000     0.000000
+ INPUT CARD> $END
+    100000000 WORDS OF MEMORY AVAILABLE
+
+     BASIS OPTIONS
+     -------------
+     GBASIS=N31          IGAUSS=       6      POLAR=POPN31
+     NDFUNC=       1     NFFUNC=       0     DIFFSP=       F
+     NPFUNC=       0      DIFFS=       F     BASNAM=
+
+
+     RUN TITLE
+     ---------
+ methanol nmr sample
+
+ THE POINT GROUP OF THE MOLECULE IS C1
+ THE ORDER OF THE PRINCIPAL AXIS IS     0
+
+ ATOM      ATOMIC                      COORDINATES (BOHR)
+           CHARGE         X                   Y                   Z
+ C           6.0    -0.0950532172        1.2632818228        0.0000000000
+ O           8.0    -0.0950532172       -1.4333571617        0.0000000000
+ H           1.0    -2.0422268749        1.9369691374        0.0000000000
+ H           1.0     0.8787225843        2.0174714645        1.6818561291
+ H           1.0     0.8787225843        2.0174714645       -1.6818561291
+ H           1.0     1.6346129794       -1.9558663973        0.0000000000
+
+          INTERNUCLEAR DISTANCES (ANGS.)
+
+                1 C          2 O          3 H          4 H          5 H
+
+   1 C       0.0000000    1.4270000 *  1.0903286 *  1.1031387 *  1.1031387 *
+   2 O       1.4270000 *  0.0000000    2.0597564 *  2.0957756 *  2.0957756 *
+   3 H       1.0903286 *  2.0597564 *  0.0000000    1.7841253 *  1.7841253 *
+   4 H       1.1031387 *  2.0957756 *  1.7841253 *  0.0000000    1.7800000 *
+   5 H       1.1031387 *  2.0957756 *  1.7841253 *  1.7800000 *  0.0000000
+   6 H       1.9338269 *  0.9561518 *  2.8336105 *  2.3179790 *  2.3179790 *
+
+                6 H
+
+   1 C       1.9338269 *
+   2 O       0.9561518 *
+   3 H       2.8336105 *
+   4 H       2.3179790 *
+   5 H       2.3179790 *
+   6 H       0.0000000
+
+  * ... LESS THAN  3.000
+
+
+     ATOMIC BASIS SET
+     ----------------
+ THE CONTRACTED PRIMITIVE FUNCTIONS HAVE BEEN UNNORMALIZED
+ THE CONTRACTED BASIS FUNCTIONS ARE NOW NORMALIZED TO UNITY
+
+  SHELL TYPE  PRIMITIVE        EXPONENT          CONTRACTION COEFFICIENT(S)
+
+ C
+
+      1   S       1          3047.5248800    0.001834737132
+      1   S       2           457.3695180    0.014037322813
+      1   S       3           103.9486850    0.068842622264
+      1   S       4            29.2101553    0.232184443216
+      1   S       5             9.2866630    0.467941348435
+      1   S       6             3.1639270    0.362311985337
+
+      2   L       7             7.8682723   -0.119332419775    0.068999066591
+      2   L       8             1.8812885   -0.160854151696    0.316423960957
+      2   L       9             0.5442493    1.143456437840    0.744308290898
+
+      3   L      10             0.1687145    1.000000000000    1.000000000000
+
+      4   D      11             0.8000000    1.000000000000
+
+ O
+
+      5   S      12          5484.6716600    0.001831074430
+      5   S      13           825.2349460    0.013950172200
+      5   S      14           188.0469580    0.068445078098
+      5   S      15            52.9645000    0.232714335992
+      5   S      16            16.8975704    0.470192897984
+      5   S      17             5.7996353    0.358520852987
+
+      6   L      18            15.5396162   -0.110777549525    0.070874268231
+      6   L      19             3.5999336   -0.148026262701    0.339752839147
+      6   L      20             1.0137618    1.130767015354    0.727158577316
+
+      7   L      21             0.2700058    1.000000000000    1.000000000000
+
+      8   D      22             0.8000000    1.000000000000
+
+ H
+
+      9   S      23            18.7311370    0.033494604338
+      9   S      24             2.8253944    0.234726953484
+      9   S      25             0.6401217    0.813757326146
+
+     10   S      26             0.1612778    1.000000000000
+
+ H
+
+     11   S      27            18.7311370    0.033494604338
+     11   S      28             2.8253944    0.234726953484
+     11   S      29             0.6401217    0.813757326146
+
+     12   S      30             0.1612778    1.000000000000
+
+ H
+
+     13   S      31            18.7311370    0.033494604338
+     13   S      32             2.8253944    0.234726953484
+     13   S      33             0.6401217    0.813757326146
+
+     14   S      34             0.1612778    1.000000000000
+
+ H
+
+     15   S      35            18.7311370    0.033494604338
+     15   S      36             2.8253944    0.234726953484
+     15   S      37             0.6401217    0.813757326146
+
+     16   S      38             0.1612778    1.000000000000
+
+ TOTAL NUMBER OF BASIS SET SHELLS             =   16
+ NUMBER OF CARTESIAN GAUSSIAN BASIS FUNCTIONS =   38
+ NUMBER OF ELECTRONS                          =   18
+ CHARGE OF MOLECULE                           =    0
+ SPIN MULTIPLICITY                            =    1
+ NUMBER OF OCCUPIED ORBITALS (ALPHA)          =    9
+ NUMBER OF OCCUPIED ORBITALS (BETA )          =    9
+ TOTAL NUMBER OF ATOMS                        =    6
+ THE NUCLEAR REPULSION ENERGY IS       40.1668771331
+
+     $CONTRL OPTIONS
+     ---------------
+ SCFTYP=RHF          RUNTYP=NMR          EXETYP=RUN
+ MPLEVL=       0     CITYP =NONE         CCTYP =NONE         VBTYP =NONE
+ DFTTYP=NONE         TDDFT =NONE
+ MULT  =       1     ICHARG=       0     NZVAR =       0     COORD =UNIQUE
+ PP    =NONE         RELWFN=NONE         LOCAL =NONE         NUMGRD=       F
+ ISPHER=      -1     NOSYM =       0     MAXIT =      30     UNITS =ANGS
+ PLTORB=       F     MOLPLT=       F     AIMPAC=       F     FRIEND=
+ NPRINT=       7     IREST =       0     GEOM  =INPUT
+ NORMF =       0     NORMP =       0     ITOL  =      20     ICUT  =       9
+ INTTYP=BEST         GRDTYP=BEST         QMTTOL= 1.0E-06
+
+     $SYSTEM OPTIONS
+     ---------------
+  REPLICATED MEMORY=   100000000 WORDS (ON EVERY NODE).
+ DISTRIBUTED MEMDDI=           0 MILLION WORDS IN AGGREGATE,
+ MEMDDI DISTRIBUTED OVER   4 PROCESSORS IS           0 WORDS/PROCESSOR.
+ TOTAL MEMORY REQUESTED ON EACH PROCESSOR=   100000000 WORDS.
+ TIMLIM=      525600.00 MINUTES, OR     365.0 DAYS.
+ PARALL= T  BALTYP=  DLB     KDIAG=    0  COREFL= F
+ MXSEQ2=     300 MXSEQ3=     150  mem10=         0  mem22=         0
+
+          ----------------
+          PROPERTIES INPUT
+          ----------------
+
+     MOMENTS            FIELD           POTENTIAL          DENSITY
+ IEMOM =       1   IEFLD =       0   IEPOT =       0   IEDEN =       0
+ WHERE =COMASS     WHERE =NUCLEI     WHERE =NUCLEI     WHERE =NUCLEI
+ OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH
+ IEMINT=       0   IEFINT=       0                     IEDINT=       0
+                                                       MORB  =       0
+          EXTRAPOLATION IN EFFECT
+          SOSCF IN EFFECT
+ ORBITAL PRINTING OPTION: NPREO=     1    38     2     1
+
+     TARGET OFFLOAD OPTIONS
+     RHF    =       F
+     CPHF    =       F
+     MAKEFP =       F
+
+     INTEGRAL TRANSFORMATION OPTIONS
+     NWORD  =            0
+     CUTTRF = 1.0E-09     MPTRAN =       0
+     DIRTRF =       F     AOINTS =DUP
+
+          INTEGRAL INPUT OPTIONS
+ NOPK  =       1 NORDER=       0 SCHWRZ=       T
+
+     THE POINT GROUP IS C1 , NAXIS= 0, ORDER= 1
+
+     DIMENSIONS OF THE SYMMETRY SUBSPACES ARE
+ A   =   38
+
+ ..... DONE SETTING UP THE RUN .....
+
+       ------------------------   ------------------------------
+       RHF GIAO CHEMICAL SHIFTS   PROGRAM WRITTEN BY M.A.FREITAG
+       ------------------------   ------------------------------
+
+
+     NMR INPUT PARAMETERS
+      INMEM= F  ANGINT= T
+       PDIA= F   PPARA= F   PEVEC= F
+     POEINT= F  PTEINT= F   PRMAT= F   PITER= F
+
+ *** INCOMPATIBLE OPTION CHOSEN WITH RUNTYP=NMR ***
+ NMR MAY BE COMPUTED ONLY FOR SCFTYP=RHF,
+ NO CORRELATION OPTION (DFTTYP, CITYP, CCTYP, MPLEVL) MAY BE CHOSEN
+ NO SEMI-EMPIRICAL OPTION (GBASIS=AM1/PM3/MNDO) MAY BE CHOSEN
+ DIRECT AO INTEGRAL CALCULATION (DIRSCF) IS NOT ENABLED,
+ AND/OR PARALLEL EXECUTION IS NOT ENABLED.
+ EXECUTION OF GAMESS TERMINATED -ABNORMALLY- AT DATE
+ DDI Process 1: error code 911
+ DDI Process 3: error code 911
+ DDI Process 2: error code 911

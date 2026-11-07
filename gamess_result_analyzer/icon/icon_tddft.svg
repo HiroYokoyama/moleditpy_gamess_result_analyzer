@@ -1,0 +1,7 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Multiple GAMESS Broadened Peaks -->
+<path d="M2 18c2 0 3-10 6-10s4 10 6 10s3-6 5-6s3 6 3 6" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Vertical Lines (Sticks) for peaks - Dashed and Thinner -->
+<line x1="8" y1="8" x2="8" y2="18" stroke="#333333" stroke-width="1" stroke-dasharray="2 2"/>
+<line x1="19" y1="12" x2="19" y2="18" stroke="#333333" stroke-width="1" stroke-dasharray="2 2"/>
+</svg>

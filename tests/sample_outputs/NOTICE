@@ -1,0 +1,5 @@
+These outputs come from small textbook jobs (water, formaldehyde, methanol, benzene,
+oxygen) run with GAMESS 2024 R2 for this plugin's tests. tools/sanitize_gamess_log.py
+removed the run script, paths, host names, dates, timings and the acknowledgement
+list; tests/test_fixture_privacy.py holds every file to that. The inputs are
+reproducible from the input echo at the top of each file.

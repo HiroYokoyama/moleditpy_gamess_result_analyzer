@@ -1,0 +1,19 @@
+{
+  "source": "gamess_result_analyzer/__init__.py",
+  "title": "GAMESS Result Analyzer",
+  "package": "gamess_result_analyzer",
+  "archive": "gamess_result_analyzer_{version}.zip",
+  "assets": [
+    "gamess_result_analyzer_{version}.zip"
+  ],
+  "include": [
+    "README.md",
+    "LICENSE",
+    "COPYING",
+    "LICENSING.md"
+  ],
+  "exclude": [
+    "*/__pycache__/*",
+    "*/.git/*"
+  ]
+}

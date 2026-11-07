@@ -1,0 +1,6 @@
+[MASTER]
+# Required to resolve PySide6 C extensions at analysis time
+extension-pkg-whitelist = PySide6
+
+[FORMAT]
+max-line-length = 100

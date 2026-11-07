@@ -1,0 +1,186 @@
+"""Cube file loading and isosurface rendering for MO/NICS visualization."""
+
+import logging
+import numpy as np
+import pyvista as pv
+
+# --- Constants ---
+BOHR_TO_ANG = 0.529177249
+
+
+class CubeVisualizer:
+    """Loads a GAMESS-cube file and renders it as +/- isosurfaces in the 3D view."""
+
+    def __init__(self, mw):
+        self.mw = mw
+        self.plotter = mw.plotter
+        self.current_grid = None
+        self.actors = {}
+
+    def load_file(self, filename):
+        """Parse a cube file and build its structured grid; return success as bool."""
+        try:
+            # Parse using simple internal parser or pyvista if robust
+            # We use internal to ensure consistency with our writer
+            meta = self._parse_cube(filename)
+            self.current_grid = self._build_grid(meta)
+            return True
+        # C++ library boundary: RDKit/VTK/pyvista exceptions do not map to Python types
+        except Exception as e:  # pylint: disable=broad-exception-caught
+            logging.warning("Error loading cube: %s", e)
+            return False
+
+    def _parse_cube(self, filename):
+        with open(filename, "r", encoding="utf-8", errors="replace") as f:
+            lines = f.readlines()
+
+        # Skip comments
+        tokens = lines[2].split()
+        n_atoms_raw = int(tokens[0])
+        n_atoms = abs(n_atoms_raw)
+        origin = np.array([float(x) for x in tokens[1:4]])
+
+        nx, *x_vec = lines[3].split()
+        nx = int(nx)
+        x_vec = np.array([float(x) for x in x_vec])
+
+        ny, *y_vec = lines[4].split()
+        ny = int(ny)
+        y_vec = np.array([float(x) for x in y_vec])
+
+        nz, *z_vec = lines[5].split()
+        nz = int(nz)
+        z_vec = np.array([float(x) for x in z_vec])
+
+        # Data starts after atoms
+        start_line = 6 + n_atoms
+        n_datasets = 1
+        if n_atoms_raw < 0:
+            # Negative atom count flags an MO cube (GAMESS convention):
+            # a DSET_IDS block (count + that many ids, possibly wrapped
+            # over several lines) sits between the atoms and the data.
+            n_ids = int(lines[start_line].split()[0])
+            n_datasets = max(1, n_ids)
+            consumed = len(lines[start_line].split()) - 1
+            start_line += 1
+            while consumed < n_ids:
+                consumed += len(lines[start_line].split())
+                start_line += 1
+        full_str = " ".join(lines[start_line:])
+        data = np.array(full_str.split(), dtype=float)
+
+        # With several data sets the values are interleaved point by point, so
+        # the stream is n_datasets times too long. Reshaping it straight to
+        # (nx, ny, nz) raises; take the first set instead.
+        n_points = abs(nx) * abs(ny) * abs(nz)
+        if n_datasets > 1 and len(data) >= n_points * n_datasets:
+            # Orbital 0 sits at 0, m, 2m, ... A slice works on a plain list
+            # too, which is what the stubbed numpy in the tests returns.
+            data = data[0 : n_points * n_datasets : n_datasets]
+
+        return {
+            "dims": (abs(nx), abs(ny), abs(nz)),
+            "origin": origin,
+            "vectors": (x_vec, y_vec, z_vec),
+            "data": data,
+            "is_angstrom": (nx < 0),
+        }
+
+    def _build_grid(self, meta):
+        nx, ny, nz = meta["dims"]
+        origin = meta["origin"]
+        xv, yv, zv = meta["vectors"]
+
+        grid = pv.StructuredGrid()
+
+        # Create coordinates
+        x = np.arange(nx)
+        y = np.arange(ny)
+        z = np.arange(nz)
+        gx, gy, gz = np.meshgrid(x, y, z, indexing="ij")
+
+        # Flatten (X-fastest for PyVista StructuredGrid points)
+        gx = gx.flatten(order="F")
+        gy = gy.flatten(order="F")
+        gz = gz.flatten(order="F")
+
+        # A negative voxel count on the NX line means the grid is already in
+        # Angstrom (GAMESS cube convention). Converting those as if they
+        # were Bohr inflated the whole isosurface by 1/0.529 = 1.89x. GAMESS
+        # writes Bohr, so this only bit cubes from other programs.
+        scale = 1.0 if meta.get("is_angstrom") else BOHR_TO_ANG
+
+        points = origin + np.outer(gx, xv) + np.outer(gy, yv) + np.outer(gz, zv)
+        points *= scale
+
+        grid.points = points
+        grid.dimensions = [nx, ny, nz]
+
+        # Add data
+        # Cube file data is Z-fastest (C-order flatten of (nx,ny,nz))
+        # Points are X-fastest (F-order)
+        raw_data = meta["data"]
+        # Reshape to 3D using Input order (C)
+        vol_3d = raw_data.reshape((nx, ny, nz), order="C")
+        # Flatten using Grid Point order (F)
+        grid.point_data["values"] = vol_3d.flatten(order="F")
+
+        return grid
+
+    def show_iso(
+        self,
+        isovalue=0.02,
+        color_p="red",
+        color_n="blue",
+        opacity=0.5,
+        style="surface",
+        smooth_shading=True,
+        name_prefix="mo_iso",
+    ):
+        """Render the +/- lobes.
+
+        *name_prefix* namespaces the actors so several orbitals can be on
+        screen at once (the compare dialog gives each slot its own prefix).
+        """
+        if not self.current_grid:
+            return
+
+        name_p, name_n = f"{name_prefix}_p", f"{name_prefix}_n"
+        self.plotter.remove_actor(name_p)
+        self.plotter.remove_actor(name_n)
+
+        try:
+            iso_p = self.current_grid.contour([isovalue], scalars="values")
+            if iso_p.n_points > 0:
+                self.plotter.add_mesh(
+                    iso_p,
+                    color=color_p,
+                    opacity=opacity,
+                    name=name_p,
+                    style=style,
+                    point_size=5,
+                    smooth_shading=smooth_shading,
+                )
+
+            iso_n = self.current_grid.contour([-isovalue], scalars="values")
+            if iso_n.n_points > 0:
+                self.plotter.add_mesh(
+                    iso_n,
+                    color=color_n,
+                    opacity=opacity,
+                    name=name_n,
+                    style=style,
+                    point_size=5,
+                    smooth_shading=smooth_shading,
+                )
+
+            self.plotter.render()
+        # C++ library boundary: RDKit/VTK/pyvista exceptions do not map to Python types
+        except Exception as e:  # pylint: disable=broad-exception-caught
+            logging.warning("Iso error: %s", e)
+
+    def clear(self, name_prefix="mo_iso"):
+        """Remove the +/- isosurface actors for the given name prefix."""
+        self.plotter.remove_actor(f"{name_prefix}_p")
+        self.plotter.remove_actor(f"{name_prefix}_n")
+        self.plotter.render()

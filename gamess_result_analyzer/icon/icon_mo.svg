@@ -1,0 +1,6 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Vertical lobes (Rotated 90) -->
+<path d="M12 12c4-3 4-8 0-8s-4 5 0 8z" stroke="#333333" stroke-width="2"/>
+<path d="M12 12c4 3 4 8 0 8s-4-5 0-8z" stroke="#333333" stroke-width="2"/>
+<circle cx="12" cy="12" r="2" stroke="#333333" stroke-width="2"/>
+</svg>

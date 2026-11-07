@@ -1,0 +1,12 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" stroke="#333333" stroke-width="2"/>
+<!-- Arrows pointing OUTWARDS (Expanding) -->
+<!-- Right side: pointing right -->
+<path d="M17 12h5m0 0l-2 -2m2 2l-2 2" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Left side: pointing left -->
+<path d="M7 12h-5m0 0l2 -2m-2 2l2 2" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Top: pointing up -->
+<path d="M12 7v-5m0 0l-2 2m2 -2l2 2" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Bottom: pointing down -->
+<path d="M12 17v5m0 0l-2 -2m2 2l 2 -2" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
