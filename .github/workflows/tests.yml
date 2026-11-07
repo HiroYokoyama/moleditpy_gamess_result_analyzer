@@ -1,0 +1,139 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  workflow_dispatch:
+    inputs:
+      moleditpy_ref:
+        description: 'MoleditPy branch, tag, or full commit SHA (blank uses repository default)'
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+env:
+  MOLEDITPY_REF: ${{ inputs.moleditpy_ref || vars.MOLEDITPY_REF || 'main' }}
+
+jobs:
+  # -------------------------------------------------------------------------
+  # Standard unit tests  Eno external dependencies required
+  # -------------------------------------------------------------------------
+  test:
+    # Python 3.9 is not available on Ubuntu 26.04 (the current ubuntu-latest).
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: pip install pytest pytest-cov matplotlib scipy
+
+      - name: Clone main app (real-context integration tests)
+        shell: bash
+        run: |
+          git init "../python_molecular_editor"
+          git -C "../python_molecular_editor" remote add origin https://github.com/HiroYokoyama/python_molecular_editor.git
+          git -C "../python_molecular_editor" fetch --depth 1 origin "$MOLEDITPY_REF"
+          git -C "../python_molecular_editor" checkout --detach FETCH_HEAD
+          git -C "../python_molecular_editor" log -1 --format="%H %s"
+
+      # Single run: plain output and coverage in one pass. Coverage is
+      # reported, not enforced  Ethe build fails on test failures only.
+      - name: Run tests with coverage
+        env:
+          CI_MAIN_APP_SRC: ${{ github.workspace }}/../python_molecular_editor/moleditpy/src
+        run: >-
+          python -m pytest tests/ -v --tb=short
+          --cov=gamess_result_analyzer --cov-report=term-missing
+          --cov-report=xml
+
+      # One upload per commit: the matrix legs all cover the same source.
+      - name: Upload coverage reports to Codecov
+        if: ${{ matrix.python-version == '3.12' }}
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  # -------------------------------------------------------------------------
+  # Integration tests  Eclones the main MoleditPy app to enable real
+  # PluginContext tests (TestWithRealPluginContext, TestAPIChecker)
+  # -------------------------------------------------------------------------
+  test-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pytest matplotlib
+
+      - name: Clone main MoleditPy application
+        shell: bash
+        run: |
+          git init "../python_molecular_editor"
+          git -C "../python_molecular_editor" remote add origin https://github.com/HiroYokoyama/python_molecular_editor.git
+          git -C "../python_molecular_editor" fetch --depth 1 origin "$MOLEDITPY_REF"
+          git -C "../python_molecular_editor" checkout --detach FETCH_HEAD
+          git -C "../python_molecular_editor" log -1 --format="%H %s"
+
+      - name: Install main app package (no heavy deps)
+        run: |
+          pip install -e ../python_molecular_editor/moleditpy \
+            --no-deps --quiet || true
+
+      - name: Run integration tests with real PluginContext
+        env:
+          CI_MAIN_APP_SRC: ${{ github.workspace }}/../python_molecular_editor/moleditpy/src
+        run: python -m pytest tests/test_plugin_integration.py tests/test_api.py -v
+
+  # -------------------------------------------------------------------------
+  # Static analysis  Epylint against .pylintrc.
+  #
+  # The score is a ratchet, not a gate on individual messages: --fail-under
+  # lets it rise freely and fails the build if it drops. Nothing enforced
+  # pylint before, which is how 795 messages accumulated unnoticed.
+  #
+  # The runtime dependencies are installed so the score here matches what a
+  # developer sees locally; without them pylint reports import-error for
+  # every third-party module and the number is not comparable.
+  # -------------------------------------------------------------------------
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # pylint is pinned: an unpinned upgrade adds checks and drops the
+      # score, which would fail the build for a release nobody made.
+      - name: Install pylint and the runtime dependencies
+        run: pip install pylint==4.0.9 rdkit "PySide6-Essentials<6.12" matplotlib Pillow numpy pyvista
+
+      # Calibrate --fail-under against the score THIS job prints, never a
+      # local run: the same pylint scores 9.31 locally and 9.01 here.
+      - name: Run pylint
+        run: >-
+          python -m pylint gamess_result_analyzer/
+          --rcfile=.pylintrc
+          --fail-under=9.0
