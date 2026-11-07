@@ -65,6 +65,9 @@ otherwise, so bump it in the same commit as the fix it describes.
 
 ## Testing
 
+There are no GitHub workflows for now, so run every check locally. Where this file
+mentions CI or the release workflow, it describes the setup they had.
+
 ```bash
 python run_tests.py                 # whole suite, exactly as CI runs it
 python run_tests.py -k parser       # pytest args are forwarded
@@ -196,8 +199,8 @@ what the function does, never restating the signature. The MO modules
 (`mo_analysis.py`, `mo_engine.py`, `mo_compare.py`) are exempt from the
 minimum-comment rule entirely — see the note in Layout.
 
-`pylint` runs in CI (`.github/workflows/tests.yml`, the `lint` job) as a score
-ratchet via `--fail-under`, so the score may rise but not fall. Treat its
+`pylint` is a score ratchet at `--fail-under=9.0`, so the score may rise but
+not fall. Treat its
 advice as advice: its `unnecessary-lambda` reports are wrong here, because
 `connect(lambda: self.method())` deliberately stops Qt feeding a signal's
 argument into a method's first parameter.
