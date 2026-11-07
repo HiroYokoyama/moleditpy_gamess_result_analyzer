@@ -597,7 +597,7 @@ class MODialog(QDialog):
             )
             self.lbl_warning.setText(
                 "<b>Coefficients Missing.</b> Required Input:"
-                "<pre style='margin-top:0; margin-bottom:0;'>%output<br>  Print[P_Basis] 2<br>  Print[P_Mos] 1<br>end</pre>"
+                "<pre style='margin-top:0; margin-bottom:0;'> $CONTRL NPRINT=7 $END</pre>"
             )
             self.lbl_warning.setVisible(True)
             self.btn_copy_input.setVisible(True)

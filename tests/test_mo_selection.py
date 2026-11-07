@@ -121,7 +121,7 @@ class TestVisualiseGating(_MOCase):
         self._select(2)
         self.dlg.on_selection_changed()
         self.assertTrue(self.dlg.lbl_warning.isVisible())
-        self.assertIn("Print[P_Basis]", self.dlg.lbl_warning.text())
+        self.assertIn("NPRINT=7", self.dlg.lbl_warning.text())
         self.assertTrue(self.dlg.btn_copy_input.isVisible())
 
     def test_the_hint_is_hidden_once_coefficients_are_present(self):
