@@ -51,7 +51,7 @@ def accept_drop_as_copy(event) -> bool:
 THEME_WINDOW = "#f3faf9"
 THEME_PANEL = "#e3f4f2"
 THEME_MENU = "#d3ecea"
-THEME_ACCENT = "#00796b"
+THEME_ACCENT = "#0066cc"
 
 
 class _ClickFilter(QObject):
