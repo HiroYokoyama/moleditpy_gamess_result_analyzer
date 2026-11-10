@@ -7,7 +7,7 @@ AU_TO_DEBYE = 2.541746473
 
 _NUMBER = r"(-?\d*\.\d+)"
 _POPULATION = re.compile(
-    rf"^\s*(\d+)\s+([A-Za-z]{{1,2}})\s+{_NUMBER}\s+{_NUMBER}\s+{_NUMBER}\s+{_NUMBER}\s*$"
+    rf"^\s*(\d+)\s+([A-Za-z]\S*)\s+{_NUMBER}\s+{_NUMBER}\s+{_NUMBER}\s+{_NUMBER}\s*$"
 )
 _BOND = re.compile(r"(\d+)\s+(\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)")
 _S2 = re.compile(rf"S-SQUARED\s*=\s*{_NUMBER}")
@@ -106,18 +106,20 @@ class _PropertyParsingMixin:
         if start is None:
             return
         for line in self.lines[start + 2 :]:
-            if "TOTAL" in line and "VALENCE" in line:
+            if line.split()[:1] == ["TOTAL"]:
                 break
             if "ATOM PAIR" in line or "BOND" in line:
                 continue
             for match in _BOND.finditer(line):
                 a, b = int(match.group(1)) - 1, int(match.group(2)) - 1
+                if not (0 <= a < len(atoms) and 0 <= b < len(atoms)):
+                    continue
                 self.data["mayer_bond_orders"].append(
                     {
                         "atom_idx1": a,
-                        "atom_sym1": atoms[a] if a < len(atoms) else "X",
+                        "atom_sym1": atoms[a],
                         "atom_idx2": b,
-                        "atom_sym2": atoms[b] if b < len(atoms) else "X",
+                        "atom_sym2": atoms[b],
                         "order": float(match.group(4)),
                     }
                 )
@@ -142,7 +144,8 @@ class _PropertyParsingMixin:
                 match = _POPULATION.match(line)
                 if not match:
                     break
-                idx, sym = int(match.group(1)) - 1, match.group(2)
+                idx = int(match.group(1)) - 1
+                sym = self._element(idx, match.group(2))
                 mulliken.append(
                     {"atom_idx": idx, "atom_sym": sym, "charge": float(match.group(4))}
                 )
@@ -167,7 +170,11 @@ class _PropertyParsingMixin:
             except ValueError:
                 break
             rows.append(
-                {"atom_idx": len(rows), "atom_sym": parts[0], "charge": charge}
+                {
+                    "atom_idx": len(rows),
+                    "atom_sym": self._element(len(rows), parts[0]),
+                    "charge": charge,
+                }
             )
         if rows:
             self.data["charges"][self._esp_scheme()] = rows
