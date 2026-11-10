@@ -643,5 +643,44 @@ class TestOpenAnalyzerEmptyReuseBranch(unittest.TestCase):
         self.assertIsNot(self.ctx.get_window("analyzer"), first)
 
 
+class TestOpenersDeclineForeignFiles(unittest.TestCase):
+    """False on a host that understands it, an exception on an older one."""
+
+    def _opener(self, version=None, ext=".out"):
+        ctx = StubContext()
+        if version is not None:
+            ctx.moleditpy_version = version
+        _init_mod.initialize(ctx)
+        return ctx.file_openers[ext][0]
+
+    def _foreign(self):
+        handle = tempfile.NamedTemporaryFile(
+            "w", suffix=".out", delete=False, encoding="utf-8"
+        )
+        handle.write("some other program's output\n")
+        handle.close()
+        self.addCleanup(os.unlink, handle.name)
+        return handle.name
+
+    def test_a_host_from_5_2_gets_false(self):
+        for version in ("5.2.0", "5.10.1", "6.0.0"):
+            with self.subTest(version=version):
+                self.assertIs(self._opener(version)(self._foreign()), False)
+
+    def test_an_older_host_gets_an_exception(self):
+        for version in (None, "5.1.3", "Unknown", ""):
+            with self.subTest(version=version):
+                with self.assertRaises(ValueError):
+                    self._opener(version)(self._foreign())
+
+    def test_every_registered_extension_declines_the_same_way(self):
+        ctx = StubContext()
+        ctx.moleditpy_version = "5.2.0"
+        _init_mod.initialize(ctx)
+        for ext, (opener, _priority) in ctx.file_openers.items():
+            with self.subTest(ext=ext):
+                self.assertIs(opener(self._foreign()), False)
+
+
 if __name__ == "__main__":
     unittest.main()
