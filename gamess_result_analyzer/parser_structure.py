@@ -27,7 +27,7 @@ _ATOM_XYZ = re.compile(
     r"^\s*([A-Za-z][A-Za-z0-9]*)\s+(\d+\.\d*)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$"
 )
 _GRADIENT_ROW = re.compile(
-    r"^\s*(\d+)\s+([A-Za-z]{1,2})\s+(?:\d+\.\d\s+)?"
+    r"^\s*(\d+)\s+([A-Za-z]\S*)\s+(?:\d+\.\d\s+)?"
     r"(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$"
 )
 _OPTTOL = re.compile(r"OPTTOL\s*=\s*(\d*\.?\d+E[-+]\d+)")
@@ -42,6 +42,11 @@ def symbol_for(atomic_number):
 
 class _StructureParsingMixin:
     """Parsing of geometry, job status, forces and optimization trajectories."""
+
+    def _element(self, index, label):
+        """Element of atom *index*; tables print its $DATA name, which is free text."""
+        atoms = self.data.get("atoms") or []
+        return atoms[index] if 0 <= index < len(atoms) else label
 
     def _read_geometry(self, header_idx, scale=1.0):
         """(atoms, coords in Angstrom) of the table whose title is at header_idx."""
@@ -143,7 +148,7 @@ class _StructureParsingMixin:
             block.append(
                 {
                     "atom_idx": int(row.group(1)) - 1,
-                    "atom_sym": row.group(2),
+                    "atom_sym": self._element(int(row.group(1)) - 1, row.group(2)),
                     "vector": [float(row.group(k)) for k in (3, 4, 5)],
                 }
             )

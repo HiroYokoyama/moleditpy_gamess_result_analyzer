@@ -1,0 +1,444 @@
+          *******************************************************
+          *                                                     *
+          *      GAMESS VERSION = 15 JUL 2024 (R2 Patch 1)          *
+          *                                                     *
+          *              doi.org/10.1063/5.0005188              *
+          *                                                     *
+          **************** 64 BIT LINUX VERSION *****************
+
+
+            ECHO OF THE FIRST FEW INPUT CARDS -
+ INPUT CARD> $CONTRL SCFTYP=RHF RUNTYP=NMR $END
+ INPUT CARD> $SYSTEM MWORDS=100 $END
+ INPUT CARD> $BASIS GBASIS=N31 NGAUSS=6 $END
+ INPUT CARD> $DATA
+ INPUT CARD>water_named_nmr sample
+ INPUT CARD>C1
+ INPUT CARD>OXYGEN     8.0     0.000000     0.000000     0.117790
+ INPUT CARD>HYDROGEN   1.0     0.000000     0.755453    -0.471161
+ INPUT CARD>HYDROGEN   1.0     0.000000    -0.755453    -0.471161
+ INPUT CARD> $END
+    100000000 WORDS OF MEMORY AVAILABLE
+
+     BASIS OPTIONS
+     -------------
+     GBASIS=N31          IGAUSS=       6      POLAR=NONE
+     NDFUNC=       0     NFFUNC=       0     DIFFSP=       F
+     NPFUNC=       0      DIFFS=       F     BASNAM=
+
+
+     RUN TITLE
+     ---------
+ water_named_nmr sample
+
+ THE POINT GROUP OF THE MOLECULE IS C1
+ THE ORDER OF THE PRINCIPAL AXIS IS     0
+
+ ATOM      ATOMIC                      COORDINATES (BOHR)
+           CHARGE         X                   Y                   Z
+ OXYGEN      8.0     0.0000000000        0.0000000000        0.2225908241
+ HYDROGEN    1.0     0.0000000000        1.4275991666       -0.8903651861
+ HYDROGEN    1.0     0.0000000000       -1.4275991666       -0.8903651861
+
+          INTERNUCLEAR DISTANCES (ANGS.)
+
+                1 OXYG       2 HYDR       3 HYDR
+
+   1 OXYG    0.0000000    0.9579001 *  0.9579001 *
+   2 HYDR    0.9579001 *  0.0000000    1.5109060 *
+   3 HYDR    0.9579001 *  1.5109060 *  0.0000000
+
+  * ... LESS THAN  3.000
+
+
+     ATOMIC BASIS SET
+     ----------------
+ THE CONTRACTED PRIMITIVE FUNCTIONS HAVE BEEN UNNORMALIZED
+ THE CONTRACTED BASIS FUNCTIONS ARE NOW NORMALIZED TO UNITY
+
+  SHELL TYPE  PRIMITIVE        EXPONENT          CONTRACTION COEFFICIENT(S)
+
+ OXYGEN
+
+      1   S       1          5484.6716600    0.001831074430
+      1   S       2           825.2349460    0.013950172200
+      1   S       3           188.0469580    0.068445078098
+      1   S       4            52.9645000    0.232714335992
+      1   S       5            16.8975704    0.470192897984
+      1   S       6             5.7996353    0.358520852987
+
+      2   L       7            15.5396162   -0.110777549525    0.070874268231
+      2   L       8             3.5999336   -0.148026262701    0.339752839147
+      2   L       9             1.0137618    1.130767015354    0.727158577316
+
+      3   L      10             0.2700058    1.000000000000    1.000000000000
+
+ HYDROGEN
+
+      4   S      11            18.7311370    0.033494604338
+      4   S      12             2.8253944    0.234726953484
+      4   S      13             0.6401217    0.813757326146
+
+      5   S      14             0.1612778    1.000000000000
+
+ HYDROGEN
+
+      6   S      15            18.7311370    0.033494604338
+      6   S      16             2.8253944    0.234726953484
+      6   S      17             0.6401217    0.813757326146
+
+      7   S      18             0.1612778    1.000000000000
+
+ TOTAL NUMBER OF BASIS SET SHELLS             =    7
+ NUMBER OF CARTESIAN GAUSSIAN BASIS FUNCTIONS =   13
+ NUMBER OF ELECTRONS                          =   10
+ CHARGE OF MOLECULE                           =    0
+ SPIN MULTIPLICITY                            =    1
+ NUMBER OF OCCUPIED ORBITALS (ALPHA)          =    5
+ NUMBER OF OCCUPIED ORBITALS (BETA )          =    5
+ TOTAL NUMBER OF ATOMS                        =    3
+ THE NUCLEAR REPULSION ENERGY IS        9.1891938947
+
+     $CONTRL OPTIONS
+     ---------------
+ SCFTYP=RHF          RUNTYP=NMR          EXETYP=RUN
+ MPLEVL=       0     CITYP =NONE         CCTYP =NONE         VBTYP =NONE
+ DFTTYP=NONE         TDDFT =NONE
+ MULT  =       1     ICHARG=       0     NZVAR =       0     COORD =UNIQUE
+ PP    =NONE         RELWFN=NONE         LOCAL =NONE         NUMGRD=       F
+ ISPHER=      -1     NOSYM =       0     MAXIT =      30     UNITS =ANGS
+ PLTORB=       F     MOLPLT=       F     AIMPAC=       F     FRIEND=
+ NPRINT=       7     IREST =       0     GEOM  =INPUT
+ NORMF =       0     NORMP =       0     ITOL  =      20     ICUT  =       9
+ INTTYP=BEST         GRDTYP=BEST         QMTTOL= 1.0E-06
+
+     $SYSTEM OPTIONS
+     ---------------
+  REPLICATED MEMORY=   100000000 WORDS (ON EVERY NODE).
+ DISTRIBUTED MEMDDI=           0 MILLION WORDS IN AGGREGATE,
+ MEMDDI DISTRIBUTED OVER   1 PROCESSORS IS           0 WORDS/PROCESSOR.
+ TOTAL MEMORY REQUESTED ON EACH PROCESSOR=   100000000 WORDS.
+ TIMLIM=      525600.00 MINUTES, OR     365.0 DAYS.
+ PARALL= F  BALTYP=  DLB     KDIAG=    0  COREFL= F
+ MXSEQ2=     300 MXSEQ3=     150  mem10=         0  mem22=         0
+
+          ----------------
+          PROPERTIES INPUT
+          ----------------
+
+     MOMENTS            FIELD           POTENTIAL          DENSITY
+ IEMOM =       1   IEFLD =       0   IEPOT =       0   IEDEN =       0
+ WHERE =COMASS     WHERE =NUCLEI     WHERE =NUCLEI     WHERE =NUCLEI
+ OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH
+ IEMINT=       0   IEFINT=       0                     IEDINT=       0
+                                                       MORB  =       0
+          EXTRAPOLATION IN EFFECT
+          SOSCF IN EFFECT
+ ORBITAL PRINTING OPTION: NPREO=     1    13     2     1
+
+     TARGET OFFLOAD OPTIONS
+     RHF    =       F
+     CPHF    =       F
+     MAKEFP =       F
+
+     INTEGRAL TRANSFORMATION OPTIONS
+     NWORD  =            0
+     CUTTRF = 1.0E-09     MPTRAN =       0
+     DIRTRF =       F     AOINTS =DUP
+
+          INTEGRAL INPUT OPTIONS
+ NOPK  =       1 NORDER=       0 SCHWRZ=       F
+
+     THE POINT GROUP IS C1 , NAXIS= 0, ORDER= 1
+
+     DIMENSIONS OF THE SYMMETRY SUBSPACES ARE
+ A   =   13
+
+ ..... DONE SETTING UP THE RUN .....
+
+       ------------------------   ------------------------------
+       RHF GIAO CHEMICAL SHIFTS   PROGRAM WRITTEN BY M.A.FREITAG
+       ------------------------   ------------------------------
+
+
+     NMR INPUT PARAMETERS
+      INMEM= F  ANGINT= T
+       PDIA= F   PPARA= F   PEVEC= F
+     POEINT= F  PTEINT= F   PRMAT= F   PITER= F
+
+          ********************
+          1 ELECTRON INTEGRALS
+          ********************
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+
+          -------------
+          GUESS OPTIONS
+          -------------
+          GUESS =HUCKEL            NORB  =       0          NORDER=       0
+          MIX   =       F          PRTMO =       F          PUNMO =       F
+          TOLZ  = 1.0E-08          TOLE  = 1.0E-05
+          SYMDEN=       F          PURIFY=       F
+
+ INITIAL GUESS ORBITALS GENERATED BY HUCKEL   ROUTINE.
+ HUCKEL GUESS REQUIRES      3586 WORDS.
+
+ SYMMETRIES FOR INITIAL GUESS ORBITALS FOLLOW.   BOTH SET(S).
+     5 ORBITALS ARE OCCUPIED (    1 CORE ORBITALS).
+     2=A        3=A        4=A        5=A        6=A        7=A        8=A
+     9=A       10=A       11=A       12=A       13=A
+ ...... END OF INITIAL ORBITAL SELECTION ......
+
+                    AO INTEGRAL TECHNOLOGY
+     S,P,L SHELL ROTATED AXIS INTEGRALS, REPROGRAMMED BY
+        KAZUYA ISHIMURA (IMS) AND JOSE SIERRA (SYNSTAR).
+     S,P,D,L SHELL ROTATED AXIS INTEGRALS PROGRAMMED BY
+        KAZUYA ISHIMURA (INSTITUTE FOR MOLECULAR SCIENCE).
+     S,P,D,F,G SHELL TO TOTAL QUARTET ANGULAR MOMENTUM SUM 5,
+        ERIC PROGRAM BY GRAHAM FLETCHER (ELORET AND NASA ADVANCED
+        SUPERCOMPUTING DIVISION, AMES RESEARCH CENTER).
+     S,P,D,F,G,L SHELL GENERAL RYS QUADRATURE PROGRAMMED BY
+        MICHEL DUPUIS (PACIFIC NORTHWEST NATIONAL LABORATORY).
+
+          2 ELECTRON INTEGRALS
+
+ THE -PK- OPTION IS OFF, THE INTEGRALS ARE NOT IN SUPERMATRIX FORM.
+ STORING   15000 INTEGRALS/RECORD ON DISK, USING 12 BYTES/INTEGRAL.
+ TWO ELECTRON INTEGRAL EVALUATION REQUIRES   89384 WORDS OF MEMORY.
+ II,JST,KST,LST =  1  1  1  1 NREC =         1 INTLOC =    1
+ II,JST,KST,LST =  2  1  1  1 NREC =         1 INTLOC =    2
+ II,JST,KST,LST =  3  1  1  1 NREC =         1 INTLOC =   34
+ II,JST,KST,LST =  4  1  1  1 NREC =         1 INTLOC =  214
+ II,JST,KST,LST =  5  1  1  1 NREC =         1 INTLOC =  529
+ II,JST,KST,LST =  6  1  1  1 NREC =         1 INTLOC =  960
+ II,JST,KST,LST =  7  1  1  1 NREC =         1 INTLOC = 1524
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          1 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 RHF SCF CALCULATION
+
+     NUCLEAR ENERGY =         9.1891938947
+     MAXIT =   30     NPUNCH=    2
+     EXTRAP=T  DAMP=F  SHIFT=F  RSTRCT=F  DIIS=F  DEM=F  SOSCF=T
+     DENSITY MATRIX CONV=  1.00E-05
+     SOSCF WILL OPTIMIZE      40 ORBITAL ROTATIONS, SOGTOL=   0.250
+     MEMORY REQUIRED FOR RHF ITERS=     31525 WORDS.
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+   1  0  0      -75.7720919351   -75.7720919351   0.271273954   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1  0      -75.9704023194    -0.1983103843   0.067777456   0.057060132
+   3  2  0      -75.9826292253    -0.0122269059   0.023160911   0.013887001
+   4  3  0      -75.9837915239    -0.0011622986   0.004229917   0.002039383
+   5  4  0      -75.9838236543    -0.0000321304   0.002436154   0.000932897
+   6  5  0      -75.9838307709    -0.0000071166   0.000454824   0.000314335
+   7  6  0      -75.9838311067    -0.0000003358   0.000080831   0.000060597
+   8  7  0      -75.9838311137    -0.0000000070   0.000039118   0.000018483
+   9  8  0      -75.9838311146    -0.0000000009   0.000002738   0.000001444
+  10  9  0      -75.9838311146    -0.0000000000   0.000000780   0.000000286
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -75.9838311146 AFTER  10 ITERATIONS
+
+ Alpha HOMO=   -13.647562 eV, LUMO=    5.537976 eV, gap=   19.185538 eV
+
+          ------------
+          EIGENVECTORS
+          ------------
+
+                      1          2          3          4          5
+                  -20.5608    -1.3565    -0.7091    -0.5613    -0.5015
+                     A          A          A          A          A
+    1  O  1  S    0.995784  -0.212400   0.000000  -0.076118   0.000000
+    2  O  1  S    0.021959   0.469004   0.000000   0.181400   0.000000
+    3  O  1  X   -0.000000  -0.000000   0.000000  -0.000000   0.641874
+    4  O  1  Y   -0.000000  -0.000000   0.505929  -0.000000   0.000000
+    5  O  1  Z   -0.002103  -0.111903   0.000000   0.550052   0.000000
+    6  O  1  S   -0.008050   0.479287   0.000000   0.307626   0.000000
+    7  O  1  X   -0.000000  -0.000000   0.000000  -0.000000   0.509727
+    8  O  1  Y   -0.000000  -0.000000   0.269832  -0.000000   0.000000
+    9  O  1  Z    0.001955  -0.060674   0.000000   0.401891   0.000000
+   10  H  2  S    0.000122   0.140136   0.263119  -0.144406   0.000000
+   11  H  2  S    0.001981  -0.008312   0.124236  -0.080672   0.000000
+   12  H  3  S    0.000122   0.140136  -0.263119  -0.144406   0.000000
+   13  H  3  S    0.001981  -0.008312  -0.124236  -0.080672   0.000000
+
+                      6          7          8          9         10
+                    0.2035     0.2996     1.0552     1.1643     1.1879
+                     A          A          A          A          A
+    1  O  1  S   -0.084856   0.000000   0.000000   0.000000   0.046773
+    2  O  1  S    0.103688   0.000000   0.000000   0.000000  -0.230576
+    3  O  1  X   -0.000000   0.000000   0.000000  -0.961272   0.000000
+    4  O  1  Y   -0.000000  -0.337873  -0.101461   0.000000   0.000000
+    5  O  1  Z   -0.231282   0.000000   0.000000   0.000000   0.726980
+    6  O  1  S    1.179826   0.000000   0.000000   0.000000   0.172503
+    7  O  1  X   -0.000000   0.000000   0.000000   1.037412   0.000000
+    8  O  1  Y   -0.000000  -0.822919  -0.754891   0.000000   0.000000
+    9  O  1  Z   -0.476659   0.000000   0.000000   0.000000  -0.312102
+   10  H  2  S   -0.057400   0.042388   0.974147   0.000000   0.799189
+   11  H  2  S   -0.992075   1.385990  -0.487412   0.000000  -0.539803
+   12  H  3  S   -0.057400  -0.042388  -0.974147   0.000000   0.799189
+   13  H  3  S   -0.992075  -1.385990   0.487412   0.000000  -0.539803
+
+                     11         12         13
+                    1.2167     1.3790     1.6974
+                     A          A          A
+    1  O  1  S    0.073582   0.000000   0.053428
+    2  O  1  S   -0.465473   0.000000  -1.671412
+    3  O  1  X   -0.000000   0.000000  -0.000000
+    4  O  1  Y   -0.000000  -1.034514  -0.000000
+    5  O  1  Z   -0.662184   0.000000   0.198868
+    6  O  1  S    0.072549   0.000000   2.761218
+    7  O  1  X   -0.000000   0.000000  -0.000000
+    8  O  1  Y   -0.000000   1.535355  -0.000000
+    9  O  1  Z    1.163839   0.000000  -0.872156
+   10  H  2  S    0.595557   0.098273  -0.473959
+   11  H  2  S   -0.110352  -0.910923  -0.611715
+   12  H  3  S    0.595557  -0.098273  -0.473959
+   13  H  3  S   -0.110352   0.910923  -0.611715
+ ...... END OF RHF CALCULATION ......
+
+     PROPERTY VALUES FOR THE RHF   SELF-CONSISTENT FIELD WAVEFUNCTION
+
+          -----------------
+          ENERGY COMPONENTS
+          -----------------
+
+         WAVEFUNCTION NORMALIZATION =       1.0000000000
+
+                ONE ELECTRON ENERGY =    -122.9675335416
+                TWO ELECTRON ENERGY =      37.7945085322
+           NUCLEAR REPULSION ENERGY =       9.1891938947
+                                      ------------------
+                       TOTAL ENERGY =     -75.9838311146
+
+ ELECTRON-ELECTRON POTENTIAL ENERGY =      37.7945085322
+  NUCLEUS-ELECTRON POTENTIAL ENERGY =    -198.9620265549
+   NUCLEUS-NUCLEUS POTENTIAL ENERGY =       9.1891938947
+                                      ------------------
+             TOTAL POTENTIAL ENERGY =    -151.9783241279
+               TOTAL KINETIC ENERGY =      75.9944930133
+                 VIRIAL RATIO (V/T) =       1.9998597017
+
+  ...... PI ENERGY ANALYSIS ......
+
+ ENERGY ANALYSIS:
+            FOCK ENERGY=    -47.3785144797
+          BARE H ENERGY=   -122.9675335416
+     ELECTRONIC ENERGY =    -85.1730240107
+         KINETIC ENERGY=     75.9944930133
+          N-N REPULSION=      9.1891938947
+           TOTAL ENERGY=    -75.9838301159
+        SIGMA PART(1+2)=    -77.5728446264
+               (K,V1,2)=     71.4239695187   -180.1942216777     31.1974075326
+           PI PART(1+2)=     -7.6001793843
+               (K,V1,2)=      4.5705234946    -18.7678048772      6.5971019983
+  SIGMA SKELETON, ERROR=    -68.3836507317      0.0000000000
+             MIXED PART= 0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00
+ ...... END OF PI ENERGY ANALYSIS ......
+
+          MULLIKEN AND LOWDIN POPULATION ANALYSES
+
+     ATOMIC MULLIKEN POPULATION IN EACH MOLECULAR ORBITAL
+
+                      1          2          3          4          5
+
+                  2.000000   2.000000   2.000000   2.000000   2.000000
+
+    1             1.999393   1.743075   1.263080   1.785231   2.000000
+    2             0.000304   0.128462   0.368460   0.107385   0.000000
+    3             0.000304   0.128462   0.368460   0.107385   0.000000
+
+               ----- POPULATIONS IN EACH AO -----
+                             MULLIKEN      LOWDIN
+              1  O  1  S      1.99774     1.99423
+              2  O  1  S      0.90339     0.87894
+              3  O  1  X      1.15218     1.13166
+              4  O  1  Y      0.79890     0.73502
+              5  O  1  Z      0.94176     0.89988
+              6  O  1  S      0.99258     0.76537
+              7  O  1  X      0.84782     0.86834
+              8  O  1  Y      0.46418     0.56154
+              9  O  1  Z      0.69223     0.74603
+             10  H  2  S      0.50819     0.47988
+             11  H  2  S      0.09642     0.22961
+             12  H  3  S      0.50819     0.47988
+             13  H  3  S      0.09642     0.22961
+
+          ----- MULLIKEN ATOMIC OVERLAP POPULATIONS -----
+          (OFF-DIAGONAL ELEMENTS NEED TO BE MULTIPLIED BY 2)
+
+             1           2           3
+
+    1    8.2713913
+    2    0.2596935   0.3771596
+    3    0.2596935  -0.0322423   0.3771596
+
+          TOTAL MULLIKEN AND LOWDIN ATOMIC POPULATIONS
+       ATOM         MULL.POP.    CHARGE          LOW.POP.     CHARGE
+    1 OXYGEN        8.790778   -0.790778         8.581013   -0.581013
+    2 HYDROGEN      0.604611    0.395389         0.709494    0.290506
+    3 HYDROGEN      0.604611    0.395389         0.709494    0.290506
+
+          BOND ORDER AND VALENCE ANALYSIS     BOND ORDER THRESHOLD=0.050
+
+                   BOND                       BOND                       BOND
+  ATOM PAIR DIST  ORDER      ATOM PAIR DIST  ORDER      ATOM PAIR DIST  ORDER
+    1   2  0.958  0.804        1   3  0.958  0.804
+
+                       TOTAL       BONDED        FREE
+      ATOM            VALENCE     VALENCE     VALENCE
+    1 OXYGEN            1.608       1.608      -0.000
+    2 HYDROGEN          0.805       0.805      -0.000
+    3 HYDROGEN          0.805       0.805       0.000
+
+          ELECTROSTATIC MOMENTS
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000    0.098034       -0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000000   -0.000000   -2.637193    2.637193
+ ...... END OF PROPERTY EVALUATION ......
+ NMR CHEMICAL SHIFT CALCULATION REQUIRES             4772631 WORDS OF MEMORY.
+
+ CALCULATING GIAO ONE-ELECTRON INTEGRALS USING MCMURCHIE-DAVIDSON METHOD...
+
+ CALCULATING GIAO TWO-ELECTRON INTEGRALS USING MCMURCHIE-DAVIDSON METHOD
+ CHOOSING OUT OF MEMORY OPTION USING TWO INTEGRAL PASSES...
+     WORKING ON (^I J| K L) INTEGRALS...
+     WORKING ON ( I J|^K L) INTEGRALS...
+
+             GIAO CHEMICAL SHIELDING TENSOR (PPM):
+                                                                ISOTROPIC
+                          X             Y             Z         SHIELDING
+                                                            (  ANISOTROPY )
+
+    1 OXYGEN    X    307.7350        0.0000        0.0000
+                Y      0.0000      354.7710       -0.0000
+                Z      0.0000        0.0000      317.7514
+                                                                 326.7525
+     EIGENVALS:      317.7514      354.7710      307.7350
+                                                            (     42.0278 )
+
+    2 HYDROGEN  X     25.9341        0.0000        0.0000
+                Y      0.0000       39.7679       -6.8738
+                Z      0.0000       -8.3561       32.4748
+                                                                  32.7256
+     EIGENVALS:       27.7109       44.5318       25.9341
+                                                            (     17.7093 )
+
+    3 HYDROGEN  X     25.9341        0.0000        0.0000
+                Y      0.0000       39.7679        6.8738
+                Z      0.0000        8.3561       32.4748
+                                                                  32.7256
+     EIGENVALS:       27.7109       44.5318       25.9341
+                                                            (     17.7093 )
+ ..... DONE WITH NMR SHIELDINGS .....
+ EXECUTION OF GAMESS TERMINATED NORMALLY DATE
+
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL

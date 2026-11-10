@@ -11,12 +11,30 @@ _MO_NUMBER = re.compile(r"-?\d*\.\d{6}")
 _MO_ROW = re.compile(
     r"^\s*(\d+)\s+([A-Za-z]{1,2})\s*(\d+)\s*([SPXYZDFGHI]+)\s+(-?\d*\.\d{6}.*)$"
 )
-_OCCUPIED = re.compile(r"NUMBER OF OCCUPIED ORBITALS \((ALPHA|BETA)\s*\)\s*=\s*(\d+)")
+_OCCUPIED = re.compile(
+    r"NUMBER OF OCCUPIED ORBITALS \((ALPHA|BETA)\s*\)(?: KEPT IS)?\s*=\s*(\d+)"
+)
+#: Orbital energies are F11.4: large ones touch, and larger ones print as asterisks.
+_ENERGY_WIDTH = 11
+_ENERGY_OVERFLOW = 1.0e6
 _BASIS_ROW = re.compile(
     r"^\s*(\d+)\s+([SPLDFGHI])\s+(\d+)\s+(\d+\.\d+)\s+(-?\d+\.\d+)(?:\s+(-?\d+\.\d+))?"
 )
 _SCF_ROW = re.compile(r"^\s*(\d+)\s+\d+(?:\s+\d+)?\s+(-?\d+\.\d{6,})\s")
 _ATOM_TITLE = re.compile(r"^ ([A-Za-z][A-Za-z0-9]*)\s*$")
+
+
+def _orbital_energies(line, count):
+    """The *count* energies of one row, read by column position."""
+    text = line.rstrip()
+    start = len(text) - _ENERGY_WIDTH * count
+    if start < 0:
+        return [float(part) for part in text.split()]
+    energies = []
+    for k in range(count):
+        field = text[start + k * _ENERGY_WIDTH : start + (k + 1) * _ENERGY_WIDTH]
+        energies.append(_ENERGY_OVERFLOW if "*" in field else float(field))
+    return energies
 
 
 def _is_coefficient_header(parts):
@@ -104,11 +122,16 @@ class _ElectronicParsingMixin:
                 continue
             if expect_energy:
                 expect_energy = False
-                for column, text in zip(columns, parts):
+                try:
+                    energies = _orbital_energies(line, len(columns))
+                except ValueError as exc:
+                    logging.warning("MO table: bad energy row %r: %s", line, exc)
+                    break
+                for column, energy in zip(columns, energies):
                     self.data["mo_coeffs"][f"{column}_{spin}"] = {
                         "coeffs": [],
                         "spin": spin,
-                        "energy": float(text),
+                        "energy": energy,
                         "occ": self._occupation(column, spin),
                         "id": column,
                     }

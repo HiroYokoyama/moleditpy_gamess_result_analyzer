@@ -17,7 +17,7 @@ _FORBIDDEN = {
     "private address": re.compile(r"\b(?:192\.168|10\.\d+\.\d+)\.\d+\b"),
     "mail": re.compile(r"[\w.-]+@[\w-]+\.[\w.]+"),
 }
-_SAFE_MOLECULES = {"benzene", "h2co", "methanol", "o2", "water"}
+_SAFE_MOLECULES = {"benzene", "h2co", "h2s", "methanol", "nh3", "o2", "sh", "water"}
 
 
 def _samples():

@@ -11,8 +11,8 @@ EV_NM = 1239.841984
 #: km/mol per Debye**2/(amu*Angstrom**2), the unit GAMESS prints IR intensity in
 IR_TO_KM_MOL = 42.2561
 
-_SKIPPED_MODES = re.compile(r"MODES\s+1 TO\s+(\d+) ARE TAKEN AS ROTATIONS")
-_MODE_ATOM = re.compile(r"^\s*\d+\s+[A-Za-z]{1,2}\s+X\s+(.+)$")
+_SKIPPED_MODES = re.compile(r"MODES\s+(\d+) TO\s+(\d+) ARE TAKEN AS ROTATIONS")
+_MODE_ATOM = re.compile(r"^\s*\d+\s+[A-Za-z]\S*\s+X\s+(.+)$")
 _MODE_AXIS = re.compile(r"^\s+([YZ])\s+(.+)$")
 _THERMO_ROW = re.compile(r"^\s*(ELEC\.|TRANS\.|ROT\.|VIB\.|TOTAL)\s+(-?\d+\.\d+.*)$")
 _TDDFT_ROW = re.compile(
@@ -21,7 +21,7 @@ _TDDFT_ROW = re.compile(
 )
 _STATE_DETAIL = re.compile(r"^\s*STATE #\s*(\d+)\s+ENERGY\s*=")
 _AMPLITUDE = re.compile(r"^\s*(\d+)\s+(\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$")
-_NMR_ATOM = re.compile(r"^\s*(\d+)\s+([A-Za-z]{1,2})\s+X\s+-?\d")
+_NMR_ATOM = re.compile(r"^\s*(\d+)\s+([A-Za-z]\S*)\s+X\s+-?\d")
 _NMR_ISOTROPIC = re.compile(r"^\s+(-?\d+\.\d+)\s*$")
 _NMR_ANISOTROPY = re.compile(r"^\s*\(\s*(-?\d+\.\d+)\s*\)\s*$")
 
@@ -33,11 +33,12 @@ class _SpectraParsingMixin:
         """Normal modes of the last analysis, without translations and rotations."""
         self.data["frequencies"] = []
         start = None
-        skipped = 0
+        skipped = range(0)
         for i, line in enumerate(self.lines):
             match = _SKIPPED_MODES.search(line)
             if match:
-                skipped = int(match.group(1))
+                # Imaginary modes come first, so the range need not start at 1.
+                skipped = range(int(match.group(1)) - 1, int(match.group(2)))
             if "FREQUENCIES IN CM**-1" in line:
                 start = i
         if start is None:
@@ -82,7 +83,9 @@ class _SpectraParsingMixin:
                     for mode, cell in zip(current, vector_row):
                         mode["vector"].append(tuple(cell))
                     vector_row = None
-        self.data["frequencies"] = modes[skipped:]
+        self.data["frequencies"] = [
+            mode for k, mode in enumerate(modes) if k not in skipped
+        ]
 
     @staticmethod
     def _new_modes(stripped):
@@ -230,7 +233,7 @@ class _SpectraParsingMixin:
             if atom:
                 current = {
                     "atom_idx": int(atom.group(1)) - 1,
-                    "atom_sym": atom.group(2),
+                    "atom_sym": self._element(int(atom.group(1)) - 1, atom.group(2)),
                     "shielding": 0.0,
                     "anisotropy": 0.0,
                 }
