@@ -141,11 +141,23 @@ def is_gamess_output(path):
     return "GAMESS VERSION =" in header or "GAMESS execution script" in header
 
 
+def _can_decline(context):
+    """Whether the host lets an opener decline with False (MoleditPy 5.2.0).
+
+    An older host takes False as handled, so there the file is passed on by raising.
+    """
+    version = getattr(context, "moleditpy_version", "")
+    try:
+        return tuple(int(part) for part in version.split(".")[:2]) >= (5, 2)
+    except (AttributeError, ValueError):
+        return False
+
+
 def initialize(context):
     """Initialize the GAMESS Result Analyzer plugin.
 
     Both .log and .out are shared with other programs' results, so the openers
-    look at the file and raise on anything else: the host then offers it to the
+    look at the file and decline anything else: the host then offers it to the
     next opener, which is how an ORCA .out still reaches the ORCA analyzer.
     """
     global _context
@@ -153,6 +165,8 @@ def initialize(context):
 
     def open_gamess_file(path):
         if not is_gamess_output(path):
+            if _can_decline(context):
+                return False
             raise ValueError(f"{path} is not GAMESS output")
         _open_gamess_file(path, context)
 
