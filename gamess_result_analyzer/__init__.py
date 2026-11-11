@@ -1,7 +1,7 @@
 """Plugin entry points and metadata for the GAMESS Result Analyzer plugin."""
 
 PLUGIN_NAME = "GAMESS Result Analyzer"
-PLUGIN_VERSION = "0.3.0"
+PLUGIN_VERSION = "0.3.1"
 PLUGIN_AUTHOR = "HiroYokoyama"
 PLUGIN_DESCRIPTION = "Comprehensive analyzer for GAMESS output files (.log, .out). Includes Vibrational, MO, TDDFT, and NMR analysis."
 PLUGIN_TAGS = ["Analysis", "DFT", "File"]

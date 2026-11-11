@@ -26,6 +26,14 @@ _NMR_ISOTROPIC = re.compile(r"^\s+(-?\d+\.\d+)\s*$")
 _NMR_ANISOTROPY = re.compile(r"^\s*\(\s*(-?\d+\.\d+)\s*\)\s*$")
 
 
+def _floats(text):
+    """The numbers of a row, or None when one is cut off or overflowed."""
+    try:
+        return [float(v) for v in text.split()]
+    except ValueError:
+        return None
+
+
 class _SpectraParsingMixin:
     """Parsing of spectra and thermochemistry."""
 
@@ -57,28 +65,38 @@ class _SpectraParsingMixin:
                 continue
             if "REFERENCE ON SAYVETZ" in line or "THERMOCHEMISTRY" in line:
                 break
-            if stripped.startswith("IR INTENSITY:"):
-                for mode, text in zip(current, stripped.split(":", 1)[1].split()):
-                    mode["ir"] = float(text) * IR_TO_KM_MOL
-                continue
-            if stripped.startswith("RAMAN ACTIVITY:"):
-                for mode, text in zip(current, stripped.split(":", 1)[1].split()):
-                    mode["raman"] = float(text)
-                continue
-            if stripped.startswith("REDUCED MASS:"):
-                for mode, text in zip(current, stripped.split(":", 1)[1].split()):
-                    mode["reduced_mass"] = float(text)
+            column = next(
+                (
+                    (key, factor)
+                    for title, key, factor in (
+                        ("IR INTENSITY:", "ir", IR_TO_KM_MOL),
+                        ("RAMAN ACTIVITY:", "raman", 1.0),
+                        ("REDUCED MASS:", "reduced_mass", 1.0),
+                    )
+                    if stripped.startswith(title)
+                ),
+                None,
+            )
+            if column:
+                for mode, value in zip(current, _floats(stripped.split(":", 1)[1]) or []):
+                    mode[column[0]] = value * column[1]
                 continue
             if not current:
                 continue
             atom = _MODE_ATOM.match(line)
             if atom:
-                vector_row = [[float(v)] for v in atom.group(1).split()]
+                values = _floats(atom.group(1))
+                complete = values is not None and len(values) == len(current)
+                vector_row = [[v] for v in values] if complete else None
                 continue
             axis = _MODE_AXIS.match(line)
             if axis and vector_row is not None:
-                for cell, text in zip(vector_row, axis.group(2).split()):
-                    cell.append(float(text))
+                values = _floats(axis.group(2))
+                if values is None or len(values) != len(vector_row):
+                    vector_row = None  # the job is still writing this row
+                    continue
+                for cell, value in zip(vector_row, values):
+                    cell.append(value)
                 if axis.group(1) == "Z":
                     for mode, cell in zip(current, vector_row):
                         mode["vector"].append(tuple(cell))
@@ -95,7 +113,11 @@ class _SpectraParsingMixin:
             if text == "I":
                 modes[-1]["freq"] = -abs(modes[-1]["freq"])
                 continue
-            modes.append({"freq": float(text), "ir": 0.0, "raman": 0.0, "vector": []})
+            try:
+                frequency = float(text)
+            except ValueError:
+                break  # cut off: the modes read so far keep their columns
+            modes.append({"freq": frequency, "ir": 0.0, "raman": 0.0, "vector": []})
         return modes
 
     def _final_energy(self):
@@ -123,15 +145,18 @@ class _SpectraParsingMixin:
         rows = {}
         in_kcal = False
         for i, line in enumerate(self.lines[start:], start):
-            if "ZERO POINT ENERGY" in line and zpe is None:
-                zpe = float(self.lines[i + 1].split()[0])
+            if "ZERO POINT ENERGY" in line and zpe is None and i + 1 < len(self.lines):
+                first = _floats(" ".join(self.lines[i + 1].split()[:1]))
+                zpe = first[0] if first else None
             if "KCAL/MOL" in line and "CAL/MOL-K" in line:
                 in_kcal = True
                 continue
             if in_kcal:
                 row = _THERMO_ROW.match(line)
                 if row:
-                    rows[row.group(1)] = [float(v) for v in row.group(2).split()]
+                    values = _floats(row.group(2))
+                    if values is not None and len(values) >= 6:
+                        rows[row.group(1)] = values
                 elif rows:
                     break
         if zpe is None or "TOTAL" not in rows:
@@ -243,7 +268,7 @@ class _SpectraParsingMixin:
                 ev = float(match.group(1))
                 continue
             match = re.match(r"^OSCILLATOR STRENGTH =\s*(-?\d+\.\d+)", text)
-            if not (match and pair and ev):
+            if not (match and pair and ev and ev > 0):
                 continue
             lower, upper = pair
             if lower != 1 or upper == 1:
