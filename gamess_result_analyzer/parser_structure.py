@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 import math
 
+from .parser_properties import AU_TO_DEBYE
+
 #: Atomic symbols indexed by atomic number; 0 is a ghost/dummy centre.
 ELEMENTS = (
     "X H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni "
@@ -29,6 +31,14 @@ _ATOM_XYZ = re.compile(
 _GRADIENT_ROW = re.compile(
     r"^\s*(\d+)\s+([A-Za-z]\S*)\s+(?:\d+\.\d\s+)?"
     r"(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$"
+)
+_FMO_ENERGY = re.compile(r"^\s*The best FMO energy is\s+(-?\d+\.\d+)")
+_FMO_DIPOLE = re.compile(
+    r"^\s*Dipole moment D\(xyz\),DA\(\d+\)=\s*(-?\d+\.\d+)\s+(-?\d+\.\d+)"
+    r"\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)"
+)
+_FMO_GRADIENT_ROW = re.compile(
+    r"^\s*(\d+)\s+\d+\s+(\d+\.\d)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$"
 )
 _OPTTOL = re.compile(r"OPTTOL\s*=\s*(\d*\.?\d+E[-+]\d+)")
 
@@ -207,6 +217,97 @@ class _StructureParsingMixin:
                 }
             )
             point = None
+
+    def _fmo_structure(self):
+        """(atoms, coords in Angstrom) of the $FMOXYZ input echoed in the log."""
+        units = BOHR_TO_ANGSTROM if any(
+            re.search(r"UNITS\s*=\s*BOHR", l) for l in self.lines
+        ) else 1.0
+        atoms, coords, reading = [], [], False
+        for line in self.lines:
+            if not line.lstrip().startswith("INPUT CARD>"):
+                continue
+            card = line.split(">", 1)[1].split()
+            if not card:
+                continue
+            if card[0].lower() == "$fmoxyz":
+                reading = True
+                continue
+            if not reading:
+                continue
+            if card[0].lower() == "$end" or len(card) < 5:
+                break
+            try:
+                xyz = [float(v) * units for v in card[2:5]]
+            except ValueError:
+                break
+            kind = card[1]
+            if kind.replace(".", "", 1).isdigit():
+                atoms.append(symbol_for(int(float(kind))))
+            else:
+                atoms.append(kind.capitalize() if kind.capitalize() in ELEMENTS else "X")
+            coords.append(xyz)
+        return atoms, coords
+
+    def parse_fmo(self):
+        """The whole system of a fragment molecular orbital (FMO) job.
+
+        Each fragment and pair prints its own SCF, orbitals and charges; only
+        the FMO properties at the end describe the molecule. The structure is
+        printed only as the echoed $FMOXYZ input.
+        """
+        energy = None
+        for line in self.lines:
+            match = _FMO_ENERGY.match(line)
+            if match:
+                energy = float(match.group(1))
+        if energy is None:
+            return
+        self.data["scf_energy"] = energy
+        atoms, coords = self._fmo_structure()
+        if atoms:
+            self.data["atoms"], self.data["coords"] = atoms, coords
+        for key, empty in (
+            ("mo_coeffs", {}),
+            ("orbital_energies", []),
+            ("mos", []),
+            ("charges", {}),
+            ("mayer_bond_orders", []),
+            ("energy_components", []),
+        ):
+            self.data[key] = empty
+        self.data["dipole"] = self.data["dipoles"] = None
+        self.data["gradients"] = []
+        for i, line in enumerate(self.lines):
+            dipole = _FMO_DIPOLE.match(line)
+            if dipole:
+                x, y, z, total = (float(dipole.group(k)) for k in (1, 2, 3, 4))
+                self.data["dipole"] = self.data["dipoles"] = {
+                    "vector_au": (x / AU_TO_DEBYE, y / AU_TO_DEBYE, z / AU_TO_DEBYE),
+                    "vector_debye": (x, y, z),
+                    "magnitude_au": total / AU_TO_DEBYE,
+                    "magnitude_debye": total,
+                    "vector": (x, y, z),
+                    "magnitude": total,
+                }
+            if "Energy gradient (hartree/bohr)" in line:
+                block = []
+                for row in self.lines[i + 1 : i + 4 + len(self.data["atoms"])]:
+                    match = _FMO_GRADIENT_ROW.match(row)
+                    if not match:
+                        if block:
+                            break
+                        continue
+                    index = int(match.group(1)) - 1
+                    block.append(
+                        {
+                            "atom_idx": index,
+                            "atom_sym": self._element(index, "X"),
+                            "vector": [float(match.group(k)) for k in (3, 4, 5)],
+                        }
+                    )
+                if block:
+                    self.data["gradients"] = block
 
     def parse_scan_results_table(self):
         """GAMESS has no scan keyword, so there is no results table to attach."""

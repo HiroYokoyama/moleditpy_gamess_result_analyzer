@@ -86,6 +86,11 @@ class _ElectronicParsingMixin:
             elif text == "MOLECULAR ORBITALS":
                 # An optimization repeats the orbitals here at the final geometry.
                 found = {"restricted": i}
+            elif text == "MCSCF NATURAL ORBITALS":
+                found = {"natural": i}
+            elif text == "MCSCF OPTIMIZED ORBITALS":
+                found = {"natural": found["natural"]} if "natural" in found else {}
+                found["optimized"] = i
             elif text == "**** ALPHA SET ****":
                 found = {"alpha": i}
             elif text == "**** BETA SET ****":
@@ -102,11 +107,44 @@ class _ElectronicParsingMixin:
         self.data["mo_coeffs"] = {}
         self.data["cartesian_d"] = False
         self.data["cartesian_f"] = False
-        for spin, title in self._last_mo_blocks().items():
+        blocks = self._last_mo_blocks()
+        if "natural" in blocks or "optimized" in blocks:
+            self._read_mcscf_orbitals(blocks)
+            return
+        for spin, title in blocks.items():
             self._read_mo_block(title + 2, spin)
 
-    def _read_mo_block(self, start, spin):
-        """Read the column blocks of one MO table, starting at line *start*."""
+    def _read_mcscf_orbitals(self, blocks):
+        """Natural orbitals with their occupations, then the virtual optimized ones.
+
+        The natural-orbital table stops after the active orbitals; the
+        transformation leaves the others as optimized. Its second row holds
+        occupations, except for canonicalized core orbitals, whose energy it
+        repeats from the optimized table. An uncanonicalized orbital prints
+        an energy of zero there, so it is given none.
+        """
+        natural = {}
+        if "natural" in blocks:
+            self._read_mo_block(blocks["natural"] + 2, "restricted", occupations=True)
+            natural = self.data["mo_coeffs"]
+            self.data["mo_coeffs"] = {}
+        if "optimized" in blocks:
+            self._read_mo_block(blocks["optimized"] + 2, "restricted")
+        optimized = self.data["mo_coeffs"]
+        for key, mo in optimized.items():
+            energy = mo["energy"] or None
+            if key not in natural:
+                natural[key] = dict(mo, occ=0.0, energy=energy)
+            elif energy is not None and abs(natural[key]["occ"] - energy) < 1e-4:
+                natural[key].update(occ=2.0, energy=energy)
+        self.data["mo_coeffs"] = natural
+
+    def _read_mo_block(self, start, spin, occupations=False):
+        """Read the column blocks of one MO table, starting at line *start*.
+
+        With *occupations*, the row under the orbital numbers holds
+        occupations, as in natural-orbital tables, instead of energies.
+        """
         columns = []
         expect_energy = False
         expect_symmetry = False
@@ -131,8 +169,8 @@ class _ElectronicParsingMixin:
                     self.data["mo_coeffs"][f"{column}_{spin}"] = {
                         "coeffs": [],
                         "spin": spin,
-                        "energy": energy,
-                        "occ": self._occupation(column, spin),
+                        "energy": None if occupations else energy,
+                        "occ": energy if occupations else self._occupation(column, spin),
                         "id": column,
                     }
                 expect_symmetry = True
@@ -180,7 +218,7 @@ class _ElectronicParsingMixin:
                 "occupation": occ,
                 "occ": occ,
                 "energy_eh": energy,
-                "energy_ev": energy * HARTREE_TO_EV,
+                "energy_ev": None if energy is None else energy * HARTREE_TO_EV,
                 "energy": energy,
                 "spin": spin,
                 "type": "occupied" if occ > 0.1 else "virtual",
