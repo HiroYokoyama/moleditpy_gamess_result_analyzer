@@ -21,7 +21,7 @@ _BASIS_ROW = re.compile(
     r"^\s*(\d+)\s+([SPLDFGHI])\s+(\d+)\s+(\d+\.\d+)\s+(-?\d+\.\d+)(?:\s+(-?\d+\.\d+))?"
 )
 _SCF_ROW = re.compile(r"^\s*(\d+)\s+\d+(?:\s+\d+)?\s+(-?\d+\.\d{6,})\s")
-_ATOM_TITLE = re.compile(r"^ ([A-Za-z][A-Za-z0-9]*)\s*$")
+_ATOM_TITLE = re.compile(r"^ (\S+)\s*$")
 
 
 def _orbital_energies(line, count):
@@ -356,7 +356,14 @@ class _ElectronicParsingMixin:
             by_label = {}
             for label, shells in titles:
                 by_label.setdefault(label.upper(), shells)
-            per_atom = [by_label.get(a.upper(), []) for a in atoms]
+            # The table is titled with the $DATA name, which need not be the element.
+            names = getattr(self, "_atom_names", [])
+            if len(names) != len(atoms):
+                names = atoms
+            per_atom = [
+                by_label.get(name.upper()) or by_label.get(atom.upper(), [])
+                for name, atom in zip(names, atoms)
+            ]
             if not all(per_atom):
                 logging.warning("Basis set: an atom has no listed shells")
                 return

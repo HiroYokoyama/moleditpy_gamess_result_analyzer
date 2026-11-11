@@ -26,7 +26,7 @@ _SEARCH_RESULT = re.compile(
     r"\s+R\.M\.S\.=\s*(\d+\.\d+)"
 )
 _ATOM_XYZ = re.compile(
-    r"^\s*([A-Za-z][A-Za-z0-9]*)\s+(\d+\.\d*)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$"
+    r"^\s*(\S+)\s+(\d+\.\d*)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$"
 )
 _GRADIENT_ROW = re.compile(
     r"^\s*(\d+)\s+([A-Za-z]\S*)\s+(?:\d+\.\d\s+)?"
@@ -47,6 +47,7 @@ _NAMED_VECTOR = re.compile(r"^\s*([A-Za-z]\S*)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(
 _MEX_STEP = re.compile(
     r"^\s*NSERCH:\s*(\d+)\s+E=\s*(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+GM=\s*(\d+\.\d+)\s+GR=\s*(\d+\.\d+)"
 )
+_NUMERICAL_HESSIAN = re.compile(r"^\s*METHOD=(SEMINUM|NUMERIC|FULLNUM)\b")
 _OPTTOL = re.compile(r"OPTTOL\s*=\s*(\d*\.?\d+E[-+]\d+)")
 
 
@@ -67,7 +68,12 @@ class _StructureParsingMixin:
 
     def _read_geometry(self, header_idx, scale=1.0):
         """(atoms, coords in Angstrom) of the table whose title is at header_idx."""
-        atoms, coords = [], []
+        _names, atoms, coords = self._read_named_geometry(header_idx, scale)
+        return atoms, coords
+
+    def _read_named_geometry(self, header_idx, scale=1.0):
+        """($DATA names, atoms, coords in Angstrom) of the table titled at header_idx."""
+        names, atoms, coords = [], [], []
         started = False
         for line in self.lines[header_idx + 1 :]:
             match = _ATOM_XYZ.match(line)
@@ -81,14 +87,17 @@ class _StructureParsingMixin:
             xyz = [float(match.group(k)) * scale for k in (3, 4, 5)]
             if not all(math.isfinite(v) for v in xyz):
                 break
+            names.append(match.group(1))
             atoms.append(symbol_for(int(float(match.group(2)))))
             coords.append(xyz)
-        return atoms, coords
+        return names, atoms, coords
 
     def parse_basic(self):
         """Version, charge/multiplicity, final energy and geometry, job status."""
         last_angs = last_bohr = None
         raman = any("RUNTYP=RAMAN" in line for line in self.lines)
+        displaced = False
+        self._atom_names = []
         for i, line in enumerate(self.lines):
             if "COORDINATES OF ALL ATOMS ARE (ANGS)" in line:
                 last_angs = i
@@ -110,21 +119,29 @@ class _StructureParsingMixin:
                 continue
             match = _FINAL.match(line)
             if match:
-                # A Raman job's later SCFs run under finite electric fields.
-                if not (raman and self.data.get("scf_energy") is not None):
-                    self.data["scf_energy"] = float(match.group(1))
+                # A Raman job's later SCFs run under finite electric fields, and
+                # a numerical hessian's at displaced geometries.
+                if displaced == "next":
+                    displaced = True
+                elif displaced or (raman and self.data.get("scf_energy") is not None):
+                    continue
+                self.data["scf_energy"] = float(match.group(1))
+                continue
+            if _NUMERICAL_HESSIAN.match(line):
+                displaced = "next"
                 continue
             if "EQUILIBRIUM GEOMETRY LOCATED" in line:
                 self.data["converged"] = True
 
         if last_angs is not None:
-            atoms, coords = self._read_geometry(last_angs)
+            names, atoms, coords = self._read_named_geometry(last_angs)
         elif last_bohr is not None:
-            atoms, coords = self._read_geometry(last_bohr, BOHR_TO_ANGSTROM)
+            names, atoms, coords = self._read_named_geometry(last_bohr, BOHR_TO_ANGSTROM)
         else:
-            atoms, coords = [], []
+            names, atoms, coords = [], [], []
         if atoms:
             self.data["atoms"], self.data["coords"] = atoms, coords
+            self._atom_names = names
 
         self.data["termination_status"] = "Running"
         for line in reversed(self.lines):
