@@ -296,7 +296,7 @@ class _StructureParsingMixin:
                 if "COORDINATES OF ALL ATOMS ARE (ANGS)" in text and not atoms:
                     atoms, coords = self._read_geometry(k)
                 if "CURRENT CARTESIAN GRADIENT" in text:
-                    grads = self._named_vectors(k + 3)
+                    grads = self._named_vectors(k + 1)
             if stotal is not None and energy is not None and atoms:
                 steps.append(
                     self._path_step(int(match.group(1)), energy, atoms, coords, grads, stotal)
@@ -305,10 +305,12 @@ class _StructureParsingMixin:
     def _named_vectors(self, start):
         """Gradient rows "NAME gx gy gz" from line *start*, in atom order."""
         block = []
-        for line in self.lines[start:]:
+        for line in self.lines[start : start + 4 + len(self.data["atoms"])]:
             row = _NAMED_VECTOR.match(line)
             if not row:
-                break
+                if block:
+                    break
+                continue
             index = len(block)
             block.append(
                 {
@@ -322,9 +324,13 @@ class _StructureParsingMixin:
     def _read_drc(self):
         """One point per printed time of a dynamic reaction coordinate run."""
         steps = self.data["scan_steps"]
-        for i, line in enumerate(self.lines):
-            if not line.strip().startswith("TIME     MODE"):
-                continue
+        headers = [
+            i
+            for i, line in enumerate(self.lines)
+            if line.strip().startswith("TIME ") and "POTENTIAL" in line
+        ]
+        for n, i in enumerate(headers):
+            end = headers[n + 1] if n + 1 < len(headers) else len(self.lines)
             try:
                 parts = self.lines[i + 2].split()
                 time, potential = float(parts[0]), float(parts[-2])
@@ -334,8 +340,10 @@ class _StructureParsingMixin:
             for k in range(i + 3, min(i + 40 + len(self.data["atoms"]) * 4, len(self.lines))):
                 if "CARTESIAN COORDINATES (BOHR)" not in self.lines[k]:
                     continue
-                for row in self.lines[k + 2 :]:
+                for row in self.lines[k + 1 :]:
                     values = row.split()
+                    if not atoms and (not values or set(row.strip()) == {"-"}):
+                        continue
                     if len(values) != 7:
                         break
                     try:
@@ -347,8 +355,12 @@ class _StructureParsingMixin:
                 break
             if atoms:
                 energy = self._precise_energy(i, potential)
+                grads = next(
+                    (g["grads"] for g in self.data["all_gradients"] if i < g["line"] < end),
+                    [],
+                )
                 steps.append(
-                    self._path_step(len(steps) + 1, energy, atoms, coords, [], time)
+                    self._path_step(len(steps) + 1, energy, atoms, coords, grads, time)
                 )
 
     def _read_mex(self):

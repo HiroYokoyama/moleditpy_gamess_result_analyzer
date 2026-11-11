@@ -1,0 +1,2807 @@
+          *******************************************************
+          *                                                     *
+          *      GAMESS VERSION = 15 JUL 2024 (R2 Patch 1)          *
+          *                                                     *
+          *              doi.org/10.1063/5.0005188              *
+          *                                                     *
+          **************** 64 BIT LINUX VERSION *****************
+
+
+            ECHO OF THE FIRST FEW INPUT CARDS -
+ INPUT CARD> $CONTRL RUNTYP=MEX NOSYM=1 $END
+ INPUT CARD> $SYSTEM MWORDS=100 $END
+ INPUT CARD> $BASIS GBASIS=N31 NGAUSS=6 $END
+ INPUT CARD> $MEX SCF1=ROHF MULT1=3 SCF2=RHF MULT2=1 $END
+ INPUT CARD> $DATA
+ INPUT CARD>ch2_mex sample
+ INPUT CARD>C1
+ INPUT CARD>CARBON     6.0     0.000000     0.000000     0.100000
+ INPUT CARD>HYDROGEN   1.0     0.000000     0.900000    -0.550000
+ INPUT CARD>HYDROGEN   1.0     0.000000    -0.900000    -0.550000
+ INPUT CARD> $END
+    100000000 WORDS OF MEMORY AVAILABLE
+
+     BASIS OPTIONS
+     -------------
+     GBASIS=N31          IGAUSS=       6      POLAR=NONE
+     NDFUNC=       0     NFFUNC=       0     DIFFSP=       F
+     NPFUNC=       0      DIFFS=       F     BASNAM=
+
+
+     RUN TITLE
+     ---------
+ ch2_mex sample
+
+ THE POINT GROUP OF THE MOLECULE IS C1
+ THE ORDER OF THE PRINCIPAL AXIS IS     0
+
+ ATOM      ATOMIC                      COORDINATES (BOHR)
+           CHARGE         X                   Y                   Z
+ CARBON      6.0     0.0000000000        0.0000000000        0.1889725988
+ HYDROGEN    1.0     0.0000000000        1.7007533889       -1.0393492932
+ HYDROGEN    1.0     0.0000000000       -1.7007533889       -1.0393492932
+
+          INTERNUCLEAR DISTANCES (ANGS.)
+
+                1 CARB       2 HYDR       3 HYDR
+
+   1 CARB    0.0000000    1.1101802 *  1.1101802 *
+   2 HYDR    1.1101802 *  0.0000000    1.8000000 *
+   3 HYDR    1.1101802 *  1.8000000 *  0.0000000
+
+  * ... LESS THAN  3.000
+
+
+     ATOMIC BASIS SET
+     ----------------
+ THE CONTRACTED PRIMITIVE FUNCTIONS HAVE BEEN UNNORMALIZED
+ THE CONTRACTED BASIS FUNCTIONS ARE NOW NORMALIZED TO UNITY
+
+  SHELL TYPE  PRIMITIVE        EXPONENT          CONTRACTION COEFFICIENT(S)
+
+ CARBON
+
+      1   S       1          3047.5248800    0.001834737132
+      1   S       2           457.3695180    0.014037322813
+      1   S       3           103.9486850    0.068842622264
+      1   S       4            29.2101553    0.232184443216
+      1   S       5             9.2866630    0.467941348435
+      1   S       6             3.1639270    0.362311985337
+
+      2   L       7             7.8682723   -0.119332419775    0.068999066591
+      2   L       8             1.8812885   -0.160854151696    0.316423960957
+      2   L       9             0.5442493    1.143456437840    0.744308290898
+
+      3   L      10             0.1687145    1.000000000000    1.000000000000
+
+ HYDROGEN
+
+      4   S      11            18.7311370    0.033494604338
+      4   S      12             2.8253944    0.234726953484
+      4   S      13             0.6401217    0.813757326146
+
+      5   S      14             0.1612778    1.000000000000
+
+ HYDROGEN
+
+      6   S      15            18.7311370    0.033494604338
+      6   S      16             2.8253944    0.234726953484
+      6   S      17             0.6401217    0.813757326146
+
+      7   S      18             0.1612778    1.000000000000
+
+ TOTAL NUMBER OF BASIS SET SHELLS             =    7
+ NUMBER OF CARTESIAN GAUSSIAN BASIS FUNCTIONS =   13
+ NUMBER OF ELECTRONS                          =    8
+ CHARGE OF MOLECULE                           =    0
+ SPIN MULTIPLICITY                            =    1
+ NUMBER OF OCCUPIED ORBITALS (ALPHA)          =    4
+ NUMBER OF OCCUPIED ORBITALS (BETA )          =    4
+ TOTAL NUMBER OF ATOMS                        =    3
+ THE NUCLEAR REPULSION ENERGY IS        6.0138940820
+
+     $CONTRL OPTIONS
+     ---------------
+ SCFTYP=RHF          RUNTYP=MEX          EXETYP=RUN
+ MPLEVL=       0     CITYP =NONE         CCTYP =NONE         VBTYP =NONE
+ DFTTYP=NONE         TDDFT =NONE
+ MULT  =       1     ICHARG=       0     NZVAR =       0     COORD =UNIQUE
+ PP    =NONE         RELWFN=NONE         LOCAL =NONE         NUMGRD=       F
+ ISPHER=      -1     NOSYM =       1     MAXIT =      30     UNITS =ANGS
+ PLTORB=       F     MOLPLT=       F     AIMPAC=       F     FRIEND=
+ NPRINT=       7     IREST =       0     GEOM  =INPUT
+ NORMF =       0     NORMP =       0     ITOL  =      20     ICUT  =       9
+ INTTYP=BEST         GRDTYP=BEST         QMTTOL= 1.0E-06
+
+     $SYSTEM OPTIONS
+     ---------------
+  REPLICATED MEMORY=   100000000 WORDS (ON EVERY NODE).
+ DISTRIBUTED MEMDDI=           0 MILLION WORDS IN AGGREGATE,
+ MEMDDI DISTRIBUTED OVER   4 PROCESSORS IS           0 WORDS/PROCESSOR.
+ TOTAL MEMORY REQUESTED ON EACH PROCESSOR=   100000000 WORDS.
+ TIMLIM=      525600.00 MINUTES, OR     365.0 DAYS.
+ PARALL= T  BALTYP=  DLB     KDIAG=    0  COREFL= F
+ MXSEQ2=     300 MXSEQ3=     150  mem10=         0  mem22=         0
+
+     ------------
+     $MEX OPTIONS
+     ------------
+
+     SCF1    =ROHF         SCF2   =RHF
+     MULT1   =       3     MULT2  =       1
+     MPLEVL  =       0     MPLEVL =       0
+     DFTTYP  =NONE         DFTTYP =NONE
+     NMOS1   =       0     NMOS2  =       0     NRDMOS=       0
+     NPRT    =       0
+     NSTEP   =      50     STPSZ   = 1.00E-01
+     ENERGY DIFFERENCE THRESHOLD,    TDE = 1.00E-05
+     MAX. CHANGE IN DISPLACEMENT, TDXMAX = 2.00E-03
+     RMS CHANGE IN DISPLACEMENT,  TDXRMS = 1.50E-03
+     MAX. CHANGE IN GRADIENT,      TGMAX = 5.00E-04
+     RMS CHANGE IN GRADIENT,       TGRMS = 3.00E-04
+
+          ----------------
+          PROPERTIES INPUT
+          ----------------
+
+     MOMENTS            FIELD           POTENTIAL          DENSITY
+ IEMOM =       1   IEFLD =       0   IEPOT =       0   IEDEN =       0
+ WHERE =COMASS     WHERE =NUCLEI     WHERE =NUCLEI     WHERE =NUCLEI
+ OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH
+ IEMINT=       0   IEFINT=       0                     IEDINT=       0
+                                                       MORB  =       0
+          EXTRAPOLATION IN EFFECT
+          SOSCF IN EFFECT
+ ORBITAL PRINTING OPTION: NPREO=     1    13     2     1
+
+     TARGET OFFLOAD OPTIONS
+     RHF    =       F
+     CPHF    =       F
+     MAKEFP =       F
+
+     INTEGRAL TRANSFORMATION OPTIONS
+     NWORD  =            0
+     CUTTRF = 1.0E-09     MPTRAN =       0
+     DIRTRF =       F     AOINTS =DUP
+
+          INTEGRAL INPUT OPTIONS
+ NOPK  =       1 NORDER=       0 SCHWRZ=       F
+
+     THE POINT GROUP IS C1 , NAXIS= 1, ORDER= 1
+
+     DIMENSIONS OF THE SYMMETRY SUBSPACES ARE
+ A   =   13
+
+ ..... DONE SETTING UP THE RUN .....
+
+                  MINIMUM ENERGY CROSSING POINT SEARCH
+
+     MEMORY NEEDED FOR MEX POINT SEARCH =       626 WORDS
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.1000000000
+ HYDROGEN    1.0   0.0000000000   0.9000000000  -0.5500000000
+ HYDROGEN    1.0   0.0000000000  -0.9000000000  -0.5500000000
+
+          ********************
+          1 ELECTRON INTEGRALS
+          ********************
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+
+          -------------
+          GUESS OPTIONS
+          -------------
+          GUESS =HUCKEL            NORB  =       0          NORDER=       0
+          MIX   =       F          PRTMO =       F          PUNMO =       F
+          TOLZ  = 1.0E-08          TOLE  = 1.0E-05
+          SYMDEN=       F          PURIFY=       F
+
+ INITIAL GUESS ORBITALS GENERATED BY HUCKEL   ROUTINE.
+ HUCKEL GUESS REQUIRES      3586 WORDS.
+
+ SYMMETRIES FOR INITIAL GUESS ORBITALS FOLLOW.  ALPHA SET(S).
+     5 ORBITALS ARE OCCUPIED (    1 CORE ORBITALS).
+     2=A        3=A        4=A        5=A        6=A        7=A        8=A
+     9=A       10=A       11=A       12=A       13=A
+
+ SYMMETRIES FOR INITIAL GUESS ORBITALS FOLLOW.   BETA SET(S).
+     3 ORBITALS ARE OCCUPIED (    1 CORE ORBITALS).
+     2=A        3=A        4=A        5=A        6=A        7=A        8=A
+     9=A       10=A       11=A       12=A       13=A
+ ...... END OF INITIAL ORBITAL SELECTION ......
+
+                    AO INTEGRAL TECHNOLOGY
+     S,P,L SHELL ROTATED AXIS INTEGRALS, REPROGRAMMED BY
+        KAZUYA ISHIMURA (IMS) AND JOSE SIERRA (SYNSTAR).
+     S,P,D,L SHELL ROTATED AXIS INTEGRALS PROGRAMMED BY
+        KAZUYA ISHIMURA (INSTITUTE FOR MOLECULAR SCIENCE).
+     S,P,D,F,G SHELL TO TOTAL QUARTET ANGULAR MOMENTUM SUM 5,
+        ERIC PROGRAM BY GRAHAM FLETCHER (ELORET AND NASA ADVANCED
+        SUPERCOMPUTING DIVISION, AMES RESEARCH CENTER).
+     S,P,D,F,G,L SHELL GENERAL RYS QUADRATURE PROGRAMMED BY
+        MICHEL DUPUIS (PACIFIC NORTHWEST NATIONAL LABORATORY).
+
+          2 ELECTRON INTEGRALS
+
+ THE -PK- OPTION IS OFF, THE INTEGRALS ARE NOT IN SUPERMATRIX FORM.
+ STORING   15000 INTEGRALS/RECORD ON DISK, USING 12 BYTES/INTEGRAL.
+ TWO ELECTRON INTEGRAL EVALUATION REQUIRES   89384 WORDS OF MEMORY.
+ II,JST,KST,LST =  1  1  1  1 NREC =         1 INTLOC =    1
+ II,JST,KST,LST =  2  1  1  1 NREC =         1 INTLOC =    2
+ II,JST,KST,LST =  3  1  1  1 NREC =         1 INTLOC =   34
+ II,JST,KST,LST =  4  1  1  1 NREC =         1 INTLOC =   88
+ II,JST,KST,LST =  5  1  1  1 NREC =         1 INTLOC =  206
+ II,JST,KST,LST =  6  1  1  1 NREC =         1 INTLOC =  538
+ II,JST,KST,LST =  7  1  1  1 NREC =         1 INTLOC =  709
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+
+     NUCLEAR ENERGY =         6.0138940820
+     MAXIT = 30     NPUNCH=  2     MULT=  3
+     EXTRAP=T  DAMP=F  SHIFT=F  RSTRCT=F  DIIS=F  SOSCF=T
+     DENSITY MATRIX CONV=  1.00E-05
+     ROHF CANONICALIZATION PARAMETERS
+             C-C     O-O     V-V
+     ALPHA -0.5000  0.5000  1.5000
+     BETA   1.5000  0.5000 -0.5000
+     SOSCF WILL OPTIMIZE      46 ORBITAL ROTATION ANGLES. SOGTOL= 2.500E-01
+     MEMORY REQUIRED FOR UHF/ROHF ITERS=     31970 WORDS.
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+   1  0      -38.8335958336   -38.8335958336   0.328912316   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1      -38.8952356426    -0.0616398090   0.097836571   0.016914738
+   3  2      -38.8964409537    -0.0012053111   0.015825343   0.005730290
+   4  3      -38.8965281460    -0.0000871922   0.005900278   0.001067645
+   5  4      -38.8965325398    -0.0000043938   0.001162039   0.000210472
+   6  5      -38.8965328078    -0.0000002681   0.000019820   0.000008940
+   7  6      -38.8965328084    -0.0000000006   0.000004287   0.000001305
+   8  7      -38.8965328084    -0.0000000000   0.000000213   0.000000103
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8965328084 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -2.812657 eV, LUMO=    6.591029 eV, gap=    9.403686 eV
+
+  Beta HOMO=   -13.607378 eV, LUMO=   -4.960310 eV, gap=    8.647067 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+
+          ------------
+          EIGENVECTORS
+          ------------
+
+                      1          2          3          4          5
+                  -11.2089    -0.7186    -0.5001    -0.1823    -0.1034
+                     A          A          A          A          A
+    1  C  1  S    0.996862  -0.178475  -0.000000  -0.113061  -0.000000
+    2  C  1  S    0.021585   0.362495  -0.000000   0.247384  -0.000000
+    3  C  1  X   -0.000000  -0.000000  -0.000000   0.000000   0.619133
+    4  C  1  Y   -0.000000  -0.000000   0.438170   0.000000  -0.000000
+    5  C  1  Z   -0.000768  -0.174798  -0.000000   0.520097  -0.000000
+    6  C  1  S   -0.011755   0.336957  -0.000000   0.434599  -0.000000
+    7  C  1  X   -0.000000  -0.000000  -0.000000   0.000000   0.508123
+    8  C  1  Y   -0.000000  -0.000000   0.181981   0.000000  -0.000000
+    9  C  1  Z    0.001756  -0.081370  -0.000000   0.348081  -0.000000
+   10  H  2  S   -0.000723   0.195719   0.254637  -0.099460  -0.000000
+   11  H  2  S    0.002842   0.086733   0.229785  -0.114637  -0.000000
+   12  H  3  S   -0.000723   0.195719  -0.254637  -0.099460  -0.000000
+   13  H  3  S    0.002842   0.086733  -0.229785  -0.114637  -0.000000
+
+                      6          7          8          9         10
+                    0.2422     0.2751     0.6601     0.6604     0.7301
+                     A          A          A          A          A
+    1  C  1  S   -0.120692   0.000000  -0.000000   0.035772  -0.000000
+    2  C  1  S    0.149703   0.000000  -0.000000  -0.549003  -0.000000
+    3  C  1  X   -0.000000   0.000000  -1.047531   0.000000  -0.000000
+    4  C  1  Y   -0.000000  -0.363795  -0.000000   0.000000  -0.787171
+    5  C  1  Z   -0.220522   0.000000  -0.000000  -0.957889  -0.000000
+    6  C  1  S    1.884701   0.000000  -0.000000   0.398049  -0.000000
+    7  C  1  X   -0.000000   0.000000   1.105649   0.000000  -0.000000
+    8  C  1  Y   -0.000000  -1.372949  -0.000000   0.000000   1.482884
+    9  C  1  Z   -0.916589   0.000000  -0.000000   1.119272  -0.000000
+   10  H  2  S   -0.045193   0.090012  -0.000000   0.092353  -0.435594
+   11  H  2  S   -1.455480   1.515805  -0.000000   0.048251  -0.177852
+   12  H  3  S   -0.045193  -0.090012  -0.000000   0.092353   0.435594
+   13  H  3  S   -1.455480  -1.515805  -0.000000   0.048251   0.177852
+
+                     11         12         13
+                    0.9298     1.1492     1.1630
+                     A          A          A
+    1  C  1  S   -0.032331   0.000000   0.053350
+    2  C  1  S   -1.411580   0.000000  -1.312265
+    3  C  1  X    0.000000   0.000000   0.000000
+    4  C  1  Y    0.000000  -0.844852   0.000000
+    5  C  1  Z    0.088883   0.000000   0.536627
+    6  C  1  S    2.618049   0.000000   2.329282
+    7  C  1  X    0.000000   0.000000   0.000000
+    8  C  1  Y    0.000000   1.049627   0.000000
+    9  C  1  Z   -0.957802   0.000000  -0.750236
+   10  H  2  S   -0.627601   0.838206   0.717065
+   11  H  2  S   -0.549232  -1.325957  -1.289155
+   12  H  3  S   -0.627601  -0.838206   0.717065
+   13  H  3  S   -0.549232   1.325957  -1.289155
+ ...... END OF ROHF CALCULATION ......
+
+     PROPERTY VALUES FOR THE ROHF  SELF-CONSISTENT FIELD WAVEFUNCTION
+
+          -----------------
+          ENERGY COMPONENTS
+          -----------------
+
+         WAVEFUNCTION NORMALIZATION =       1.0000000000
+
+                ONE ELECTRON ENERGY =     -63.5861742317
+                TWO ELECTRON ENERGY =      18.6757473413
+           NUCLEAR REPULSION ENERGY =       6.0138940820
+                                      ------------------
+                       TOTAL ENERGY =     -38.8965328084
+
+ ELECTRON-ELECTRON POTENTIAL ENERGY =      18.6757473413
+  NUCLEUS-ELECTRON POTENTIAL ENERGY =    -102.4574786169
+   NUCLEUS-NUCLEUS POTENTIAL ENERGY =       6.0138940820
+                                      ------------------
+             TOTAL POTENTIAL ENERGY =     -77.7678371936
+               TOTAL KINETIC ENERGY =      38.8713043852
+                 VIRIAL RATIO (V/T) =       2.0006490244
+
+  ...... PI ENERGY ANALYSIS ......
+
+ ENERGY ANALYSIS:
+            FOCK ENERGY=    -26.2346791287
+          BARE H ENERGY=    -63.5861742317
+     ELECTRONIC ENERGY =    -44.9104266802
+         KINETIC ENERGY=     38.8713043852
+          N-N REPULSION=      6.0138940820
+           TOTAL ENERGY=    -38.8965325982
+        SIGMA PART(1+2)=    -42.6058328876
+               (K,V1,2)=     37.6903921181    -97.0789142870     16.7826892813
+           PI PART(1+2)=     -2.3045937926
+               (K,V1,2)=      1.1809122671     -5.3785643299      1.8930582702
+  SIGMA SKELETON, ERROR=    -36.5919388056     -0.0000000000
+             MIXED PART= 0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00
+ ...... END OF PI ENERGY ANALYSIS ......
+
+          MULLIKEN AND LOWDIN POPULATION ANALYSES
+
+     ATOMIC MULLIKEN POPULATION IN EACH MOLECULAR ORBITAL
+
+                      1          2          3          4          5
+
+                  2.000000   2.000000   2.000000   1.000000   1.000000
+
+    1             1.999019   1.324735   1.004118   0.955882   1.000000
+    2             0.000490   0.337632   0.497941   0.022059   0.000000
+    3             0.000490   0.337632   0.497941   0.022059   0.000000
+
+     ATOMIC SPIN POPULATION (ALPHA MINUS BETA)
+       ATOM         MULL.POP.                    LOW.POP.
+    1 CARBON        1.955882                     1.960758
+    2 HYDROGEN      0.022059                     0.019621
+    3 HYDROGEN      0.022059                     0.019621
+
+               ----- POPULATIONS IN EACH AO -----
+                             MULLIKEN      LOWDIN
+              1  C  1  S      1.99756     1.99015
+              2  C  1  S      0.67884     0.63484
+              3  C  1  X      0.56257     0.55142
+              4  C  1  Y      0.69047     0.61635
+              5  C  1  Z      0.52907     0.49439
+              6  C  1  S      0.74340     0.60187
+              7  C  1  X      0.43743     0.44858
+              8  C  1  Y      0.31365     0.48655
+              9  C  1  Z      0.33076     0.38387
+             10  H  2  S      0.52168     0.49147
+             11  H  2  S      0.33644     0.40452
+             12  H  3  S      0.52168     0.49147
+             13  H  3  S      0.33644     0.40452
+
+          ----- MULLIKEN ATOMIC OVERLAP POPULATIONS -----
+          (OFF-DIAGONAL ELEMENTS NEED TO BE MULTIPLIED BY 2)
+
+             1           2           3
+
+    1    5.5913318
+    2    0.3462117   0.5637670
+    3    0.3462117  -0.0518563   0.5637670
+
+          TOTAL MULLIKEN AND LOWDIN ATOMIC POPULATIONS
+       ATOM         MULL.POP.    CHARGE          LOW.POP.     CHARGE
+    1 CARBON        6.283755   -0.283755         6.208020   -0.208020
+    2 HYDROGEN      0.858122    0.141878         0.895990    0.104010
+    3 HYDROGEN      0.858122    0.141878         0.895990    0.104010
+
+          BOND ORDER AND VALENCE ANALYSIS     BOND ORDER THRESHOLD=0.050
+
+                   BOND                       BOND                       BOND
+  ATOM PAIR DIST  ORDER      ATOM PAIR DIST  ORDER      ATOM PAIR DIST  ORDER
+    1   2  1.110  0.947        1   3  1.110  0.947
+
+                       TOTAL       BONDED        FREE
+      ATOM            VALENCE     VALENCE     VALENCE
+    1 CARBON            3.809       1.895       1.914
+    2 HYDROGEN          0.942       0.941       0.000
+    3 HYDROGEN          0.942       0.941       0.000
+
+          ATOMIC SPIN DENSITY AT THE NUCLEUS (A.U.)
+                            SPIN DENS    ALPHA DENS     BETA DENS
+    1  CARBON       6.0     0.6699711      59.51938      58.84941
+    2  HYDROGEN     1.0     0.0176667       0.21346       0.19579
+    3  HYDROGEN     1.0     0.0176667       0.21346       0.19579
+
+          ELECTROSTATIC MOMENTS
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000    0.012322        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000000    0.000000   -0.662135    0.662135
+ ...... END OF PROPERTY EVALUATION ......
+
+ BEGINNING ONE ELECTRON GRADIENT...
+ ..... END OF 1-ELECTRON GRADIENT ......
+
+          GRADIENT OF THE ENERGY
+ THE COARSE/FINE SCHWARZ SCREENINGS SKIPPED            0/           0 BLOCKS.
+ THE NUMBER OF GRADIENT INTEGRAL BLOCKS COMPUTED WAS       373
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0643671
+  2  HYDROGEN     1.0     0.0000000     0.0022012    -0.0321836
+  3  HYDROGEN     1.0     0.0000000    -0.0022012    -0.0321836
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+          -------------
+          GUESS OPTIONS
+          -------------
+          GUESS =HUCKEL            NORB  =       0          NORDER=       0
+          MIX   =       F          PRTMO =       F          PUNMO =       F
+          TOLZ  = 1.0E-08          TOLE  = 1.0E-05
+          SYMDEN=       F          PURIFY=       F
+
+ INITIAL GUESS ORBITALS GENERATED BY HUCKEL   ROUTINE.
+ HUCKEL GUESS REQUIRES      3586 WORDS.
+
+ SYMMETRIES FOR INITIAL GUESS ORBITALS FOLLOW.   BOTH SET(S).
+     4 ORBITALS ARE OCCUPIED (    1 CORE ORBITALS).
+     2=A        3=A        4=A        5=A        6=A        7=A        8=A
+     9=A       10=A       11=A       12=A       13=A
+ ...... END OF INITIAL ORBITAL SELECTION ......
+
+                 RHF SCF CALCULATION
+
+     NUCLEAR ENERGY =         6.0138940820
+     MAXIT =   30     NPUNCH=    2
+     EXTRAP=T  DAMP=F  SHIFT=F  RSTRCT=F  DIIS=F  DEM=F  SOSCF=T
+     DENSITY MATRIX CONV=  1.00E-05
+     SOSCF WILL OPTIMIZE      36 ORBITAL ROTATIONS, SOGTOL=   0.250
+     MEMORY REQUIRED FOR RHF ITERS=     31509 WORDS.
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+   1  0  0      -38.7691783170   -38.7691783170   0.271195960   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1  0      -38.8464442475    -0.0772659305   0.100810268   0.027814863
+   3  2  0      -38.8521959140    -0.0057516665   0.061222824   0.008138648
+   4  3  0      -38.8530071528    -0.0008112389   0.003200453   0.001376115
+   5  4  0      -38.8530285723    -0.0000214195   0.002057495   0.000585418
+   6  5  0      -38.8530328779    -0.0000043056   0.000207219   0.000097336
+   7  6  0      -38.8530329055    -0.0000000276   0.000060672   0.000015135
+   8  7  0      -38.8530329069    -0.0000000013   0.000015841   0.000003240
+   9  8  0      -38.8530329069    -0.0000000001   0.000001555   0.000000795
+  10  9  0      -38.8530329070    -0.0000000000   0.000000476   0.000000175
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8530329070 AFTER  10 ITERATIONS
+
+ Alpha HOMO=   -10.081041 eV, LUMO=    1.918543 eV, gap=   11.999584 eV
+
+          ------------
+          EIGENVECTORS
+          ------------
+
+                      1          2          3          4          5
+                  -11.2894    -0.8940    -0.5709    -0.3705     0.0705
+                     A          A          A          A          A
+    1  C  1  S    0.996426  -0.190057  -0.000000  -0.098249  -0.000000
+    2  C  1  S    0.022368   0.391939  -0.000000   0.190933  -0.000000
+    3  C  1  X   -0.000000  -0.000000  -0.000000   0.000000   0.435315
+    4  C  1  Y   -0.000000  -0.000000   0.442686   0.000000  -0.000000
+    5  C  1  Z   -0.003147  -0.150059  -0.000000   0.493624  -0.000000
+    6  C  1  S   -0.011323   0.368469  -0.000000   0.436966  -0.000000
+    7  C  1  X   -0.000000  -0.000000  -0.000000   0.000000   0.685796
+    8  C  1  Y   -0.000000  -0.000000   0.147893   0.000000  -0.000000
+    9  C  1  Z    0.003456  -0.054675  -0.000000   0.394792  -0.000000
+   10  H  2  S   -0.000332   0.187623   0.263738  -0.109112  -0.000000
+   11  H  2  S    0.003579   0.068469   0.246707  -0.120599  -0.000000
+   12  H  3  S   -0.000332   0.187623  -0.263738  -0.109112  -0.000000
+   13  H  3  S    0.003579   0.068469  -0.246707  -0.120599  -0.000000
+
+                      6          7          8          9         10
+                    0.2529     0.3150     0.7533     0.7907     0.8071
+                     A          A          A          A          A
+    1  C  1  S   -0.115933   0.000000   0.000000   0.048759   0.000000
+    2  C  1  S    0.132740   0.000000   0.000000  -0.097162   0.000000
+    3  C  1  X   -0.000000   0.000000   0.000000   0.000000   1.136287
+    4  C  1  Y   -0.000000   0.381166  -0.746010   0.000000   0.000000
+    5  C  1  Z   -0.246399   0.000000   0.000000  -0.977894   0.000000
+    6  C  1  S    1.877465   0.000000   0.000000  -0.527117   0.000000
+    7  C  1  X   -0.000000   0.000000   0.000000   0.000000  -1.005153
+    8  C  1  Y   -0.000000   1.331781   1.530727   0.000000   0.000000
+    9  C  1  Z   -0.870255   0.000000   0.000000   1.390044   0.000000
+   10  H  2  S   -0.027549  -0.041175  -0.451418   0.234328   0.000000
+   11  H  2  S   -1.459362  -1.541334  -0.223458   0.311128   0.000000
+   12  H  3  S   -0.027549   0.041175   0.451418   0.234328   0.000000
+   13  H  3  S   -1.459362   1.541334   0.223458   0.311128   0.000000
+
+                     11         12         13
+                    0.9626     1.1626     1.1680
+                     A          A          A
+    1  C  1  S   -0.021453   0.056475   0.000000
+    2  C  1  S   -1.508001  -1.319007   0.000000
+    3  C  1  X    0.000000   0.000000   0.000000
+    4  C  1  Y    0.000000   0.000000  -0.871759
+    5  C  1  Z   -0.187817   0.494620   0.000000
+    6  C  1  S    2.629167   2.291451   0.000000
+    7  C  1  X    0.000000   0.000000   0.000000
+    8  C  1  Y    0.000000   0.000000   1.039295
+    9  C  1  Z   -0.622028  -0.682336   0.000000
+   10  H  2  S   -0.576481   0.729197   0.830808
+   11  H  2  S   -0.519038  -1.260878  -1.285982
+   12  H  3  S   -0.576481   0.729197  -0.830808
+   13  H  3  S   -0.519038  -1.260878   1.285982
+ ...... END OF RHF CALCULATION ......
+
+     PROPERTY VALUES FOR THE RHF   SELF-CONSISTENT FIELD WAVEFUNCTION
+
+          -----------------
+          ENERGY COMPONENTS
+          -----------------
+
+         WAVEFUNCTION NORMALIZATION =       1.0000000000
+
+                ONE ELECTRON ENERGY =     -63.4842572621
+                TWO ELECTRON ENERGY =      18.6173302731
+           NUCLEAR REPULSION ENERGY =       6.0138940820
+                                      ------------------
+                       TOTAL ENERGY =     -38.8530329070
+
+ ELECTRON-ELECTRON POTENTIAL ENERGY =      18.6173302731
+  NUCLEUS-ELECTRON POTENTIAL ENERGY =    -102.3737610994
+   NUCLEUS-NUCLEUS POTENTIAL ENERGY =       6.0138940820
+                                      ------------------
+             TOTAL POTENTIAL ENERGY =     -77.7425367442
+               TOTAL KINETIC ENERGY =      38.8895038373
+                 VIRIAL RATIO (V/T) =       1.9990621909
+
+  ...... PI ENERGY ANALYSIS ......
+
+ ENERGY ANALYSIS:
+            FOCK ENERGY=    -26.2495971307
+          BARE H ENERGY=    -63.4842572621
+     ELECTRONIC ENERGY =    -44.8669271964
+         KINETIC ENERGY=     38.8895038373
+          N-N REPULSION=      6.0138940820
+           TOTAL ENERGY=    -38.8530331144
+        SIGMA PART(1+2)=    -44.8669271964
+               (K,V1,2)=     38.8895038373   -102.3737610994     18.6173300657
+           PI PART(1+2)=      0.0000000000
+               (K,V1,2)=      0.0000000000      0.0000000000      0.0000000000
+  SIGMA SKELETON, ERROR=    -38.8530331144      0.0000000000
+             MIXED PART= 0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00
+ ...... END OF PI ENERGY ANALYSIS ......
+
+          MULLIKEN AND LOWDIN POPULATION ANALYSES
+
+     ATOMIC MULLIKEN POPULATION IN EACH MOLECULAR ORBITAL
+
+                      1          2          3          4
+
+                  2.000000   2.000000   2.000000   2.000000
+
+    1             1.998667   1.410631   0.948058   1.863149
+    2             0.000667   0.294684   0.525971   0.068425
+    3             0.000667   0.294684   0.525971   0.068425
+
+               ----- POPULATIONS IN EACH AO -----
+                             MULLIKEN      LOWDIN
+              1  C  1  S      1.99824     1.99414
+              2  C  1  S      0.78211     0.75444
+              3  C  1  X      0.00000     0.00000
+              4  C  1  Y      0.69549     0.61499
+              5  C  1  Z      0.87565     0.83663
+              6  C  1  S      0.93278     0.72848
+              7  C  1  X      0.00000     0.00000
+              8  C  1  Y      0.25257     0.45842
+              9  C  1  Z      0.68367     0.77813
+             10  H  2  S      0.54931     0.51725
+             11  H  2  S      0.34044     0.40014
+             12  H  3  S      0.54931     0.51725
+             13  H  3  S      0.34044     0.40014
+
+          ----- MULLIKEN ATOMIC OVERLAP POPULATIONS -----
+          (OFF-DIAGONAL ELEMENTS NEED TO BE MULTIPLIED BY 2)
+
+             1           2           3
+
+    1    5.5956302
+    2    0.3124379   0.6333518
+    3    0.3124379  -0.0560427   0.6333518
+
+          TOTAL MULLIKEN AND LOWDIN ATOMIC POPULATIONS
+       ATOM         MULL.POP.    CHARGE          LOW.POP.     CHARGE
+    1 CARBON        6.220506   -0.220506         6.165233   -0.165233
+    2 HYDROGEN      0.889747    0.110253         0.917384    0.082616
+    3 HYDROGEN      0.889747    0.110253         0.917384    0.082616
+
+          BOND ORDER AND VALENCE ANALYSIS     BOND ORDER THRESHOLD=0.050
+
+                   BOND                       BOND                       BOND
+  ATOM PAIR DIST  ORDER      ATOM PAIR DIST  ORDER      ATOM PAIR DIST  ORDER
+    1   2  1.110  0.934        1   3  1.110  0.934
+
+                       TOTAL       BONDED        FREE
+      ATOM            VALENCE     VALENCE     VALENCE
+    1 CARBON            1.869       1.869       0.000
+    2 HYDROGEN          0.934       0.934       0.000
+    3 HYDROGEN          0.934       0.934      -0.000
+
+          ELECTROSTATIC MOMENTS
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000    0.012322        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000000    0.000000   -2.216570    2.216570
+ ...... END OF PROPERTY EVALUATION ......
+
+ BEGINNING ONE ELECTRON GRADIENT...
+ ..... END OF 1-ELECTRON GRADIENT ......
+
+          GRADIENT OF THE ENERGY
+ THE COARSE/FINE SCHWARZ SCREENINGS SKIPPED            0/           0 BLOCKS.
+ THE NUMBER OF GRADIENT INTEGRAL BLOCKS COMPUTED WAS       373
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.0017044
+  2  HYDROGEN     1.0     0.0000000     0.0086894    -0.0008522
+  3  HYDROGEN     1.0     0.0000000    -0.0086894    -0.0008522
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   0
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000  -0.0805679157
+ HYDROGEN    1.0   0.0000000000   0.0172081129   0.0402839578
+ HYDROGEN    1.0   0.0000000000  -0.0172081129   0.0402839578
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.004150)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0012067478
+ HYDROGEN    1.0   0.0000000000   0.0087409610  -0.0006033739
+ HYDROGEN    1.0   0.0000000000  -0.0087409610  -0.0006033739
+
+     PARALLEL GRADIENT: (RMS:   0.025764)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0626627193
+ HYDROGEN    1.0   0.0000000000  -0.0064882537  -0.0313313597
+ HYDROGEN    1.0   0.0000000000   0.0064882537  -0.0313313597
+
+  NSERCH=  0        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.89653281
+     ENERGY OF SECOND STATE =    -38.85303291
+     ENERGY DIFFERENCE =           0.04349990        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.080568    0.000500
+     RMS EFFECTIVE GRADIENT =    0.033877    0.000300
+     MAX CHANGE OF X =           0.080568    0.002000
+     RMS CHANGE OF X =           0.033877    0.001500
+
+ NSERCH:   0 E=       -38.89653281       -38.85303291 GM= 0.080568 GR= 0.033877
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.1426347080
+ HYDROGEN    1.0   0.0000000000   0.8908938581  -0.5713173540
+ HYDROGEN    1.0   0.0000000000  -0.8908938581  -0.5713173540
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8864878334   -38.8864878334   0.017044754   0.014068950
+   2  1      -38.8870813852    -0.0005935518   0.009518690   0.003828541
+   3  2      -38.8871392268    -0.0000578415   0.001939648   0.000983987
+   4  3      -38.8871433410    -0.0000041143   0.000611130   0.000292434
+   5  4      -38.8871435861    -0.0000002451   0.000098109   0.000059290
+   6  5      -38.8871435937    -0.0000000076   0.000026522   0.000009881
+   7  6      -38.8871435942    -0.0000000005   0.000003968   0.000001010
+   8  7      -38.8871435942    -0.0000000000   0.000000977   0.000000284
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8871435942 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -2.851595 eV, LUMO=    6.381904 eV, gap=    9.233500 eV
+
+  Beta HOMO=   -13.067174 eV, LUMO=   -5.248956 eV, gap=    7.818218 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0939642
+  2  HYDROGEN     1.0     0.0000000     0.0086248    -0.0469821
+  3  HYDROGEN     1.0     0.0000000    -0.0086248    -0.0469821
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+          -------------
+          GUESS OPTIONS
+          -------------
+          GUESS =HUCKEL            NORB  =       0          NORDER=       0
+          MIX   =       F          PRTMO =       F          PUNMO =       F
+          TOLZ  = 1.0E-08          TOLE  = 1.0E-05
+          SYMDEN=       F          PURIFY=       F
+
+ INITIAL GUESS ORBITALS GENERATED BY HUCKEL   ROUTINE.
+ HUCKEL GUESS REQUIRES      3586 WORDS.
+
+ SYMMETRIES FOR INITIAL GUESS ORBITALS FOLLOW.   BOTH SET(S).
+     4 ORBITALS ARE OCCUPIED (    1 CORE ORBITALS).
+     2=A        3=A        4=A        5=A        6=A        7=A        8=A
+     9=A       10=A       11=A       12=A       13=A
+ ...... END OF INITIAL ORBITAL SELECTION ......
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+   1  0  0      -38.7659679333   -38.7659679333   0.305772615   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1  0      -38.8448652085    -0.0788972752   0.101746874   0.029331051
+   3  2  0      -38.8506766643    -0.0058114558   0.059322109   0.008247741
+   4  3  0      -38.8514644021    -0.0007877378   0.003357522   0.001529303
+   5  4  0      -38.8514864964    -0.0000220943   0.002182265   0.000611997
+   6  5  0      -38.8514909631    -0.0000044667   0.000139044   0.000072809
+   7  6  0      -38.8514909855    -0.0000000224   0.000074441   0.000015268
+   8  7  0      -38.8514909863    -0.0000000008   0.000007236   0.000001132
+   9  8  0      -38.8514909863    -0.0000000000   0.000001263   0.000000312
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8514909863 AFTER   9 ITERATIONS
+
+ Alpha HOMO=   -10.357121 eV, LUMO=    1.846535 eV, gap=   12.203656 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.0307403
+  2  HYDROGEN     1.0     0.0000000     0.0156127    -0.0153702
+  3  HYDROGEN     1.0     0.0000000    -0.0156127    -0.0153702
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   1
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000  -0.0648662355
+ HYDROGEN    1.0   0.0000000000   0.0261796831   0.0324331177
+ HYDROGEN    1.0   0.0000000000  -0.0261796831   0.0324331177
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.008889)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0027566036
+ HYDROGEN    1.0   0.0000000000   0.0187056165  -0.0013783018
+ HYDROGEN    1.0   0.0000000000  -0.0187056165  -0.0013783018
+
+     PARALLEL GRADIENT: (RMS:   0.026020)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0632238362
+ HYDROGEN    1.0   0.0000000000  -0.0069878634  -0.0316119181
+ HYDROGEN    1.0   0.0000000000   0.0069878634  -0.0316119181
+
+  NSERCH=  1        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.88714359
+     ENERGY OF SECOND STATE =    -38.85149099
+     ENERGY DIFFERENCE =           0.03565261        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.064866    0.000500
+     RMS EFFECTIVE GRADIENT =    0.029216    0.000300
+     MAX CHANGE OF X =           0.100000    0.002000
+     RMS CHANGE OF X =           0.044373    0.001500
+
+ NSERCH:   1 E=       -38.88714359       -38.85149099 GM= 0.064866 GR= 0.029216
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.1955524329
+ HYDROGEN    1.0   0.0000000000   0.8713759465  -0.5977762165
+ HYDROGEN    1.0   0.0000000000  -0.8713759465  -0.5977762165
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8703783187   -38.8703783187   0.019536014   0.017152688
+   2  1      -38.8712272491    -0.0008489304   0.011381216   0.004648400
+   3  2      -38.8713087123    -0.0000814632   0.002029476   0.001094105
+   4  3      -38.8713144556    -0.0000057433   0.000680491   0.000341936
+   5  4      -38.8713147829    -0.0000003273   0.000126395   0.000074147
+   6  5      -38.8713147954    -0.0000000125   0.000035013   0.000011917
+   7  6      -38.8713147962    -0.0000000009   0.000005884   0.000001630
+   8  7      -38.8713147963    -0.0000000000   0.000001362   0.000000474
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8713147963 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -2.903304 eV, LUMO=    6.103524 eV, gap=    9.006828 eV
+
+  Beta HOMO=   -12.416767 eV, LUMO=   -5.606574 eV, gap=    6.810193 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1260859
+  2  HYDROGEN     1.0     0.0000000     0.0101540    -0.0630430
+  3  HYDROGEN     1.0     0.0000000    -0.0101540    -0.0630430
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8443943370   -38.8443943370   0.053224067   0.017920456
+   2  1  0      -38.8456256887    -0.0012313516   0.009203548   0.003635937
+   3  2  0      -38.8456829883    -0.0000572997   0.003010596   0.001686606
+   4  3  0      -38.8456912628    -0.0000082745   0.000319202   0.000080134
+   5  4  0      -38.8456913373    -0.0000000745   0.000063853   0.000016930
+   6  5  0      -38.8456913409    -0.0000000035   0.000017461   0.000003759
+   7  6  0      -38.8456913410    -0.0000000001   0.000004113   0.000000636
+   8  7  0      -38.8456913410    -0.0000000000   0.000000113   0.000000039
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8456913410 AFTER   8 ITERATIONS
+
+ Alpha HOMO=   -10.704103 eV, LUMO=    1.753636 eV, gap=   12.457738 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0629641
+  2  HYDROGEN     1.0     0.0000000     0.0179523    -0.0314821
+  3  HYDROGEN     1.0     0.0000000    -0.0179523    -0.0314821
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   2
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0443679728
+ HYDROGEN    1.0   0.0000000000   0.0312123740   0.0221839864
+ HYDROGEN    1.0   0.0000000000  -0.0312123740   0.0221839864
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.012008)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0041539797
+ HYDROGEN    1.0   0.0000000000   0.0252178292  -0.0020769899
+ HYDROGEN    1.0   0.0000000000  -0.0252178292  -0.0020769899
+
+     PARALLEL GRADIENT: (RMS:   0.026030)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0631217921
+ HYDROGEN    1.0   0.0000000000  -0.0077982519  -0.0315608961
+ HYDROGEN    1.0   0.0000000000   0.0077982519  -0.0315608961
+
+  NSERCH=  2        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.87131480
+     ENERGY OF SECOND STATE =    -38.84569134
+     ENERGY DIFFERENCE =           0.02562346        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.044368    0.000500
+     RMS EFFECTIVE GRADIENT =    0.023336    0.000300
+     MAX CHANGE OF X =           0.100000    0.002000
+     RMS CHANGE OF X =           0.047218    0.001500
+
+ NSERCH:   2 E=       -38.87131480       -38.84569134 GM= 0.044368 GR= 0.023336
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.2484701578
+ HYDROGEN    1.0   0.0000000000   0.8447436130  -0.6242350789
+ HYDROGEN    1.0   0.0000000000  -0.8447436130  -0.6242350789
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8502139569   -38.8502139569   0.018474655   0.017258954
+   2  1      -38.8510626744    -0.0008487175   0.011479463   0.004769320
+   3  2      -38.8511419883    -0.0000793138   0.001647075   0.001193857
+   4  3      -38.8511476278    -0.0000056396   0.000611797   0.000311068
+   5  4      -38.8511478885    -0.0000002607   0.000112747   0.000073771
+   6  5      -38.8511478992    -0.0000000106   0.000032707   0.000009481
+   7  6      -38.8511479000    -0.0000000008   0.000006310   0.000001832
+   8  7      -38.8511479000    -0.0000000000   0.000001420   0.000000567
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8511479000 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -2.957962 eV, LUMO=    5.778463 eV, gap=    8.736424 eV
+
+  Beta HOMO=   -11.774605 eV, LUMO=   -5.962336 eV, gap=    5.812270 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1537937
+  2  HYDROGEN     1.0     0.0000000     0.0067369    -0.0768969
+  3  HYDROGEN     1.0     0.0000000    -0.0067369    -0.0768969
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8345141685   -38.8345141685   0.046318301   0.018204901
+   2  1  0      -38.8357328258    -0.0012186573   0.009574834   0.003871033
+   3  2  0      -38.8357981418    -0.0000653160   0.002529574   0.001396930
+   4  3  0      -38.8358056498    -0.0000075079   0.000405738   0.000109001
+   5  4  0      -38.8358057614    -0.0000001116   0.000099615   0.000026530
+   6  5  0      -38.8358057687    -0.0000000073   0.000024966   0.000004772
+   7  6  0      -38.8358057688    -0.0000000001   0.000006152   0.000000827
+   8  7  0      -38.8358057688    -0.0000000000   0.000000203   0.000000035
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8358057688 AFTER   8 ITERATIONS
+
+ Alpha HOMO=   -11.047273 eV, LUMO=    1.658865 eV, gap=   12.706137 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.0910509
+  2  HYDROGEN     1.0     0.0000000     0.0156965    -0.0455254
+  3  HYDROGEN     1.0     0.0000000    -0.0156965    -0.0455254
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   3
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0235587569
+ HYDROGEN    1.0   0.0000000000   0.0320626235   0.0117793785
+ HYDROGEN    1.0   0.0000000000  -0.0320626235   0.0117793785
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.013348)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0053195138
+ HYDROGEN    1.0   0.0000000000   0.0279388382  -0.0026597569
+ HYDROGEN    1.0   0.0000000000  -0.0279388382  -0.0026597569
+
+     PARALLEL GRADIENT: (RMS:   0.025961)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0627428492
+ HYDROGEN    1.0   0.0000000000  -0.0089596099  -0.0313714246
+ HYDROGEN    1.0   0.0000000000   0.0089596099  -0.0313714246
+
+  NSERCH=  3        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.85114790
+     ENERGY OF SECOND STATE =    -38.83580577
+     ENERGY DIFFERENCE =           0.01534213        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.032063    0.000500
+     RMS EFFECTIVE GRADIENT =    0.017915    0.000300
+     MAX CHANGE OF X =           0.100000    0.002000
+     RMS CHANGE OF X =           0.051245    0.001500
+
+ NSERCH:   3 E=       -38.85114790       -38.83580577 GM= 0.032063 GR= 0.017915
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3013878828
+ HYDROGEN    1.0   0.0000000000   0.8099736249  -0.6506939414
+ HYDROGEN    1.0   0.0000000000  -0.8099736249  -0.6506939414
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8257040023   -38.8257040023   0.017821186   0.017380632
+   2  1      -38.8265955439    -0.0008915416   0.011745606   0.004983274
+   3  2      -38.8266788305    -0.0000832865   0.001404188   0.001324122
+   4  3      -38.8266846843    -0.0000058539   0.000523330   0.000254120
+   5  4      -38.8266848964    -0.0000002121   0.000067235   0.000059717
+   6  5      -38.8266849026    -0.0000000061   0.000016432   0.000008499
+   7  6      -38.8266849029    -0.0000000003   0.000002634   0.000001017
+   8  7      -38.8266849029    -0.0000000000   0.000000408   0.000000144
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8266849029 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -3.013466 eV, LUMO=    5.396674 eV, gap=    8.410140 eV
+
+  Beta HOMO=   -11.131210 eV, LUMO=   -6.322049 eV, gap=    4.809161 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1769520
+  2  HYDROGEN     1.0     0.0000000    -0.0009953    -0.0884760
+  3  HYDROGEN     1.0     0.0000000     0.0009953    -0.0884760
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8206690699   -38.8206690699   0.040900757   0.018456743
+   2  1  0      -38.8219510240    -0.0012819541   0.012339038   0.003880356
+   3  2  0      -38.8220280543    -0.0000770303   0.002891975   0.001581039
+   4  3  0      -38.8220385198    -0.0000104655   0.000634182   0.000186751
+   5  4  0      -38.8220387865    -0.0000002667   0.000149817   0.000046554
+   6  5  0      -38.8220388054    -0.0000000189   0.000029087   0.000006059
+   7  6  0      -38.8220388056    -0.0000000002   0.000006148   0.000000922
+   8  7  0      -38.8220388056    -0.0000000000   0.000000157   0.000000050
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8220388056 AFTER   8 ITERATIONS
+
+ Alpha HOMO=   -11.385341 eV, LUMO=    1.566036 eV, gap=   12.951377 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1141488
+  2  HYDROGEN     1.0     0.0000000     0.0097465    -0.0570744
+  3  HYDROGEN     1.0     0.0000000    -0.0097465    -0.0570744
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   4
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0023291549
+ HYDROGEN    1.0   0.0000000000   0.0296686891   0.0011645775
+ HYDROGEN    1.0   0.0000000000  -0.0296686891   0.0011645775
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.013537)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0064245356
+ HYDROGEN    1.0   0.0000000000   0.0281714725  -0.0032122678
+ HYDROGEN    1.0   0.0000000000  -0.0281714725  -0.0032122678
+
+     PARALLEL GRADIENT: (RMS:   0.026135)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0628031806
+ HYDROGEN    1.0   0.0000000000  -0.0107417514  -0.0314015903
+ HYDROGEN    1.0   0.0000000000   0.0107417514  -0.0314015903
+
+  NSERCH=  4        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.82668490
+     ENERGY OF SECOND STATE =    -38.82203881
+     ENERGY DIFFERENCE =           0.00464610        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.029669    0.000500
+     RMS EFFECTIVE GRADIENT =    0.014018    0.000300
+     MAX CHANGE OF X =           0.100000    0.002000
+     RMS CHANGE OF X =           0.059596    0.001500
+
+ NSERCH:   4 E=       -38.82668490       -38.82203881 GM= 0.029669 GR= 0.014018
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000  -0.0000000000   0.3543056077
+ HYDROGEN    1.0   0.0000000000   0.7612358403  -0.6771528038
+ HYDROGEN    1.0   0.0000000000  -0.7612358403  -0.6771528038
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.7961996934   -38.7961996934   0.019234500   0.017547739
+   2  1      -38.7972427071    -0.0010430137   0.012249759   0.005326503
+   3  2      -38.7973445233    -0.0001018162   0.001819804   0.001556786
+   4  3      -38.7973516298    -0.0000071065   0.000726077   0.000230105
+   5  4      -38.7973520302    -0.0000004004   0.000162299   0.000050423
+   6  5      -38.7973520562    -0.0000000260   0.000052965   0.000016038
+   7  6      -38.7973520590    -0.0000000028   0.000016845   0.000009286
+   8  7      -38.7973520592    -0.0000000002   0.000002577   0.000002156
+   9  8      -38.7973520592    -0.0000000000   0.000000598   0.000000263
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.7973520592 AFTER   9 ITERATIONS
+
+ Alpha HOMO=    -3.065023 eV, LUMO=    4.956689 eV, gap=    8.021712 eV
+
+  Beta HOMO=   -10.461581 eV, LUMO=   -6.705407 eV, gap=    3.756175 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1951839
+  2  HYDROGEN     1.0     0.0000000    -0.0139339    -0.0975920
+  3  HYDROGEN     1.0     0.0000000     0.0139339    -0.0975920
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8028270525   -38.8028270525   0.038199727   0.018726786
+   2  1  0      -38.8043468548    -0.0015198023   0.013810422   0.003895182
+   3  2  0      -38.8044483111    -0.0001014563   0.004820268   0.001957043
+   4  3  0      -38.8044661497    -0.0000178386   0.000999235   0.000322921
+   5  4  0      -38.8044668497    -0.0000007001   0.000225379   0.000068918
+   6  5  0      -38.8044668868    -0.0000000370   0.000028641   0.000007405
+   7  6  0      -38.8044668871    -0.0000000003   0.000007141   0.000001025
+   8  7  0      -38.8044668871    -0.0000000000   0.000000318   0.000000081
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8044668871 AFTER   8 ITERATIONS
+
+ Alpha HOMO=   -11.733040 eV, LUMO=    1.482417 eV, gap=   13.215458 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1306856
+  2  HYDROGEN     1.0     0.0000000    -0.0001994    -0.0653428
+  3  HYDROGEN     1.0     0.0000000     0.0001994    -0.0653428
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   5
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0211642936
+ HYDROGEN    1.0   0.0000000000   0.0231226175  -0.0105821468
+ HYDROGEN    1.0   0.0000000000  -0.0231226175  -0.0105821468
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.012648)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0073974670
+ HYDROGEN    1.0   0.0000000000   0.0260541895  -0.0036987335
+ HYDROGEN    1.0   0.0000000000  -0.0260541895  -0.0036987335
+
+     PARALLEL GRADIENT: (RMS:   0.027116)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0644982875
+ HYDROGEN    1.0   0.0000000000  -0.0137345652  -0.0322491438
+ HYDROGEN    1.0   0.0000000000   0.0137345652  -0.0322491438
+
+  NSERCH=  5        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.79735206
+     ENERGY OF SECOND STATE =    -38.80446689
+     ENERGY DIFFERENCE =           0.00711483        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.023123    0.000500
+     RMS EFFECTIVE GRADIENT =    0.013909    0.000300
+     MAX CHANGE OF X =           0.047522    0.002000
+     RMS CHANGE OF X =           0.023034    0.001500
+
+ NSERCH:   5 E=       -38.79735206       -38.80446689 GM= 0.023123 GR= 0.013909
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3612495424
+ HYDROGEN    1.0   0.0000000000   0.7360882819  -0.6806247712
+ HYDROGEN    1.0   0.0000000000  -0.7360882819  -0.6806247712
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.7917065078   -38.7917065078   0.006370225   0.004978350
+   2  1      -38.7918103186    -0.0001038108   0.002114449   0.001158988
+   3  2      -38.7918172429    -0.0000069243   0.000662344   0.000402424
+   4  3      -38.7918177966    -0.0000005537   0.000212053   0.000059492
+   5  4      -38.7918178323    -0.0000000357   0.000099412   0.000021367
+   6  5      -38.7918178375    -0.0000000052   0.000010784   0.000004336
+   7  6      -38.7918178376    -0.0000000001   0.000003016   0.000001902
+   8  7      -38.7918178376    -0.0000000000   0.000000575   0.000000288
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.7918178376 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -3.066229 eV, LUMO=    4.934942 eV, gap=    8.001172 eV
+
+  Beta HOMO=   -10.325379 eV, LUMO=   -6.796652 eV, gap=    3.528727 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1960849
+  2  HYDROGEN     1.0     0.0000000    -0.0214910    -0.0980425
+  3  HYDROGEN     1.0     0.0000000     0.0214910    -0.0980425
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8014460211   -38.8014460211   0.011440888   0.005723942
+   2  1  0      -38.8015697842    -0.0001237630   0.001682605   0.000832406
+   3  2  0      -38.8015729562    -0.0000031720   0.001431752   0.000396099
+   4  3  0      -38.8015736672    -0.0000007110   0.000164428   0.000075749
+   5  4  0      -38.8015736986    -0.0000000314   0.000048327   0.000014781
+   6  5  0      -38.8015737001    -0.0000000015   0.000000618   0.000000434
+   7  6  0      -38.8015737001    -0.0000000000   0.000000092   0.000000030
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8015737001 AFTER   7 ITERATIONS
+
+ Alpha HOMO=   -11.824710 eV, LUMO=    1.480438 eV, gap=   13.305147 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1300896
+  2  HYDROGEN     1.0     0.0000000    -0.0066449    -0.0650448
+  3  HYDROGEN     1.0     0.0000000     0.0066449    -0.0650448
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   6
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0256709946
+ HYDROGEN    1.0   0.0000000000   0.0168448014  -0.0128354973
+ HYDROGEN    1.0   0.0000000000  -0.0168448014  -0.0128354973
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.010321)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0063557515
+ HYDROGEN    1.0   0.0000000000   0.0211898984  -0.0031778757
+ HYDROGEN    1.0   0.0000000000  -0.0211898984  -0.0031778757
+
+     PARALLEL GRADIENT: (RMS:   0.027837)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0659953377
+ HYDROGEN    1.0   0.0000000000  -0.0148461058  -0.0329976688
+ HYDROGEN    1.0   0.0000000000   0.0148461058  -0.0329976688
+
+  NSERCH=  6        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.79181784
+     ENERGY OF SECOND STATE =    -38.80157370
+     ENERGY DIFFERENCE =           0.00975586        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.025671    0.000500
+     RMS EFFECTIVE GRADIENT =    0.013149    0.000300
+     MAX CHANGE OF X =           0.100000    0.002000
+     RMS CHANGE OF X =           0.049263    0.001500
+
+ NSERCH:   6 E=       -38.79181784       -38.80157370 GM= 0.025671 GR= 0.013149
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3427094044
+ HYDROGEN    1.0   0.0000000000   0.6831705570  -0.6713547022
+ HYDROGEN    1.0   0.0000000000  -0.6831705570  -0.6713547022
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.7944667765   -38.7944667765   0.018778129   0.022264587
+   2  1      -38.7955237259    -0.0010569494   0.006097404   0.004477079
+   3  2      -38.7955727891    -0.0000490632   0.000938111   0.000330337
+   4  3      -38.7955734872    -0.0000006981   0.000289380   0.000095192
+   5  4      -38.7955735174    -0.0000000301   0.000046758   0.000018461
+   6  5      -38.7955735189    -0.0000000015   0.000009031   0.000007001
+   7  6      -38.7955735190    -0.0000000002   0.000002247   0.000001291
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.7955735190 AFTER   7 ITERATIONS
+
+ Alpha HOMO=    -3.030848 eV, LUMO=    5.262672 eV, gap=    8.293520 eV
+
+  Beta HOMO=   -10.360524 eV, LUMO=   -6.812408 eV, gap=    3.548116 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1813677
+  2  HYDROGEN     1.0     0.0000000    -0.0411377    -0.0906838
+  3  HYDROGEN     1.0     0.0000000     0.0411377    -0.0906838
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8037513408   -38.8037513408   0.016744438   0.021706712
+   2  1  0      -38.8048262875    -0.0010749467   0.012020264   0.002095624
+   3  2  0      -38.8048492441    -0.0000229566   0.003078888   0.000820554
+   4  3  0      -38.8048534434    -0.0000041993   0.000367186   0.000118483
+   5  4  0      -38.8048535302    -0.0000000868   0.000048834   0.000014815
+   6  5  0      -38.8048535331    -0.0000000029   0.000023893   0.000004423
+   7  6  0      -38.8048535334    -0.0000000002   0.000004182   0.000000571
+   8  7  0      -38.8048535334    -0.0000000000   0.000000659   0.000000112
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8048535334 AFTER   8 ITERATIONS
+
+ Alpha HOMO=   -11.879886 eV, LUMO=    1.538437 eV, gap=   13.418323 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1123802
+  2  HYDROGEN     1.0     0.0000000    -0.0252255    -0.0561901
+  3  HYDROGEN     1.0     0.0000000     0.0252255    -0.0561901
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   7
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0194058903
+ HYDROGEN    1.0   0.0000000000  -0.0037804868  -0.0097029452
+ HYDROGEN    1.0   0.0000000000   0.0037804868  -0.0097029452
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.000317)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0001997473
+ HYDROGEN    1.0   0.0000000000   0.0006495008  -0.0000998736
+ HYDROGEN    1.0   0.0000000000  -0.0006495008  -0.0000998736
+
+     PARALLEL GRADIENT: (RMS:   0.029146)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0689874764
+ HYDROGEN    1.0   0.0000000000  -0.0159122874  -0.0344937382
+ HYDROGEN    1.0   0.0000000000   0.0159122874  -0.0344937382
+
+  NSERCH=  7        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.79557352
+     ENERGY OF SECOND STATE =    -38.80485353
+     ENERGY DIFFERENCE =           0.00928001        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.019406    0.000500
+     RMS EFFECTIVE GRADIENT =    0.008120    0.000300
+     MAX CHANGE OF X =           0.054297    0.002000
+     RMS CHANGE OF X =           0.022345    0.001500
+
+ NSERCH:   7 E=       -38.79557352       -38.80485353 GM= 0.019406 GR= 0.008120
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3139765328
+ HYDROGEN    1.0   0.0000000000   0.6863329212  -0.6569882664
+ HYDROGEN    1.0   0.0000000000  -0.6863329212  -0.6569882664
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8096894038   -38.8096894038   0.012702649   0.011455756
+   2  1      -38.8101687389    -0.0004793351   0.008555863   0.003768891
+   3  2      -38.8102070149    -0.0000382760   0.001468073   0.000938116
+   4  3      -38.8102111855    -0.0000041705   0.000413193   0.000140451
+   5  4      -38.8102113438    -0.0000001583   0.000071658   0.000030434
+   6  5      -38.8102113495    -0.0000000057   0.000029192   0.000007821
+   7  6      -38.8102113501    -0.0000000006   0.000003957   0.000002889
+   8  7      -38.8102113501    -0.0000000000   0.000001484   0.000001022
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8102113501 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -2.999892 eV, LUMO=    5.595090 eV, gap=    8.594982 eV
+
+  Beta HOMO=   -10.707552 eV, LUMO=   -6.642086 eV, gap=    4.065465 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1649724
+  2  HYDROGEN     1.0     0.0000000    -0.0443815    -0.0824862
+  3  HYDROGEN     1.0     0.0000000     0.0443815    -0.0824862
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8130482532   -38.8130482532   0.015783068   0.011971801
+   2  1  0      -38.8136833828    -0.0006351296   0.010049119   0.002612375
+   3  2  0      -38.8137225411    -0.0000391583   0.004140692   0.001075630
+   4  3  0      -38.8137282626    -0.0000057215   0.000396669   0.000157759
+   5  4  0      -38.8137284040    -0.0000001414   0.000126871   0.000034475
+   6  5  0      -38.8137284128    -0.0000000088   0.000009806   0.000002120
+   7  6  0      -38.8137284129    -0.0000000000   0.000002579   0.000000336
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8137284129 AFTER   7 ITERATIONS
+
+ Alpha HOMO=   -11.732634 eV, LUMO=    1.591479 eV, gap=   13.324113 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0968714
+  2  HYDROGEN     1.0     0.0000000    -0.0298474    -0.0484357
+  3  HYDROGEN     1.0     0.0000000     0.0298474    -0.0484357
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   8
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000   0.0047245982
+ HYDROGEN    1.0   0.0000000000  -0.0101815252  -0.0023622991
+ HYDROGEN    1.0   0.0000000000   0.0101815252  -0.0023622991
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.004199)
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0024608692
+ HYDROGEN    1.0   0.0000000000  -0.0086480076   0.0012304346
+ HYDROGEN    1.0   0.0000000000   0.0086480076   0.0012304346
+
+     PARALLEL GRADIENT: (RMS:   0.028634)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0681010252
+ HYDROGEN    1.0   0.0000000000  -0.0145340744  -0.0340505126
+ HYDROGEN    1.0   0.0000000000   0.0145340744  -0.0340505126
+
+  NSERCH=  8        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.81021135
+     ENERGY OF SECOND STATE =    -38.81372841
+     ENERGY DIFFERENCE =           0.00351706        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.010182    0.000500
+     RMS EFFECTIVE GRADIENT =    0.005173    0.000300
+     MAX CHANGE OF X =           0.071028    0.002000
+     RMS CHANGE OF X =           0.042544    0.001500
+
+ NSERCH:   8 E=       -38.81021135       -38.81372841 GM= 0.010182 GR= 0.005173
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.2799556879
+ HYDROGEN    1.0   0.0000000000   0.7239192177  -0.6399778439
+ HYDROGEN    1.0   0.0000000000  -0.7239192177  -0.6399778439
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8303547927   -38.8303547927   0.016182351   0.014027175
+   2  1      -38.8310501468    -0.0006953541   0.009753951   0.004152786
+   3  2      -38.8311124820    -0.0000623352   0.001366821   0.001355285
+   4  3      -38.8311166367    -0.0000041547   0.000348694   0.000169539
+   5  4      -38.8311167608    -0.0000001241   0.000073208   0.000048150
+   6  5      -38.8311167667    -0.0000000059   0.000008883   0.000006235
+   7  6      -38.8311167669    -0.0000000001   0.000002881   0.000000976
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8311167669 AFTER   7 ITERATIONS
+
+ Alpha HOMO=    -2.968730 eV, LUMO=    5.888245 eV, gap=    8.856975 eV
+
+  Beta HOMO=   -11.242264 eV, LUMO=   -6.366659 eV, gap=    4.875605 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1507129
+  2  HYDROGEN     1.0     0.0000000    -0.0354429    -0.0753564
+  3  HYDROGEN     1.0     0.0000000     0.0354429    -0.0753564
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8252290178   -38.8252290178   0.039660039   0.015113021
+   2  1  0      -38.8262335482    -0.0010045305   0.007825497   0.002768900
+   3  2  0      -38.8262768940    -0.0000433458   0.003399232   0.001501462
+   4  3  0      -38.8262846366    -0.0000077426   0.000434799   0.000132359
+   5  4  0      -38.8262847866    -0.0000001500   0.000122183   0.000034710
+   6  5  0      -38.8262847967    -0.0000000101   0.000006886   0.000002174
+   7  6  0      -38.8262847967    -0.0000000000   0.000002104   0.000000357
+   8  7  0      -38.8262847967    -0.0000000000   0.000000110   0.000000017
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8262847967 AFTER   8 ITERATIONS
+
+ Alpha HOMO=   -11.466158 eV, LUMO=    1.644153 eV, gap=   13.110310 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0847499
+  2  HYDROGEN     1.0     0.0000000    -0.0232006    -0.0423749
+  3  HYDROGEN     1.0     0.0000000     0.0232006    -0.0423749
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =   9
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0113296602
+ HYDROGEN    1.0   0.0000000000  -0.0053688949   0.0056648301
+ HYDROGEN    1.0   0.0000000000   0.0053688949   0.0056648301
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.003444)
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0017677229
+ HYDROGEN    1.0   0.0000000000  -0.0071435281   0.0008838615
+ HYDROGEN    1.0   0.0000000000   0.0071435281   0.0008838615
+
+     PARALLEL GRADIENT: (RMS:   0.027541)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0659629992
+ HYDROGEN    1.0   0.0000000000  -0.0122423022  -0.0329814996
+ HYDROGEN    1.0   0.0000000000   0.0122423022  -0.0329814996
+
+  NSERCH=  9        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.83111677
+     ENERGY OF SECOND STATE =    -38.82628480
+     ENERGY DIFFERENCE =           0.00483197        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.011330    0.000500
+     RMS EFFECTIVE GRADIENT =    0.005272    0.000300
+     MAX CHANGE OF X =           0.019495    0.002000
+     RMS CHANGE OF X =           0.010492    0.001500
+
+ NSERCH:   9 E=       -38.83111677       -38.82628480 GM= 0.011330 GR= 0.005272
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.2902721318
+ HYDROGEN    1.0   0.0000000000   0.7315928925  -0.6451360659
+ HYDROGEN    1.0   0.0000000000  -0.7315928925  -0.6451360659
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8274266240   -38.8274266240   0.005788986   0.004978208
+   2  1      -38.8275241782    -0.0000975543   0.003416540   0.001461580
+   3  2      -38.8275302866    -0.0000061083   0.000604019   0.000376966
+   4  3      -38.8275308516    -0.0000005650   0.000244689   0.000094233
+   5  4      -38.8275308768    -0.0000000252   0.000028109   0.000014327
+   6  5      -38.8275308775    -0.0000000007   0.000006356   0.000002503
+   7  6      -38.8275308775    -0.0000000000   0.000001212   0.000000535
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8275308775 AFTER   7 ITERATIONS
+
+ Alpha HOMO=    -2.982311 eV, LUMO=    5.760256 eV, gap=    8.742567 eV
+
+  Beta HOMO=   -11.132750 eV, LUMO=   -6.410526 eV, gap=    4.722225 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1596618
+  2  HYDROGEN     1.0     0.0000000    -0.0304753    -0.0798309
+  3  HYDROGEN     1.0     0.0000000     0.0304753    -0.0798309
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8241506322   -38.8241506322   0.006386567   0.004523015
+   2  1  0      -38.8242617157    -0.0001110836   0.004394021   0.001137934
+   3  2  0      -38.8242674295    -0.0000057137   0.001364458   0.000399403
+   4  3  0      -38.8242681405    -0.0000007110   0.000126847   0.000042320
+   5  4  0      -38.8242681537    -0.0000000132   0.000035565   0.000010955
+   6  5  0      -38.8242681547    -0.0000000011   0.000007249   0.000001099
+   7  6  0      -38.8242681547    -0.0000000000   0.000001377   0.000000227
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8242681547 AFTER   7 ITERATIONS
+
+ Alpha HOMO=   -11.503066 eV, LUMO=    1.620583 eV, gap=   13.123649 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.0939345
+  2  HYDROGEN     1.0     0.0000000    -0.0181438    -0.0469673
+  3  HYDROGEN     1.0     0.0000000     0.0181438    -0.0469673
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =  10
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0065577826
+ HYDROGEN    1.0   0.0000000000   0.0007101956   0.0032788913
+ HYDROGEN    1.0   0.0000000000  -0.0007101956   0.0032788913
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.000240)
+ CARBON      6.0   0.0000000000   0.0000000000  -0.0001242858
+ HYDROGEN    1.0   0.0000000000  -0.0004968346   0.0000621429
+ HYDROGEN    1.0   0.0000000000   0.0004968346   0.0000621429
+
+     PARALLEL GRADIENT: (RMS:   0.027456)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0657272786
+ HYDROGEN    1.0   0.0000000000  -0.0123315227  -0.0328636393
+ HYDROGEN    1.0   0.0000000000   0.0123315227  -0.0328636393
+
+  NSERCH= 10        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.82753088
+     ENERGY OF SECOND STATE =    -38.82426815
+     ENERGY DIFFERENCE =           0.00326272        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.006558    0.000500
+     RMS EFFECTIVE GRADIENT =    0.002698    0.000300
+     MAX CHANGE OF X =           0.052837    0.002000
+     RMS CHANGE OF X =           0.023016    0.001500
+
+ NSERCH:  10 E=       -38.82753088       -38.82426815 GM= 0.006558 GR= 0.002698
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000  -0.0000000000   0.3182323527
+ HYDROGEN    1.0   0.0000000000   0.7225821487  -0.6591161763
+ HYDROGEN    1.0   0.0000000000  -0.7225821487  -0.6591161763
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8128028537   -38.8128028537   0.011287347   0.011224838
+   2  1      -38.8131946670    -0.0003918132   0.008022526   0.003441175
+   3  2      -38.8132297667    -0.0000350998   0.001267457   0.000857685
+   4  3      -38.8132330250    -0.0000032583   0.000387604   0.000127452
+   5  4      -38.8132331461    -0.0000001211   0.000057453   0.000027606
+   6  5      -38.8132331506    -0.0000000045   0.000020090   0.000006888
+   7  6      -38.8132331511    -0.0000000005   0.000004931   0.000002636
+   8  7      -38.8132331511    -0.0000000000   0.000001769   0.000001066
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8132331511 AFTER   8 ITERATIONS
+
+ Alpha HOMO=    -3.012984 eV, LUMO=    5.473155 eV, gap=    8.486139 eV
+
+  Beta HOMO=   -10.772709 eV, LUMO=   -6.588091 eV, gap=    4.184618 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1748568
+  2  HYDROGEN     1.0     0.0000000    -0.0298968    -0.0874284
+  3  HYDROGEN     1.0     0.0000000     0.0298968    -0.0874284
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8150695668   -38.8150695668   0.019935763   0.011835963
+   2  1  0      -38.8156022343    -0.0005326675   0.008825802   0.002523841
+   3  2  0      -38.8156367770    -0.0000345427   0.002940046   0.000942038
+   4  3  0      -38.8156412227    -0.0000044457   0.000444586   0.000152413
+   5  4  0      -38.8156413668    -0.0000001441   0.000107840   0.000032904
+   6  5  0      -38.8156413755    -0.0000000087   0.000017293   0.000003837
+   7  6  0      -38.8156413755    -0.0000000001   0.000003760   0.000000543
+   8  7  0      -38.8156413755    -0.0000000000   0.000000102   0.000000029
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8156413755 AFTER   8 ITERATIONS
+
+ Alpha HOMO=   -11.664753 eV, LUMO=    1.568685 eV, gap=   13.233438 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1085288
+  2  HYDROGEN     1.0     0.0000000    -0.0163870    -0.0542644
+  3  HYDROGEN     1.0     0.0000000     0.0163870    -0.0542644
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =  11
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0062635090
+ HYDROGEN    1.0   0.0000000000   0.0044424629  -0.0031317545
+ HYDROGEN    1.0   0.0000000000  -0.0044424629  -0.0031317545
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.002624)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0014715278
+ HYDROGEN    1.0   0.0000000000   0.0054184989  -0.0007357639
+ HYDROGEN    1.0   0.0000000000  -0.0054184989  -0.0007357639
+
+     PARALLEL GRADIENT: (RMS:   0.027817)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0663280002
+ HYDROGEN    1.0   0.0000000000  -0.0135097603  -0.0331640001
+ HYDROGEN    1.0   0.0000000000   0.0135097603  -0.0331640001
+
+  NSERCH= 11        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.81323315
+     ENERGY OF SECOND STATE =    -38.81564138
+     ENERGY DIFFERENCE =           0.00240822        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.006264    0.000500
+     RMS EFFECTIVE GRADIENT =    0.003305    0.000300
+     MAX CHANGE OF X =           0.016132    0.002000
+     RMS CHANGE OF X =           0.006944    0.001500
+
+ NSERCH:  11 E=       -38.81323315       -38.81564138 GM= 0.006264 GR= 0.003305
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000  -0.0000000000   0.3096957968
+ HYDROGEN    1.0   0.0000000000   0.7201092089  -0.6548478984
+ HYDROGEN    1.0   0.0000000000  -0.7201092089  -0.6548478984
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8170591860   -38.8170591860   0.003924976   0.003404507
+   2  1      -38.8171075804    -0.0000483944   0.002572656   0.001113906
+   3  2      -38.8171109525    -0.0000033721   0.000462011   0.000275173
+   4  3      -38.8171113033    -0.0000003508   0.000157923   0.000052521
+   5  4      -38.8171113180    -0.0000000147   0.000018324   0.000008734
+   6  5      -38.8171113184    -0.0000000004   0.000005958   0.000002107
+   7  6      -38.8171113184    -0.0000000000   0.000001172   0.000000618
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8171113184 AFTER   7 ITERATIONS
+
+ Alpha HOMO=    -3.002524 eV, LUMO=    5.575111 eV, gap=    8.577635 eV
+
+  Beta HOMO=   -10.866913 eV, LUMO=   -6.545027 eV, gap=    4.321886 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1694979
+  2  HYDROGEN     1.0     0.0000000    -0.0319668    -0.0847490
+  3  HYDROGEN     1.0     0.0000000     0.0319668    -0.0847490
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8179763276   -38.8179763276   0.004774884   0.003526453
+   2  1  0      -38.8180354325    -0.0000591049   0.003294356   0.000832911
+   3  2  0      -38.8180388630    -0.0000034305   0.001106374   0.000290710
+   4  3  0      -38.8180393365    -0.0000004735   0.000111685   0.000041493
+   5  4  0      -38.8180393470    -0.0000000105   0.000033555   0.000009843
+   6  5  0      -38.8180393478    -0.0000000008   0.000004761   0.000000677
+   7  6  0      -38.8180393478    -0.0000000000   0.000000976   0.000000136
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8180393478 AFTER   7 ITERATIONS
+
+ Alpha HOMO=   -11.628745 eV, LUMO=    1.586446 eV, gap=   13.215191 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000    -0.0000000     0.1031375
+  2  HYDROGEN     1.0     0.0000000    -0.0186856    -0.0515688
+  3  HYDROGEN     1.0     0.0000000     0.0186856    -0.0515688
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =  12
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0023430161
+ HYDROGEN    1.0   0.0000000000   0.0014870361  -0.0011715081
+ HYDROGEN    1.0   0.0000000000  -0.0014870361  -0.0011715081
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.000898)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0004954840
+ HYDROGEN    1.0   0.0000000000   0.0018567952  -0.0002477420
+ HYDROGEN    1.0   0.0000000000  -0.0018567952  -0.0002477420
+
+     PARALLEL GRADIENT: (RMS:   0.027806)
+ CARBON      6.0   0.0000000000  -0.0000000000   0.0663604056
+ HYDROGEN    1.0   0.0000000000  -0.0132811570  -0.0331802028
+ HYDROGEN    1.0   0.0000000000   0.0132811570  -0.0331802028
+
+  NSERCH= 12        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.81711132
+     ENERGY OF SECOND STATE =    -38.81803935
+     ENERGY DIFFERENCE =           0.00092803        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.002343    0.000500
+     RMS EFFECTIVE GRADIENT =    0.001186    0.000300
+     MAX CHANGE OF X =           0.010591    0.002000
+     RMS CHANGE OF X =           0.004374    0.001500
+
+ NSERCH:  12 E=       -38.81711132       -38.81803935 GM= 0.002343 GR= 0.001186
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3040914945
+ HYDROGEN    1.0   0.0000000000   0.7193649522  -0.6520457472
+ HYDROGEN    1.0   0.0000000000  -0.7193649522  -0.6520457472
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8196634357   -38.8196634357   0.002507607   0.002265091
+   2  1      -38.8196827398    -0.0000193040   0.001683613   0.000729700
+   3  2      -38.8196841748    -0.0000014350   0.000293938   0.000168597
+   4  3      -38.8196843250    -0.0000001502   0.000097882   0.000032490
+   5  4      -38.8196843307    -0.0000000057   0.000011091   0.000005402
+   6  5      -38.8196843309    -0.0000000002   0.000003539   0.000001274
+   7  6      -38.8196843309    -0.0000000000   0.000000644   0.000000330
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8196843309 AFTER   7 ITERATIONS
+
+ Alpha HOMO=    -2.995860 eV, LUMO=    5.639162 eV, gap=    8.635023 eV
+
+  Beta HOMO=   -10.932152 eV, LUMO=   -6.514715 eV, gap=    4.417438 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1659281
+  2  HYDROGEN     1.0     0.0000000    -0.0330827    -0.0829641
+  3  HYDROGEN     1.0     0.0000000     0.0330827    -0.0829641
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8195696040   -38.8195696040   0.003012096   0.002357047
+   2  1  0      -38.8195938213    -0.0000242173   0.002023130   0.000540022
+   3  2  0      -38.8195952589    -0.0000014376   0.000684993   0.000187235
+   4  3  0      -38.8195954469    -0.0000001881   0.000072797   0.000026480
+   5  4  0      -38.8195954512    -0.0000000043   0.000020725   0.000006176
+   6  5  0      -38.8195954515    -0.0000000003   0.000002941   0.000000480
+   7  6  0      -38.8195954515    -0.0000000000   0.000000617   0.000000085
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8195954515 AFTER   7 ITERATIONS
+
+ Alpha HOMO=   -11.602401 eV, LUMO=    1.597801 eV, gap=   13.200202 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0995886
+  2  HYDROGEN     1.0     0.0000000    -0.0199706    -0.0497943
+  3  HYDROGEN     1.0     0.0000000     0.0199706    -0.0497943
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =  13
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000  -0.0002486745
+ HYDROGEN    1.0   0.0000000000  -0.0002374403   0.0001243372
+ HYDROGEN    1.0   0.0000000000   0.0002374403   0.0001243372
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.000132)
+ CARBON      6.0   0.0000000000  -0.0000000000  -0.0000717881
+ HYDROGEN    1.0   0.0000000000  -0.0002724024   0.0000358941
+ HYDROGEN    1.0   0.0000000000   0.0002724024   0.0000358941
+
+     PARALLEL GRADIENT: (RMS:   0.027779)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0663395058
+ HYDROGEN    1.0   0.0000000000  -0.0131121890  -0.0331697529
+ HYDROGEN    1.0   0.0000000000   0.0131121890  -0.0331697529
+
+  NSERCH= 13        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.81968433
+     ENERGY OF SECOND STATE =    -38.81959545
+     ENERGY DIFFERENCE =           0.00008888        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.000249    0.000500
+     RMS EFFECTIVE GRADIENT =    0.000151    0.000300
+     MAX CHANGE OF X =           0.000755    0.002000
+     RMS CHANGE OF X =           0.000385    0.001500
+
+ NSERCH:  13 E=       -38.81968433       -38.81959545 GM= 0.000249 GR= 0.000151
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3044909334
+ HYDROGEN    1.0   0.0000000000   0.7196233119  -0.6522454667
+ HYDROGEN    1.0   0.0000000000  -0.7196233119  -0.6522454667
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8195283695   -38.8195283695   0.000213987   0.000170953
+   2  1      -38.8195285046    -0.0000001351   0.000126221   0.000054347
+   3  2      -38.8195285130    -0.0000000084   0.000022655   0.000013987
+   4  3      -38.8195285138    -0.0000000008   0.000008783   0.000003311
+   5  4      -38.8195285138    -0.0000000000   0.000001023   0.000000449
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8195285138 AFTER   5 ITERATIONS
+
+ Alpha HOMO=    -2.996380 eV, LUMO=    5.634153 eV, gap=    8.630533 eV
+
+  Beta HOMO=   -10.928048 eV, LUMO=   -6.516450 eV, gap=    4.411598 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1662298
+  2  HYDROGEN     1.0     0.0000000    -0.0329216    -0.0831149
+  3  HYDROGEN     1.0     0.0000000     0.0329216    -0.0831149
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8195017713   -38.8195017713   0.000241737   0.000171086
+   2  1  0      -38.8195019271    -0.0000001558   0.000169772   0.000041810
+   3  2  0      -38.8195019352    -0.0000000081   0.000055609   0.000015274
+   4  3  0      -38.8195019364    -0.0000000011   0.000005016   0.000001812
+   5  4  0      -38.8195019364    -0.0000000000   0.000001546   0.000000459
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8195019364 AFTER   5 ITERATIONS
+
+ Alpha HOMO=   -11.603814 eV, LUMO=    1.596907 eV, gap=   13.200721 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0998981
+  2  HYDROGEN     1.0     0.0000000    -0.0198036    -0.0499490
+  3  HYDROGEN     1.0     0.0000000     0.0198036    -0.0499490
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =  14
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000  -0.0000000000  -0.0000648027
+ HYDROGEN    1.0   0.0000000000  -0.0000347270   0.0000324013
+ HYDROGEN    1.0   0.0000000000   0.0000347270   0.0000324013
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.000022)
+ CARBON      6.0   0.0000000000  -0.0000000000  -0.0000119149
+ HYDROGEN    1.0   0.0000000000  -0.0000451862   0.0000059574
+ HYDROGEN    1.0   0.0000000000   0.0000451862   0.0000059574
+
+     PARALLEL GRADIENT: (RMS:   0.027777)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0663317108
+ HYDROGEN    1.0   0.0000000000  -0.0131179296  -0.0331658554
+ HYDROGEN    1.0   0.0000000000   0.0131179296  -0.0331658554
+
+  NSERCH= 14        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.81952851
+     ENERGY OF SECOND STATE =    -38.81950194
+     ENERGY DIFFERENCE =           0.00002658        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.000065    0.000500
+     RMS EFFECTIVE GRADIENT =    0.000031    0.000300
+     MAX CHANGE OF X =           0.000387    0.002000
+     RMS CHANGE OF X =           0.000158    0.001500
+
+ NSERCH:  14 E=       -38.81952851       -38.81950194 GM= 0.000065 GR= 0.000031
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3046957576
+ HYDROGEN    1.0   0.0000000000   0.7196240002  -0.6523478788
+ HYDROGEN    1.0   0.0000000000  -0.7196240002  -0.6523478788
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8194320244   -38.8194320244   0.000089100   0.000083033
+   2  1      -38.8194320486    -0.0000000242   0.000060965   0.000026393
+   3  2      -38.8194320505    -0.0000000019   0.000010291   0.000005845
+   4  3      -38.8194320507    -0.0000000002   0.000003394   0.000001113
+   5  4      -38.8194320507    -0.0000000000   0.000000398   0.000000196
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8194320507 AFTER   5 ITERATIONS
+
+ Alpha HOMO=    -2.996617 eV, LUMO=    5.631884 eV, gap=    8.628501 eV
+
+  Beta HOMO=   -10.925579 eV, LUMO=   -6.517616 eV, gap=    4.407963 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1663571
+  2  HYDROGEN     1.0     0.0000000    -0.0328901    -0.0831786
+  3  HYDROGEN     1.0     0.0000000     0.0328901    -0.0831786
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8194439181   -38.8194439181   0.000119391   0.000086684
+   2  1  0      -38.8194439493    -0.0000000311   0.000070548   0.000019407
+   3  2  0      -38.8194439512    -0.0000000019   0.000023912   0.000006831
+   4  3  0      -38.8194439514    -0.0000000002   0.000002775   0.000000995
+   5  4  0      -38.8194439514    -0.0000000000   0.000000746   0.000000227
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8194439514 AFTER   5 ITERATIONS
+
+ Alpha HOMO=   -11.604843 eV, LUMO=    1.596503 eV, gap=   13.201346 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1000235
+  2  HYDROGEN     1.0     0.0000000    -0.0197653    -0.0500117
+  3  HYDROGEN     1.0     0.0000000     0.0197653    -0.0500117
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =  15
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000   0.0000300458
+ HYDROGEN    1.0   0.0000000000   0.0000194345  -0.0000150229
+ HYDROGEN    1.0   0.0000000000  -0.0000194345  -0.0000150229
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.000012)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0000063633
+ HYDROGEN    1.0   0.0000000000   0.0000241203  -0.0000031816
+ HYDROGEN    1.0   0.0000000000  -0.0000241203  -0.0000031816
+
+     PARALLEL GRADIENT: (RMS:   0.027778)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0663336940
+ HYDROGEN    1.0   0.0000000000  -0.0131248048  -0.0331668470
+ HYDROGEN    1.0   0.0000000000   0.0131248048  -0.0331668470
+
+  NSERCH= 15        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.81943205
+     ENERGY OF SECOND STATE =    -38.81944395
+     ENERGY DIFFERENCE =           0.00001190        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.000030    0.000500
+     RMS EFFECTIVE GRADIENT =    0.000015    0.000300
+     MAX CHANGE OF X =           0.000115    0.002000
+     RMS CHANGE OF X =           0.000047    0.001500
+
+ NSERCH:  15 E=       -38.81943205       -38.81944395 GM= 0.000030 GR= 0.000015
+
+     CONVERGENCE NOT ACHIEVED YET
+
+     ---------
+     STATE # 1                    MULTIPLICITY OF STATE 1 IS: 3
+     ---------
+
+ COORDINATES OF SYMMETRY UNIQUE ATOMS (ANGS)
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3046351182
+ HYDROGEN    1.0   0.0000000000   0.7196181788  -0.6523175591
+ HYDROGEN    1.0   0.0000000000  -0.7196181788  -0.6523175591
+
+     COPIED ORBITALS FOR STATE #1 TO RECORD   15
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+                 ROHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0      -38.8194599160   -38.8194599160   0.000026972   0.000024640
+   2  1      -38.8194599182    -0.0000000022   0.000018231   0.000007887
+   3  2      -38.8194599184    -0.0000000002   0.000003148   0.000001774
+   4  3      -38.8194599184    -0.0000000000   0.000001068   0.000000350
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS      -38.8194599184 AFTER   4 ITERATIONS
+
+ Alpha HOMO=    -2.996541 eV, LUMO=    5.632571 eV, gap=    8.629112 eV
+
+  Beta HOMO=   -10.926293 eV, LUMO=   -6.517279 eV, gap=    4.409014 eV
+
+          SPIN SZ   =    1.000
+          S-SQUARED =    2.000
+ ...... END OF ROHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF  FIRST STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.1663183
+  2  HYDROGEN     1.0     0.0000000    -0.0329016    -0.0831592
+  3  HYDROGEN     1.0     0.0000000     0.0329016    -0.0831592
+
+     ---------
+     STATE # 2                    MULTIPLICITY OF STATE 2 IS: 1
+     ---------
+
+
+     COPIED ORBITALS FOR STATE #2 TO RECORD   15
+
+                 RHF SCF CALCULATION
+     DENSITY MATRIX CONV=  1.00E-05
+
+ ITER EX DEM     TOTAL ENERGY        E CHANGE  DENSITY CHANGE     ORB. GRAD
+          ---------------START SECOND ORDER SCF---------------
+   1  0  0      -38.8194607029   -38.8194607029   0.000032140   0.000025688
+   2  1  0      -38.8194607057    -0.0000000028   0.000021645   0.000005840
+   3  2  0      -38.8194607059    -0.0000000002   0.000007238   0.000001998
+   4  3  0      -38.8194607059    -0.0000000000   0.000000795   0.000000286
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL RHF ENERGY IS      -38.8194607059 AFTER   4 ITERATIONS
+
+ Alpha HOMO=   -11.604546 eV, LUMO=    1.596627 eV, gap=   13.201173 eV
+ ...... END OF RHF CALCULATION ......
+ ..... END OF 1-ELECTRON GRADIENT ......
+ ...... END OF 2-ELECTRON GRADIENT ......
+
+                  GRADIENT OF SECOND STATE (HARTREE/BOHR)
+        ATOM     ZNUC       DE/DX         DE/DY         DE/DZ
+  1  CARBON       6.0     0.0000000     0.0000000     0.0999848
+  2  HYDROGEN     1.0     0.0000000    -0.0197786    -0.0499924
+  3  HYDROGEN     1.0     0.0000000     0.0197786    -0.0499924
+
+                  -------------------
+                  EFFECTIVE GRADIENTS
+                  -------------------
+ NSERCH =  16
+
+   ATOM   CHARGE       X              Y              Z
+     OVERALL EFFECTIVE GRADIENT:
+ CARBON      6.0   0.0000000000   0.0000000000   0.0000019878
+ HYDROGEN    1.0   0.0000000000   0.0000012845  -0.0000009939
+ HYDROGEN    1.0   0.0000000000  -0.0000012845  -0.0000009939
+
+     DIFFERENCE GRADIENT: (RMS * DE:   0.000001)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0000004206
+ HYDROGEN    1.0   0.0000000000   0.0000015946  -0.0000002103
+ HYDROGEN    1.0   0.0000000000  -0.0000015946  -0.0000002103
+
+     PARALLEL GRADIENT: (RMS:   0.027778)
+ CARBON      6.0   0.0000000000   0.0000000000   0.0663335200
+ HYDROGEN    1.0   0.0000000000  -0.0131229594  -0.0331667600
+ HYDROGEN    1.0   0.0000000000   0.0131229594  -0.0331667600
+
+  NSERCH= 16        ACTUAL                 THRESHOLD
+     ------------------------------------  ----------
+     ENERGY OF FIRST STATE  =    -38.81945992
+     ENERGY OF SECOND STATE =    -38.81946071
+     ENERGY DIFFERENCE =           0.00000079        0.00001000
+     MAX EFFECTIVE GRADIENT =    0.000002    0.000500
+     RMS EFFECTIVE GRADIENT =    0.000001    0.000300
+     MAX CHANGE OF X =           0.000008    0.002000
+     RMS CHANGE OF X =           0.000003    0.001500
+
+ NSERCH:  16 E=       -38.81945992       -38.81946071 GM= 0.000002 GR= 0.000001
+
+     MEX OPTIMIZATION HAS CONVERGED.
+     BYE, BYE, BUH-BYE.  THANK YOU, AND FLY WITH US AGAIN.
+
+  CONVERGENCE ACHIEVED IN   16 STEPS
+  CONVERGED GEOMETRY IN ANGS.
+
+   ATOM   CHARGE       X              Y              Z
+ CARBON      6.0   0.0000000000   0.0000000000   0.3046308196
+ HYDROGEN    1.0   0.0000000000   0.7196177697  -0.6523154098
+ HYDROGEN    1.0   0.0000000000  -0.7196177697  -0.6523154098
+
+          INTERNUCLEAR DISTANCES (ANGS.)
+
+                1 CARB       2 HYDR       3 HYDR
+
+   1 CARB    0.0000000    1.1973286 *  1.1973286 *
+   2 HYDR    1.1973286 *  0.0000000    1.4392355 *
+   3 HYDR    1.1973286 *  1.4392355 *  0.0000000
+
+  * ... LESS THAN  3.000
+
+ THE ORBITALS $VEC1 AND $VEC2 AT THE LAST GEOMETRY WERE PUNCHED.
+
+ IT IS A GOOD IDEA TO USE THEM IN RUNTYP=ENERGY JOBS, AT THE MEX POINT,
+ TO BE SURE THE ELECTRONIC STATES REMAIN AS YOU WANTED THEM TO BE,
+ TO DOUBLE CHECK ENERGIES, AND TO SEE THE PROPERTIES OF EACH SURFACE.
+
+ .... DONE WITH MINIMUM ENERGY CROSSING POINT SEARCH ....
+ EXECUTION OF GAMESS TERMINATED NORMALLY DATE
+
