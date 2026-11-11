@@ -56,8 +56,80 @@ class _ElectronicParsingMixin:
             return None, None
         return counts["ALPHA"], counts.get("BETA", counts["ALPHA"])
 
+    def _gvb_occupations(self):
+        """{0-based orbital: electrons} of a GVB/ROHF-GVB job, or None.
+
+        Core orbitals hold two; each open-shell set holds 2F per orbital from
+        the F vector, whose first entry is the core's; pairs take their
+        converged occupations from the last PAIR INFORMATION table.
+        """
+        start = None
+        for i, line in enumerate(self.lines):
+            if "ROHF-GVB INPUT PARAMETERS" in line:
+                start = i
+        if start is None:
+            return None
+        nco, f_vector, sets, pairs = None, {}, {}, {}
+        reading_f = False
+        for line in self.lines[start:]:
+            text = line.strip()
+            if "FINAL GVB ENERGY" in text or text == "EIGENVECTORS":
+                break
+            match = re.search(r"\bNCO\s*=\s*(\d+)", text)
+            if match:
+                nco = int(match.group(1))
+            match = re.match(r"^(SET|PAIR)\s+(\d+) HAS ORBS\s+([\d\s]+)$", text)
+            if match:
+                target = sets if match.group(1) == "SET" else pairs
+                target[int(match.group(2))] = [int(n) - 1 for n in match.group(3).split()]
+            if text == "F VECTOR (OCCUPANCIES)":
+                reading_f = True
+                continue
+            if reading_f:
+                parts = text.split()
+                if len(parts) == 2 and parts[0].isdigit():
+                    f_vector[int(parts[0])] = float(parts[1])
+                    continue
+                reading_f = False
+        if nco is None:
+            return None
+        occupations = {k: 2.0 for k in range(nco)}
+        for k, orbitals in sets.items():
+            for orbital in orbitals:
+                occupations[orbital] = 2.0 * f_vector.get(k + 1, 0.0)
+        offset = len(sets) + 1
+        for k, orbitals in pairs.items():
+            for j, orbital in enumerate(orbitals):
+                occupations[orbital] = 2.0 * f_vector.get(offset + 2 * (k - 1) + j + 1, 0.0)
+        for k, first, second in self._gvb_pair_occupations():
+            if k in pairs and len(pairs[k]) == 2:
+                occupations[pairs[k][0]], occupations[pairs[k][1]] = first, second
+        return occupations
+
+    def _gvb_pair_occupations(self):
+        """[(pair, occupation 1, occupation 2)] of the last PAIR INFORMATION table."""
+        start = None
+        for i, line in enumerate(self.lines):
+            if line.strip() == "PAIR INFORMATION":
+                start = i
+        if start is None:
+            return []
+        rows = []
+        for line in self.lines[start + 4 :]:
+            parts = line.split()
+            if len(parts) < 7 or not all(p.isdigit() for p in parts[:3]):
+                break
+            try:
+                rows.append((int(parts[0]), float(parts[5]), float(parts[6])))
+            except ValueError:
+                break
+        return rows
+
     def _occupation(self, index, spin):
         """Electrons in 0-based orbital *index*."""
+        gvb = getattr(self, "_gvb", None)
+        if gvb is not None and spin == "restricted":
+            return gvb.get(index, 0.0)
         n_alpha, n_beta = self._electron_counts()
         if n_alpha is None:
             return 0.0
@@ -107,6 +179,7 @@ class _ElectronicParsingMixin:
         self.data["mo_coeffs"] = {}
         self.data["cartesian_d"] = False
         self.data["cartesian_f"] = False
+        self._gvb = self._gvb_occupations()
         blocks = self._last_mo_blocks()
         if "natural" in blocks or "optimized" in blocks:
             self._read_mcscf_orbitals(blocks)
