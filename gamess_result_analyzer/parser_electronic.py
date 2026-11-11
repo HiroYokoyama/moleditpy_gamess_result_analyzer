@@ -56,8 +56,80 @@ class _ElectronicParsingMixin:
             return None, None
         return counts["ALPHA"], counts.get("BETA", counts["ALPHA"])
 
+    def _gvb_occupations(self):
+        """{0-based orbital: electrons} of a GVB/ROHF-GVB job, or None.
+
+        Core orbitals hold two; each open-shell set holds 2F per orbital from
+        the F vector, whose first entry is the core's; pairs take their
+        converged occupations from the last PAIR INFORMATION table.
+        """
+        start = None
+        for i, line in enumerate(self.lines):
+            if "ROHF-GVB INPUT PARAMETERS" in line:
+                start = i
+        if start is None:
+            return None
+        nco, f_vector, sets, pairs = None, {}, {}, {}
+        reading_f = False
+        for line in self.lines[start:]:
+            text = line.strip()
+            if "FINAL GVB ENERGY" in text or text == "EIGENVECTORS":
+                break
+            match = re.search(r"\bNCO\s*=\s*(\d+)", text)
+            if match:
+                nco = int(match.group(1))
+            match = re.match(r"^(SET|PAIR)\s+(\d+) HAS ORBS\s+([\d\s]+)$", text)
+            if match:
+                target = sets if match.group(1) == "SET" else pairs
+                target[int(match.group(2))] = [int(n) - 1 for n in match.group(3).split()]
+            if text == "F VECTOR (OCCUPANCIES)":
+                reading_f = True
+                continue
+            if reading_f:
+                parts = text.split()
+                if len(parts) == 2 and parts[0].isdigit():
+                    f_vector[int(parts[0])] = float(parts[1])
+                    continue
+                reading_f = False
+        if nco is None:
+            return None
+        occupations = {k: 2.0 for k in range(nco)}
+        for k, orbitals in sets.items():
+            for orbital in orbitals:
+                occupations[orbital] = 2.0 * f_vector.get(k + 1, 0.0)
+        offset = len(sets) + 1
+        for k, orbitals in pairs.items():
+            for j, orbital in enumerate(orbitals):
+                occupations[orbital] = 2.0 * f_vector.get(offset + 2 * (k - 1) + j + 1, 0.0)
+        for k, first, second in self._gvb_pair_occupations():
+            if k in pairs and len(pairs[k]) == 2:
+                occupations[pairs[k][0]], occupations[pairs[k][1]] = first, second
+        return occupations
+
+    def _gvb_pair_occupations(self):
+        """[(pair, occupation 1, occupation 2)] of the last PAIR INFORMATION table."""
+        start = None
+        for i, line in enumerate(self.lines):
+            if line.strip() == "PAIR INFORMATION":
+                start = i
+        if start is None:
+            return []
+        rows = []
+        for line in self.lines[start + 4 :]:
+            parts = line.split()
+            if len(parts) < 7 or not all(p.isdigit() for p in parts[:3]):
+                break
+            try:
+                rows.append((int(parts[0]), float(parts[5]), float(parts[6])))
+            except ValueError:
+                break
+        return rows
+
     def _occupation(self, index, spin):
         """Electrons in 0-based orbital *index*."""
+        gvb = getattr(self, "_gvb", None)
+        if gvb is not None and spin == "restricted":
+            return gvb.get(index, 0.0)
         n_alpha, n_beta = self._electron_counts()
         if n_alpha is None:
             return 0.0
@@ -86,6 +158,11 @@ class _ElectronicParsingMixin:
             elif text == "MOLECULAR ORBITALS":
                 # An optimization repeats the orbitals here at the final geometry.
                 found = {"restricted": i}
+            elif text == "MCSCF NATURAL ORBITALS":
+                found = {"natural": i}
+            elif text == "MCSCF OPTIMIZED ORBITALS":
+                found = {"natural": found["natural"]} if "natural" in found else {}
+                found["optimized"] = i
             elif text == "**** ALPHA SET ****":
                 found = {"alpha": i}
             elif text == "**** BETA SET ****":
@@ -102,11 +179,45 @@ class _ElectronicParsingMixin:
         self.data["mo_coeffs"] = {}
         self.data["cartesian_d"] = False
         self.data["cartesian_f"] = False
-        for spin, title in self._last_mo_blocks().items():
+        self._gvb = self._gvb_occupations()
+        blocks = self._last_mo_blocks()
+        if "natural" in blocks or "optimized" in blocks:
+            self._read_mcscf_orbitals(blocks)
+            return
+        for spin, title in blocks.items():
             self._read_mo_block(title + 2, spin)
 
-    def _read_mo_block(self, start, spin):
-        """Read the column blocks of one MO table, starting at line *start*."""
+    def _read_mcscf_orbitals(self, blocks):
+        """Natural orbitals with their occupations, then the virtual optimized ones.
+
+        The natural-orbital table stops after the active orbitals; the
+        transformation leaves the others as optimized. Its second row holds
+        occupations, except for canonicalized core orbitals, whose energy it
+        repeats from the optimized table. An uncanonicalized orbital prints
+        an energy of zero there, so it is given none.
+        """
+        natural = {}
+        if "natural" in blocks:
+            self._read_mo_block(blocks["natural"] + 2, "restricted", occupations=True)
+            natural = self.data["mo_coeffs"]
+            self.data["mo_coeffs"] = {}
+        if "optimized" in blocks:
+            self._read_mo_block(blocks["optimized"] + 2, "restricted")
+        optimized = self.data["mo_coeffs"]
+        for key, mo in optimized.items():
+            energy = mo["energy"] or None
+            if key not in natural:
+                natural[key] = dict(mo, occ=0.0, energy=energy)
+            elif energy is not None and abs(natural[key]["occ"] - energy) < 1e-4:
+                natural[key].update(occ=2.0, energy=energy)
+        self.data["mo_coeffs"] = natural
+
+    def _read_mo_block(self, start, spin, occupations=False):
+        """Read the column blocks of one MO table, starting at line *start*.
+
+        With *occupations*, the row under the orbital numbers holds
+        occupations, as in natural-orbital tables, instead of energies.
+        """
         columns = []
         expect_energy = False
         expect_symmetry = False
@@ -131,8 +242,8 @@ class _ElectronicParsingMixin:
                     self.data["mo_coeffs"][f"{column}_{spin}"] = {
                         "coeffs": [],
                         "spin": spin,
-                        "energy": energy,
-                        "occ": self._occupation(column, spin),
+                        "energy": None if occupations else energy,
+                        "occ": energy if occupations else self._occupation(column, spin),
                         "id": column,
                     }
                 expect_symmetry = True
@@ -180,7 +291,7 @@ class _ElectronicParsingMixin:
                 "occupation": occ,
                 "occ": occ,
                 "energy_eh": energy,
-                "energy_ev": energy * HARTREE_TO_EV,
+                "energy_ev": None if energy is None else energy * HARTREE_TO_EV,
                 "energy": energy,
                 "spin": spin,
                 "type": "occupied" if occ > 0.1 else "virtual",

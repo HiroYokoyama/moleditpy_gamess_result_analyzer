@@ -74,6 +74,7 @@ class GAMESSParser(
         ("parse_basis_set", "Reading basis set"),
         ("parse_scf_trace", "Reading SCF convergence"),
         ("parse_scan_results_table", "Reading scan results"),
+        ("parse_fmo", "Reading FMO results"),
     )
 
     def load_from_memory(self, content, filename="", progress=None):

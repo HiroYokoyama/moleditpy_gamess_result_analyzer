@@ -1,7 +1,8 @@
 """Parser cases found by running GAMESS's own example inputs through it.
 
 Each fixture is a small job written for this suite that shows the same output
-layout: atoms named in words, an effective core potential, a saddle point.
+layout: atoms named in words, an effective core potential, a saddle point,
+GVB and MCSCF orbitals, FMO, IRC, DRC, MEX and TRANSITN runs.
 """
 
 import importlib
@@ -167,6 +168,83 @@ class TestBondOrderTable(unittest.TestCase):
         parser.data["atoms"] = ["O", "H", "H"]
         parser.parse_mayer_bond_orders()
         self.assertEqual(len(parser.data["mayer_bond_orders"]), 1)
+
+
+class TestCorrelatedOrbitals(unittest.TestCase):
+    def test_gvb_pair_orbitals_share_two_electrons(self):
+        occ = [o["occ"] for o in _parse("methylene_gvb")["orbital_energies"]]
+        self.assertEqual(occ[:3], [2.0, 2.0, 2.0])
+        self.assertAlmostEqual(occ[3] + occ[4], 2.0, places=4)
+        self.assertGreater(occ[3], 1.9)
+        self.assertAlmostEqual(sum(occ), 8.0, places=4)
+
+    def test_mcscf_natural_orbitals_carry_occupations(self):
+        orbitals = _parse("water_casscf")["orbital_energies"]
+        occ = [o["occ"] for o in orbitals]
+        self.assertAlmostEqual(sum(occ), 10.0, places=3)
+        self.assertEqual(occ[0], 2.0)
+        self.assertTrue(all(0.0 < v < 2.0 for v in occ[1:7]))
+        self.assertTrue(all(v == 0.0 for v in occ[7:]))
+        # A canonicalized core keeps its energy; a natural orbital has none.
+        self.assertLess(orbitals[0]["energy"], -20.0)
+        self.assertIsNone(orbitals[3]["energy"])
+
+
+class TestFMO(unittest.TestCase):
+    """Each fragment prints its own SCF; the FMO properties describe the dimer."""
+
+    def setUp(self):
+        self.data = _parse("water_dimer_fmo")
+
+    def test_energy_and_structure_of_the_whole_system(self):
+        self.assertAlmostEqual(self.data["scf_energy"], -149.933304241)
+        self.assertEqual(self.data["atoms"], ["O", "H", "H", "O", "H", "H"])
+        self.assertEqual(self.data["coords"][3], [2.9, 0.0, 0.0])
+
+    def test_gradient_of_every_atom(self):
+        grads = self.data["gradients"]
+        self.assertEqual(len(grads), 6)
+        for k in range(3):
+            self.assertAlmostEqual(sum(g["vector"][k] for g in grads), 0.0, places=5)
+
+    def test_no_fragment_orbitals_or_charges(self):
+        self.assertEqual(self.data["mo_coeffs"], {})
+        self.assertEqual(self.data["charges"], {})
+
+
+class TestPaths(unittest.TestCase):
+    def test_irc_starts_at_the_saddle_point(self):
+        steps = _parse("hcn_irc")["scan_steps"]
+        self.assertEqual([s["scan_coord"] for s in steps], [0.0, 0.29986, 0.59961, 0.89932])
+        self.assertAlmostEqual(steps[0]["energy"], -91.5648510305)
+        self.assertAlmostEqual(steps[-1]["energy"], -91.5878383864)
+        self.assertEqual([len(s["gradients"]) for s in steps], [0, 3, 3, 3])
+
+    def test_drc_has_a_point_per_time(self):
+        steps = _parse("water_drc")["scan_steps"]
+        self.assertEqual(len(steps), 7)
+        self.assertEqual([s["scan_coord"] for s in steps[:3]], [0.0, 0.2, 0.4])
+        self.assertTrue(all(len(s["coords"]) == 3 for s in steps))
+        self.assertTrue(all(len(s["gradients"]) == 3 for s in steps))
+
+    def test_mex_steps_and_the_crossing(self):
+        data = _parse("methylene_mex")
+        steps = data["scan_steps"]
+        self.assertGreater(len(steps), 5)
+        self.assertTrue(all("energy_2" in s for s in steps))
+        last = steps[-1]
+        self.assertAlmostEqual(last["energy"], last["energy_2"], places=4)
+        self.assertTrue(data["converged"])
+
+
+class TestTransitionMoments(unittest.TestCase):
+    def test_transition_from_the_lowest_state(self):
+        data = _parse("water_transitn")
+        self.assertAlmostEqual(data["scf_energy"], -75.0118945209)
+        states = data["tddft"]
+        self.assertEqual(len(states), 1)
+        self.assertAlmostEqual(states[0]["energy_ev"], 16.6943, places=3)
+        self.assertAlmostEqual(states[0]["osc"], 0.064135)
 
 
 if __name__ == "__main__":

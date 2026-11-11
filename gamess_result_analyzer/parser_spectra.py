@@ -182,6 +182,7 @@ class _SpectraParsingMixin:
             if "SUMMARY OF TDDFT RESULTS" in line:
                 start = i
         if start is None:
+            self._read_transition_moments()
             return
         states = {}
         for line in self.lines[start:]:
@@ -214,6 +215,54 @@ class _SpectraParsingMixin:
                     f"{amplitude.group(1)} -> {amplitude.group(2)} "
                     f"(coeff: {amplitude.group(3)})"
                 )
+        self.data["tddft"] = [states[k] for k in sorted(states)]
+
+    def _read_transition_moments(self):
+        """Transitions from the lowest CI state of a RUNTYP=TRANSITN job (length form)."""
+        states, pair, energies, ev = {}, None, None, None
+        reading = False
+        for line in self.lines:
+            text = line.strip()
+            if text == "---- LENGTH FORM ----":
+                reading = True
+                continue
+            if text.startswith("---- ") and text.endswith(" ----"):
+                reading = False
+            if not reading:
+                continue
+            match = re.match(r"^CI STATE NUMBER=\s*(\d+)\s+(\d+)", text)
+            if match:
+                pair, energies, ev = (int(match.group(1)), int(match.group(2))), None, None
+                continue
+            match = re.match(r"^STATE ENERGIES\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)", text)
+            if match:
+                energies = (float(match.group(1)), float(match.group(2)))
+                continue
+            match = re.search(r"=\s*(-?\d+\.\d+) \[EV\]", text)
+            if text.startswith("TRANSITION ENERGY") and match:
+                ev = float(match.group(1))
+                continue
+            match = re.match(r"^OSCILLATOR STRENGTH =\s*(-?\d+\.\d+)", text)
+            if not (match and pair and ev):
+                continue
+            lower, upper = pair
+            if lower != 1 or upper == 1:
+                continue
+            if energies and self.data.get("scf_energy") is None:
+                self.data["scf_energy"] = energies[0]
+            osc = float(match.group(1))
+            if energies:
+                ev = (energies[1] - energies[0]) * 27.211386245988
+            states[upper] = {
+                "state": upper - 1,
+                "label": f"CI state {upper}",
+                "energy_ev": ev,
+                "energy_nm": EV_NM / ev,
+                "energy_cm": ev * EV_TO_CM,
+                "osc": osc,
+                "osc_len": osc,
+                "transitions": [],
+            }
         self.data["tddft"] = [states[k] for k in sorted(states)]
 
     def parse_nmr(self):

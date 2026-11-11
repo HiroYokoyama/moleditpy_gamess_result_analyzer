@@ -1,0 +1,441 @@
+          *******************************************************
+          *                                                     *
+          *      GAMESS VERSION = 15 JUL 2024 (R2 Patch 1)          *
+          *                                                     *
+          *              doi.org/10.1063/5.0005188              *
+          *                                                     *
+          **************** 64 BIT LINUX VERSION *****************
+
+
+            ECHO OF THE FIRST FEW INPUT CARDS -
+ INPUT CARD> $CONTRL SCFTYP=GVB RUNTYP=ENERGY $END
+ INPUT CARD> $SYSTEM MWORDS=100 $END
+ INPUT CARD> $BASIS GBASIS=N31 NGAUSS=6 $END
+ INPUT CARD> $SCF NCO=3 NPAIR=1 $END
+ INPUT CARD> $DATA
+ INPUT CARD>ch2_gvb sample
+ INPUT CARD>C1
+ INPUT CARD>CARBON     6.0     0.000000     0.000000     0.100000
+ INPUT CARD>HYDROGEN   1.0     0.000000     0.870000    -0.600000
+ INPUT CARD>HYDROGEN   1.0     0.000000    -0.870000    -0.600000
+ INPUT CARD> $END
+    100000000 WORDS OF MEMORY AVAILABLE
+
+     BASIS OPTIONS
+     -------------
+     GBASIS=N31          IGAUSS=       6      POLAR=NONE
+     NDFUNC=       0     NFFUNC=       0     DIFFSP=       F
+     NPFUNC=       0      DIFFS=       F     BASNAM=
+
+
+     RUN TITLE
+     ---------
+ ch2_gvb sample
+
+ THE POINT GROUP OF THE MOLECULE IS C1
+ THE ORDER OF THE PRINCIPAL AXIS IS     0
+
+ ATOM      ATOMIC                      COORDINATES (BOHR)
+           CHARGE         X                   Y                   Z
+ CARBON      6.0     0.0000000000        0.0000000000        0.1889725988
+ HYDROGEN    1.0     0.0000000000        1.6440616093       -1.1338355926
+ HYDROGEN    1.0     0.0000000000       -1.6440616093       -1.1338355926
+
+          INTERNUCLEAR DISTANCES (ANGS.)
+
+                1 CARB       2 HYDR       3 HYDR
+
+   1 CARB    0.0000000    1.1166468 *  1.1166468 *
+   2 HYDR    1.1166468 *  0.0000000    1.7400000 *
+   3 HYDR    1.1166468 *  1.7400000 *  0.0000000
+
+  * ... LESS THAN  3.000
+
+
+     ATOMIC BASIS SET
+     ----------------
+ THE CONTRACTED PRIMITIVE FUNCTIONS HAVE BEEN UNNORMALIZED
+ THE CONTRACTED BASIS FUNCTIONS ARE NOW NORMALIZED TO UNITY
+
+  SHELL TYPE  PRIMITIVE        EXPONENT          CONTRACTION COEFFICIENT(S)
+
+ CARBON
+
+      1   S       1          3047.5248800    0.001834737132
+      1   S       2           457.3695180    0.014037322813
+      1   S       3           103.9486850    0.068842622264
+      1   S       4            29.2101553    0.232184443216
+      1   S       5             9.2866630    0.467941348435
+      1   S       6             3.1639270    0.362311985337
+
+      2   L       7             7.8682723   -0.119332419775    0.068999066591
+      2   L       8             1.8812885   -0.160854151696    0.316423960957
+      2   L       9             0.5442493    1.143456437840    0.744308290898
+
+      3   L      10             0.1687145    1.000000000000    1.000000000000
+
+ HYDROGEN
+
+      4   S      11            18.7311370    0.033494604338
+      4   S      12             2.8253944    0.234726953484
+      4   S      13             0.6401217    0.813757326146
+
+      5   S      14             0.1612778    1.000000000000
+
+ HYDROGEN
+
+      6   S      15            18.7311370    0.033494604338
+      6   S      16             2.8253944    0.234726953484
+      6   S      17             0.6401217    0.813757326146
+
+      7   S      18             0.1612778    1.000000000000
+
+ TOTAL NUMBER OF BASIS SET SHELLS             =    7
+ NUMBER OF CARTESIAN GAUSSIAN BASIS FUNCTIONS =   13
+ NUMBER OF ELECTRONS                          =    8
+ CHARGE OF MOLECULE                           =    0
+ SPIN MULTIPLICITY                            =    1
+ NUMBER OF OCCUPIED ORBITALS (ALPHA)          =    4
+ NUMBER OF OCCUPIED ORBITALS (BETA )          =    4
+ TOTAL NUMBER OF ATOMS                        =    3
+ THE NUCLEAR REPULSION ENERGY IS        5.9909070902
+
+     $CONTRL OPTIONS
+     ---------------
+ SCFTYP=GVB          RUNTYP=ENERGY       EXETYP=RUN
+ MPLEVL=       0     CITYP =NONE         CCTYP =NONE         VBTYP =NONE
+ DFTTYP=NONE         TDDFT =NONE
+ MULT  =       1     ICHARG=       0     NZVAR =       0     COORD =UNIQUE
+ PP    =NONE         RELWFN=NONE         LOCAL =NONE         NUMGRD=       F
+ ISPHER=      -1     NOSYM =       0     MAXIT =      30     UNITS =ANGS
+ PLTORB=       F     MOLPLT=       F     AIMPAC=       F     FRIEND=
+ NPRINT=       7     IREST =       0     GEOM  =INPUT
+ NORMF =       0     NORMP =       0     ITOL  =      20     ICUT  =       9
+ INTTYP=BEST         GRDTYP=BEST         QMTTOL= 1.0E-06
+
+     $SYSTEM OPTIONS
+     ---------------
+  REPLICATED MEMORY=   100000000 WORDS (ON EVERY NODE).
+ DISTRIBUTED MEMDDI=           0 MILLION WORDS IN AGGREGATE,
+ MEMDDI DISTRIBUTED OVER   4 PROCESSORS IS           0 WORDS/PROCESSOR.
+ TOTAL MEMORY REQUESTED ON EACH PROCESSOR=   100000000 WORDS.
+ TIMLIM=      525600.00 MINUTES, OR     365.0 DAYS.
+ PARALL= T  BALTYP=  DLB     KDIAG=    0  COREFL= F
+ MXSEQ2=     300 MXSEQ3=     150  mem10=         0  mem22=         0
+
+          ----------------
+          PROPERTIES INPUT
+          ----------------
+
+     MOMENTS            FIELD           POTENTIAL          DENSITY
+ IEMOM =       1   IEFLD =       0   IEPOT =       0   IEDEN =       0
+ WHERE =COMASS     WHERE =NUCLEI     WHERE =NUCLEI     WHERE =NUCLEI
+ OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=BOTH
+ IEMINT=       0   IEFINT=       0                     IEDINT=       0
+                                                       MORB  =       0
+          EXTRAPOLATION IN EFFECT
+          SOSCF IN EFFECT
+ ORBITAL PRINTING OPTION: NPREO=     1    13     2     1
+
+          *************************
+          ROHF-GVB INPUT PARAMETERS
+          *************************
+
+          NORB   =    5          NCO    =    3
+          NPAIR  =    1          NSETO  =    0
+          PAIR ORBITALS
+          PAIR    1 HAS ORBS    4    5
+
+          ROHF-GVB COUPLING PARAMETERS
+
+          F VECTOR (OCCUPANCIES)
+    1   1.0000000000
+    2   0.9529411765
+    3   0.0470588235
+          ALPHA COUPLING COEFFICEINTS
+
+             1           2           3
+
+    1    2.0000000
+    2    1.9058824   0.9529412
+    3    0.0941176   0.0000000   0.0470588
+           BETA COUPLING COEFFICIENTS
+
+             1           2           3
+
+    1   -1.0000000
+    2   -0.9529412   0.0000000
+    3   -0.0470588  -0.2117647   0.0000000
+
+          NATURAL ORBITAL COEFFICIENTS
+          N.O.                PAIR CICOEF-S
+            1        0.9761870602    -0.2169304578
+
+     TARGET OFFLOAD OPTIONS
+     RHF    =       F
+     CPHF    =       F
+     MAKEFP =       F
+
+     INTEGRAL TRANSFORMATION OPTIONS
+     NWORD  =            0
+     CUTTRF = 1.0E-09     MPTRAN =       0
+     DIRTRF =       F     AOINTS =DUP
+
+          INTEGRAL INPUT OPTIONS
+ NOPK  =       1 NORDER=       0 SCHWRZ=       F
+
+     THE POINT GROUP IS C1 , NAXIS= 0, ORDER= 1
+
+     DIMENSIONS OF THE SYMMETRY SUBSPACES ARE
+ A   =   13
+
+ ..... DONE SETTING UP THE RUN .....
+
+          ********************
+          1 ELECTRON INTEGRALS
+          ********************
+ ...... END OF ONE-ELECTRON INTEGRALS ......
+
+          -------------
+          GUESS OPTIONS
+          -------------
+          GUESS =HUCKEL            NORB  =       0          NORDER=       0
+          MIX   =       F          PRTMO =       F          PUNMO =       F
+          TOLZ  = 1.0E-08          TOLE  = 1.0E-05
+          SYMDEN=       F          PURIFY=       F
+
+ INITIAL GUESS ORBITALS GENERATED BY HUCKEL   ROUTINE.
+ HUCKEL GUESS REQUIRES      3586 WORDS.
+
+ SYMMETRIES FOR INITIAL GUESS ORBITALS FOLLOW.   BOTH SET(S).
+     5 ORBITALS ARE OCCUPIED (    1 CORE ORBITALS).
+     2=A        3=A        4=A        5=A        6=A        7=A        8=A
+     9=A       10=A       11=A       12=A       13=A
+ ...... END OF INITIAL ORBITAL SELECTION ......
+
+                    AO INTEGRAL TECHNOLOGY
+     S,P,L SHELL ROTATED AXIS INTEGRALS, REPROGRAMMED BY
+        KAZUYA ISHIMURA (IMS) AND JOSE SIERRA (SYNSTAR).
+     S,P,D,L SHELL ROTATED AXIS INTEGRALS PROGRAMMED BY
+        KAZUYA ISHIMURA (INSTITUTE FOR MOLECULAR SCIENCE).
+     S,P,D,F,G SHELL TO TOTAL QUARTET ANGULAR MOMENTUM SUM 5,
+        ERIC PROGRAM BY GRAHAM FLETCHER (ELORET AND NASA ADVANCED
+        SUPERCOMPUTING DIVISION, AMES RESEARCH CENTER).
+     S,P,D,F,G,L SHELL GENERAL RYS QUADRATURE PROGRAMMED BY
+        MICHEL DUPUIS (PACIFIC NORTHWEST NATIONAL LABORATORY).
+
+          2 ELECTRON INTEGRALS
+
+ THE -PK- OPTION IS OFF, THE INTEGRALS ARE NOT IN SUPERMATRIX FORM.
+ STORING   15000 INTEGRALS/RECORD ON DISK, USING 12 BYTES/INTEGRAL.
+ TWO ELECTRON INTEGRAL EVALUATION REQUIRES   89384 WORDS OF MEMORY.
+ II,JST,KST,LST =  1  1  1  1 NREC =         1 INTLOC =    1
+ II,JST,KST,LST =  2  1  1  1 NREC =         1 INTLOC =    2
+ II,JST,KST,LST =  3  1  1  1 NREC =         1 INTLOC =   34
+ II,JST,KST,LST =  4  1  1  1 NREC =         1 INTLOC =  213
+ II,JST,KST,LST =  5  1  1  1 NREC =         1 INTLOC =  410
+ II,JST,KST,LST =  6  1  1  1 NREC =         1 INTLOC =  607
+ II,JST,KST,LST =  7  1  1  1 NREC =         1 INTLOC =  910
+ TOTAL NUMBER OF NONZERO TWO-ELECTRON INTEGRALS =                2260
+          4 INTEGRAL RECORDS WERE STORED ON DISK FILE  8.
+  ...... END OF TWO-ELECTRON INTEGRALS .....
+
+          ROHF-GVB SCF CALCULATION
+ GVB STEP WILL USE    121788 WORDS OF MEMORY.
+
+     MAXIT=  30   NPUNCH= 2   SQCDF TOL=1.0000E-05
+     NUCLEAR ENERGY=        5.9909070902
+     EXTRAP=T   DAMP=F   SHIFT=F   RSTRCT=F   DIIS=F  SOSCF=T
+     SOSCF WILL OPTIMIZE      47 ORBITAL ROTATIONS, SOGTOL=   0.250
+
+ ITER EX     TOTAL ENERGY       E CHANGE        SQCDF       ORB. GRAD
+   0  0      -38.782502332   -38.782502332   0.144174646   0.261711729
+          ---------------START SECOND ORDER SCF---------------
+   1  1      -38.859507029    -0.077004697   0.070603880   0.024270143
+   2  2      -38.867476498    -0.007969469   0.017889210   0.009028218
+   3  3      -38.868327034    -0.000850535   0.015761556   0.003688115
+   4  4      -38.868585140    -0.000258106   0.006242656   0.001838760
+   5  5      -38.868651279    -0.000066139   0.000398783   0.001011707
+   6  6      -38.868658113    -0.000006834   0.000006885   0.000383644
+   7  7      -38.868658951    -0.000000838   0.000000272   0.000075895
+   8  8      -38.868659031    -0.000000080   0.000000010   0.000040189
+   9  9      -38.868659040    -0.000000010   0.000000005   0.000008993
+  10 10      -38.868659041    -0.000000001   0.000000001   0.000002189
+  11 11      -38.868659041    -0.000000000   0.000000000   0.000000804
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+
+ FINAL GVB ENERGY IS      -38.8686590412 AFTER  11 ITERATIONS
+
+          SCF STATISTICS PER ITERATION
+          NUMBER OF INTEGRAL PASSES       1
+          FOCK FORMATION TIME         0.000
+          GEMINAL OPT TIME            0.000
+          MIXORB  OPT TIME            0.000
+          OCBSE   OPT TIME            0.000
+
+          ----------------
+          PAIR INFORMATION
+          ----------------
+      ORBITAL   CI COEFFICIENTS    OCCUPATION NUMBERS   GVB      ENERGY
+ PAIR 1   2     ORB 1     ORB 2      ORB 1     ORB 2    OVERLAP  LOWERING
+  1   4   5    0.984843 -0.173451   1.93983   0.06017   0.70051  -0.01597
+
+     THE MAXIMUM LAGRANGIAN ASYMMETRY IS 3.6896306E-08
+
+          ------------
+          EIGENVECTORS
+          ------------
+
+                      1          2          3          4          5
+                  -11.2890    -0.7564    -0.5558    -0.5019    -0.0007
+                     A          A          A          A          A
+    1  C  1  S    0.997930   0.108413   0.000000  -0.179109   0.000000
+    2  C  1  S    0.019336  -0.230665   0.000000   0.377358   0.000000
+    3  C  1  X    0.000000   0.000000   0.000000   0.000000   0.723576
+    4  C  1  Y    0.000000   0.000000   0.441725   0.000000   0.000000
+    5  C  1  Z   -0.005698   0.381117   0.000000   0.334880   0.000000
+    6  C  1  S   -0.016322  -0.072629   0.000000   0.599970   0.000000
+    7  C  1  X    0.000000   0.000000   0.000000   0.000000   0.391727
+    8  C  1  Y    0.000000   0.000000   0.157911   0.000000   0.000000
+    9  C  1  Z    0.001422   0.237750   0.000000   0.278356   0.000000
+   10  H  2  S   -0.000279  -0.219975   0.261692  -0.006261   0.000000
+   11  H  2  S    0.004343  -0.130633   0.253832  -0.090086   0.000000
+   12  H  3  S   -0.000279  -0.219975  -0.261692  -0.006261   0.000000
+   13  H  3  S    0.004343  -0.130633  -0.253832  -0.090086   0.000000
+
+                      6          7          8          9         10
+                    0.2546     0.3100     0.7465     0.7533     0.7947
+                     A          A          A          A          A
+    1  C  1  S   -0.112162  -0.000000   0.000000   0.000000   0.049132
+    2  C  1  S    0.125886  -0.000000   0.000000   0.000000  -0.241958
+    3  C  1  X   -0.000000  -0.000000   0.000000  -0.978308   0.000000
+    4  C  1  Y   -0.000000  -0.378547  -0.753346   0.000000   0.000000
+    5  C  1  Z   -0.260181  -0.000000   0.000000   0.000000  -0.983658
+    6  C  1  S    1.854534  -0.000000   0.000000   0.000000  -0.319308
+    7  C  1  X   -0.000000  -0.000000   0.000000   1.152041   0.000000
+    8  C  1  Y   -0.000000  -1.276498   1.422659   0.000000   0.000000
+    9  C  1  Z   -0.934515  -0.000000   0.000000   0.000000   1.373575
+   10  H  2  S   -0.017987   0.056849  -0.451519   0.000000   0.192948
+   11  H  2  S   -1.462484   1.490705  -0.124913   0.000000   0.293892
+   12  H  3  S   -0.017987  -0.056849   0.451519   0.000000   0.192948
+   13  H  3  S   -1.462484  -1.490705   0.124913   0.000000   0.293892
+
+                     11         12         13
+                    0.9946     1.1517     1.1658
+                     A          A          A
+    1  C  1  S   -0.024984   0.000000   0.057127
+    2  C  1  S   -1.600931   0.000000  -1.202070
+    3  C  1  X    0.000000   0.000000  -0.000000
+    4  C  1  Y    0.000000  -0.856654  -0.000000
+    5  C  1  Z   -0.059249   0.000000   0.526942
+    6  C  1  S    2.904543   0.000000   2.076663
+    7  C  1  X    0.000000   0.000000  -0.000000
+    8  C  1  Y    0.000000   1.043221  -0.000000
+    9  C  1  Z   -0.897719   0.000000  -0.660210
+   10  H  2  S   -0.561255   0.823753   0.764257
+   11  H  2  S   -0.682039  -1.305544  -1.203122
+   12  H  3  S   -0.561255  -0.823753   0.764257
+   13  H  3  S   -0.682039   1.305544  -1.203122
+
+          -----------
+          GI ORBITALS
+          -----------
+
+
+                    PAIR   1
+
+                      1          2
+
+    1  C  1  S   -0.165155   0.165155
+    2  C  1  S    0.347958  -0.347958
+    3  C  1  X    0.280003   0.280003
+    4  C  1  Y    0.000000   0.000000
+    5  C  1  Z    0.308790  -0.308790
+    6  C  1  S    0.553227  -0.553227
+    7  C  1  X    0.151587   0.151587
+    8  C  1  Y    0.000000   0.000000
+    9  C  1  Z    0.256670  -0.256670
+   10  H  2  S   -0.005773   0.005773
+   11  H  2  S   -0.083068   0.083068
+   12  H  3  S   -0.005773   0.005773
+   13  H  3  S   -0.083068   0.083068
+
+ ... END OF ROHF-GVB SCF CALCULATION ...
+
+     PROPERTY VALUES FOR THE GVB   SELF-CONSISTENT FIELD WAVEFUNCTION
+
+          -----------------
+          ENERGY COMPONENTS
+          -----------------
+
+         WAVEFUNCTION NORMALIZATION =       1.0000000000
+
+                ONE ELECTRON ENERGY =     -63.4339478041
+                TWO ELECTRON ENERGY =      18.5743816727
+           NUCLEAR REPULSION ENERGY =       5.9909070902
+                                      ------------------
+                       TOTAL ENERGY =     -38.8686590412
+
+ ELECTRON-ELECTRON POTENTIAL ENERGY =      18.5743816727
+  NUCLEUS-ELECTRON POTENTIAL ENERGY =    -102.3408115980
+   NUCLEUS-NUCLEUS POTENTIAL ENERGY =       5.9909070902
+                                      ------------------
+             TOTAL POTENTIAL ENERGY =     -77.7755228351
+               TOTAL KINETIC ENERGY =      38.9068637939
+                 VIRIAL RATIO (V/T) =       1.9990180459
+
+          MULLIKEN AND LOWDIN POPULATION ANALYSES
+
+     ATOMIC MULLIKEN POPULATION IN EACH MOLECULAR ORBITAL
+
+                      1          2          3          4          5
+
+                  2.000000   2.000000   2.000000   1.939830   0.060170
+
+    1             1.998419   1.147358   0.957999   2.040639   0.060170
+    2             0.000791   0.426321   0.521000  -0.050405   0.000000
+    3             0.000791   0.426321   0.521000  -0.050405   0.000000
+
+               ----- POPULATIONS IN EACH AO -----
+                             MULLIKEN      LOWDIN
+              1  C  1  S      1.99833     1.99392
+              2  C  1  S      0.78033     0.75957
+              3  C  1  X      0.04122     0.03924
+              4  C  1  Y      0.68934     0.61179
+              5  C  1  Z      0.84283     0.79820
+              6  C  1  S      0.94444     0.72766
+              7  C  1  X      0.01895     0.02093
+              8  C  1  Y      0.26866     0.46726
+              9  C  1  Z      0.62048     0.73682
+             10  H  2  S      0.54890     0.51932
+             11  H  2  S      0.34881     0.40299
+             12  H  3  S      0.54890     0.51932
+             13  H  3  S      0.34881     0.40299
+
+          ----- MULLIKEN ATOMIC OVERLAP POPULATIONS -----
+          (OFF-DIAGONAL ELEMENTS NEED TO BE MULTIPLIED BY 2)
+
+             1           2           3
+
+    1    5.6232654
+    2    0.2906599   0.6646045
+    3    0.2906599  -0.0575571   0.6646045
+
+          TOTAL MULLIKEN AND LOWDIN ATOMIC POPULATIONS
+       ATOM         MULL.POP.    CHARGE          LOW.POP.     CHARGE
+    1 CARBON        6.204585   -0.204585         6.155379   -0.155379
+    2 HYDROGEN      0.897707    0.102293         0.922310    0.077690
+    3 HYDROGEN      0.897707    0.102293         0.922310    0.077690
+
+          ELECTROSTATIC MOMENTS
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.001266       -0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000000   -0.000000   -1.990399    1.990399
+ ...... END OF PROPERTY EVALUATION ......
+ EXECUTION OF GAMESS TERMINATED NORMALLY DATE
+
