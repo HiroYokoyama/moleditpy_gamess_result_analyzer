@@ -208,3 +208,6 @@ __marimo__/
 
 # temporary files
 gamess_result_analyzer/settings.json
+
+# Release packages are built by the release workflow, never committed
+*.zip
