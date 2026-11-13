@@ -20,7 +20,7 @@ from unittest.mock import MagicMock
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from _parser_loader import load_standalone_parser  # noqa: E402
+from _parser_loader import load_standalone_parser
 
 _PKG = "gamess_result_analyzer"
 _PARSER = "GAMESSParser"
