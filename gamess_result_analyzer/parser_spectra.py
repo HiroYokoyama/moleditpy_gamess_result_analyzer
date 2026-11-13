@@ -228,8 +228,15 @@ class _SpectraParsingMixin:
                 }
             elif states and not line.strip():
                 break
+        # An optimization prints a TD-DFT run per geometry; only the details of
+        # the run this summary closes belong to its states.
+        first = 0
+        for i in range(start - 1, -1, -1):
+            if "DONE WITH TD-DFT" in self.lines[i] or "SUMMARY OF TDDFT RESULTS" in self.lines[i]:
+                first = i + 1
+                break
         current = None
-        for line in self.lines[:start]:
+        for line in self.lines[first:start]:
             detail = _STATE_DETAIL.match(line)
             if detail:
                 current = states.get(int(detail.group(1)))
