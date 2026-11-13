@@ -65,8 +65,9 @@ otherwise, so bump it in the same commit as the fix it describes.
 
 ## Testing
 
-There are no GitHub workflows for now, so run every check locally. Where this file
-mentions CI or the release workflow, it describes the setup they had.
+`tests.yml` runs the suite on Python 3.9-3.13, the MoleditPy integration checks and
+pylint on every pull request and push to main; `release.yml` publishes a version tag.
+Run the affected tests locally and leave the full matrix to CI.
 
 ```bash
 python run_tests.py                 # whole suite, exactly as CI runs it
