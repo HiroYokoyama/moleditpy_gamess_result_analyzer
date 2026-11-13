@@ -131,6 +131,27 @@ class TestSpectra(unittest.TestCase):
         self.assertAlmostEqual(states[1]["osc_len"], 0.1567)
         self.assertIn("8 -> 10", " ".join(states[1]["transitions"]))
 
+    def test_a_repeated_tddft_run_keeps_only_its_own_amplitudes(self):
+        """An optimization prints a TD-DFT run per geometry; the amplitudes of
+        earlier runs used to pile up under the same state numbers."""
+        with open(os.path.join(_SAMPLES, "h2co_tddft.out"), encoding="utf-8") as handle:
+            lines = handle.read().splitlines()
+        first = next(i for i, l in enumerate(lines) if "SINGLET EXCITATIONS" in l) - 1
+        last = next(i for i, l in enumerate(lines) if "DONE WITH TD-DFT" in l) + 1
+        run = lines[first:last]
+        # The earlier run gets an amplitude row the later one does not have.
+        earlier = [l.replace("8       9    0.999876", "7       9    0.999876") for l in run]
+        parser = _load_module("parser").GAMESSParser()
+        parser.load_from_memory(
+            "\n".join(lines[:first] + earlier + run + lines[last:]), "repeated.out"
+        )
+        once = _parse("h2co_tddft")["tddft"]
+        twice = parser.data["tddft"]
+        self.assertEqual(
+            [s["transitions"] for s in twice], [s["transitions"] for s in once]
+        )
+        self.assertNotIn("7 -> 9", " ".join(twice[0]["transitions"]))
+
     def test_tddft_claims_only_the_length_gauge(self):
         state = _parse("h2co_tddft")["tddft"][0]
         for key in ("osc_vel", "rot_len", "rot_vel", "rotatory_strength"):
