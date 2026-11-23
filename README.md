@@ -17,20 +17,33 @@ the files it reads.
 
 ## Screenshots
 
-![Main window](img/main.png)
+The analyzer works beside the MoleditPy window rather than inside a viewer of its
+own. Pick an orbital, a normal mode or an optimization step, and MoleditPy's 3D view
+follows: orbitals as isosurfaces, modes as arrows and animation, steps as geometries.
 
-| Molecular orbitals | Optimization |
+![Formaldehyde HOMO, evaluated from the MO coefficients in the output and drawn in MoleditPy](img/mo.gif)
+
+| Normal mode animation | Optimization playback |
 |---|---|
-| ![Molecular orbitals](img/mo.png) | ![Optimization](img/optimization.png) |
+| ![Benzene out-of-plane C-H bend, the strongest IR band](img/frequencies.gif) | ![Water optimization, energy against step](img/optimization.gif) |
 
-| Frequencies | NMR |
+**Main window**: one button per analysis, enabled when the output holds the data.
+
+![MoleditPy with the GAMESS Result Analyzer open on a benzene optimization and Hessian](img/main.png)
+
+| Molecular orbitals | Frequencies |
 |---|---|
-| ![Frequencies](img/frequencies.png) | ![NMR](img/nmr.png) |
+| ![Formaldehyde HOMO](img/mo.png) | ![Benzene IR-active mode with displacement vectors](img/frequencies.png) |
 
-![TD-DFT spectrum](img/tddft.png)
+| Atomic charges | NMR |
+|---|---|
+| ![Methanol Mulliken charges as atom colors and labels](img/charges.png) | ![Methanol 1H stick spectrum with the protons highlighted](img/nmr.png) |
 
-All taken from the jobs in `tests/sample_outputs`. The 3D view belongs to the MoleditPy
-window, so the isosurfaces and animated modes appear there rather than here.
+| Optimization | TD-DFT |
+|---|---|
+| ![Water optimization energy profile](img/optimization.png) | ![Formaldehyde absorption spectrum](img/tddft.png) |
+
+All taken with MoleditPy 5.3.2 from the jobs in `tests/sample_outputs`.
 
 ## Features
 
